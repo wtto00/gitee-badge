@@ -1,7 +1,4 @@
-import { createCanvas, registerFont } from "canvas";
-registerFont('components/static/fonts/Verdana.ttf', { family: 'Verdana' })
-registerFont('components/static/fonts/DejaVu Sans.ttf', { family: 'DejaVu Sans' })
-registerFont('components/static/fonts/SansSerif.ttf', { family: 'sans-serif' })
+import { createCanvas } from "canvas";
 
 /**
  * 获取颜色
