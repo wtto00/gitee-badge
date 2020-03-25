@@ -59,7 +59,7 @@ export function getQuery(url, format) {
  * @param {string} text
  */
 export function getTextLength(text) {
-  let canvas = createCanvas(200, 50, "svg");
+  let canvas = createCanvas(200, 50);
   canvas.font = "110 Verdana,DejaVu Sans";
   let ctx = canvas.getContext("2d");
   return ctx.measureText(text).width;
