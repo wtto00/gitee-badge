@@ -32,5 +32,5 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
   > 其他参数将显示默认颜色 `blue`
 
 - **示例**
-  ![black](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan) `https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan`
-  ![black](https://badge.wtto00.now.sh/api/badge/license/MIT/green) `https://badge.wtto00.now.sh/api/badge/license/MIT/green`
+  - ![black](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan) `https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan`
+  - ![black](https://badge.wtto00.now.sh/api/badge/license/MIT/green) `https://badge.wtto00.now.sh/api/badge/license/MIT/green`
