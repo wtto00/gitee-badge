@@ -60,8 +60,8 @@ export function getQuery(url, format) {
  */
 export function getTextLength(text) {
   let canvas = createCanvas(200, 50);
-  canvas.font = "110 Verdana,DejaVu Sans,sans-serif";
   let ctx = canvas.getContext("2d");
+  ctx.font = "110 Verdana,DejaVu Sans,sans-serif";
   return ctx.measureText(text).width;
 }
 
