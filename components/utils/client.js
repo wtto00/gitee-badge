@@ -60,7 +60,7 @@ export function getQuery(url, format) {
  */
 export function getTextLength(text) {
   let canvas = createCanvas(200, 50);
-  canvas.font = "110 Verdana,DejaVu Sans";
+  canvas.font = "110 Verdana,DejaVu Sans,sans-serif";
   let ctx = canvas.getContext("2d");
   return ctx.measureText(text).width;
 }
@@ -74,37 +74,22 @@ export function getSvg(query) {
   const statusLength = getTextLength(query.status) * 12;
   const color = getColor(query.color);
 
-  return `<svg width="${(subjectLength + statusLength + 200) /
-    10}" height="20" viewBox="0 0 ${subjectLength +
-    statusLength +
-    200} 200" xmlns="http://www.w3.org/2000/svg">
+  return `<svg width="${(subjectLength + statusLength + 200) / 10}" height="20" viewBox="0 0 ${subjectLength + statusLength + 200} 200" xmlns="http://www.w3.org/2000/svg">
   <linearGradient id="a" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <mask id="m"><rect width="${subjectLength +
-    statusLength +
-    200}" height="200" rx="30" fill="#FFF"/></mask>
+  <mask id="m"><rect width="${subjectLength + statusLength + 200}" height="200" rx="30" fill="#FFF"/></mask>
   <g mask="url(#m)">
     <rect width="${subjectLength + 100}" height="200" fill="#555"/>
-    <rect width="${statusLength +
-      100}" height="200" fill="${color}" x="${subjectLength + 100}"/>
-    <rect width="${subjectLength +
-      statusLength +
-      200}" height="200" fill="url(#a)"/>
+    <rect width="${statusLength + 100}" height="200" fill="${color}" x="${subjectLength + 100}"/>
+    <rect width="${subjectLength + statusLength + 200}" height="200" fill="url(#a)"/>
   </g>
-  <g fill="#fff" text-anchor="start" font-size="110">
-  <text x="60" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${
-    query.subject
-  }</text>
-  <text x="50" y="138" textLength="${subjectLength}">${query.subject}</text>
-    <text x="${subjectLength +
-      155}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${
-    query.status
-  }</text>
-    <text x="${subjectLength + 145}" y="138" textLength="${statusLength}">${
-    query.status
-  }</text>
+  <g fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
+    <text x="60" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${query.subject}</text>
+    <text x="50" y="138" textLength="${subjectLength}">${query.subject}</text>
+    <text x="${subjectLength + 155}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${query.status}</text>
+    <text x="${subjectLength + 145}" y="138" textLength="${statusLength}">${query.status}</text>
   </g>
 </svg>`;
 }
