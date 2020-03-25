@@ -1,20 +1,19 @@
 {
   "name": "badge",
-  "version": "0.0.1",
-  "description": "徽章生成服务",
-  "main": "index.js",
-  "repository": "git@github.com:wtto00/badge.git",
-  "author": "wtto <wtto00@outlook.com>",
-  "license": "MIT",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "^9.3.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "canvas": "^2.6.1",
+    "next": "9.3.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "raw-loader": "^4.0.0"
   }
 }
