@@ -65,6 +65,10 @@ export function getTextLength(text) {
   return ctx.measureText(text).width;
 }
 
+/**
+ * 获取svg元素
+ * @param {object} query
+ */
 export function getSvg(query) {
   const subjectLength = getTextLength(query.subject) * 12;
   const statusLength = getTextLength(query.status) * 12;

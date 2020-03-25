@@ -1,6 +1,10 @@
 {
   "name": "badge",
   "version": "0.1.0",
+  "description": "徽章生成服务",
+  "repository": "git@github.com:wtto00/badge.git",
+  "author": "wtto <wtto00@outlook.com>",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
