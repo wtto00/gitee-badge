@@ -50,7 +50,7 @@ export function getTextLength(text) {
 export function getSvg(query) {
   const subjectLength = getTextLength(query.subject);
   const statusLength = getTextLength(query.status);
-  const color = colors[color] || colors.blue;
+  const color = colors[query.color] || colors.blue;
 
   return `<svg width="${(subjectLength + statusLength + 200) /
     10}" height="20" viewBox="0 0 ${subjectLength +
