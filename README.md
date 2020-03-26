@@ -38,6 +38,7 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
 ## 计划
 
 1. `readme` `svg` → `png`
+1. color list not use ul>li, just list
 1. `icon` 渲染
 1. 访问 `https://badge.wtto00.now.sh/api/badge/:subject/:status` 默认蓝色，不报错
 1. `gitee` `api`
