@@ -37,11 +37,12 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
 
 ## 计划
 
+1. `readme` `svg` → `png`
 1. `icon` 渲染
-2. 访问 `https://badge.wtto00.now.sh/api/badge/:subject/:status` 默认蓝色，不报错
-3. `gitee` `api`
-4. `github` `api`
-5. `npm` `api`
-6. `packagist` `api`
-7. `pypi` `api`
-8. ...
+1. 访问 `https://badge.wtto00.now.sh/api/badge/:subject/:status` 默认蓝色，不报错
+1. `gitee` `api`
+1. `github` `api`
+1. `npm` `api`
+1. `packagist` `api`
+1. `pypi` `api`
+1. ...
