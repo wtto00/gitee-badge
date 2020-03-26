@@ -1,33 +1,26 @@
-import { createCanvas } from "canvas";
+import TextToSVG from "text-to-svg";
+
+const textToSVG = TextToSVG.loadSync();
+
+const colors = {
+  blue: "#08c",
+  cyan: "#1bc",
+  green: "#3c1",
+  yellow: "#db1",
+  orange: "#f73",
+  red: "#e43",
+  pink: "#e5b",
+  purple: "#94e",
+  grey: "#999",
+  black: "#2a2a2a"
+};
 
 /**
  * 获取颜色
  * @param {string} color
  */
 export function getColor(color) {
-  switch (color) {
-    case "cyan":
-      return "#1BC";
-    case "green":
-      return "#3C1";
-    case "yellow":
-      return "#DB1";
-    case "orange":
-      return "#F73";
-    case "red":
-      return "#E43";
-    case "pink":
-      return "#E5B";
-    case "purple":
-      return "#94E";
-    case "grey":
-      return "#999";
-    case "black":
-      return "#2A2A2A";
-    case "blue":
-    default:
-      return "#08C";
-  }
+  return colors[color] || colors.blue;
 }
 
 /**
@@ -59,10 +52,8 @@ export function getQuery(url, format) {
  * @param {string} text
  */
 export function getTextLength(text) {
-  let canvas = createCanvas(200, 50);
-  let ctx = canvas.getContext("2d");
-  ctx.font = "110 Verdana,DejaVu Sans,sans-serif";
-  return ctx.measureText(text).width;
+  const metrics = textToSVG.getMetrics(text, { fontSize: 110, anchor: 'left' });
+  return metrics.width
 }
 
 /**
@@ -70,8 +61,8 @@ export function getTextLength(text) {
  * @param {object} query
  */
 export function getSvg(query) {
-  const subjectLength = getTextLength(query.subject) * 12;
-  const statusLength = getTextLength(query.status) * 12;
+  const subjectLength = getTextLength(query.subject);
+  const statusLength = getTextLength(query.status);
   const color = getColor(query.color);
 
   return `<svg width="${(subjectLength + statusLength + 200) / 10}" height="20" viewBox="0 0 ${subjectLength + statusLength + 200} 200" xmlns="http://www.w3.org/2000/svg">
@@ -82,13 +73,15 @@ export function getSvg(query) {
   <mask id="m"><rect width="${subjectLength + statusLength + 200}" height="200" rx="30" fill="#FFF"/></mask>
   <g mask="url(#m)">
     <rect width="${subjectLength + 100}" height="200" fill="#555"/>
-    <rect width="${statusLength + 100}" height="200" fill="${color}" x="${subjectLength + 100}"/>
+    <rect width="${statusLength +
+    100}" height="200" fill="${color}" x="${subjectLength + 100}"/>
     <rect width="${subjectLength + statusLength + 200}" height="200" fill="url(#a)"/>
   </g>
   <g fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
     <text x="60" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${query.subject}</text>
     <text x="50" y="138" textLength="${subjectLength}">${query.subject}</text>
-    <text x="${subjectLength + 155}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${query.status}</text>
+    <text x="${subjectLength +
+    155}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${query.status}</text>
     <text x="${subjectLength + 145}" y="138" textLength="${statusLength}">${query.status}</text>
   </g>
 </svg>`;
