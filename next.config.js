@@ -1,6 +1,7 @@
 const path = require("path");
+const withSass = require('@zeit/next-sass')
 
-module.exports = {
+module.exports = withSass({
   webpack: (config, options) => {
     config.module.rules.push({
       test: /(\.svg|\.md)$/,
@@ -10,4 +11,4 @@ module.exports = {
 
     return config;
   }
-};
+});

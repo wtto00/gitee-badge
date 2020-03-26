@@ -6,7 +6,7 @@
 
 #### 自定义
 
-```
+```text
 https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
                                       --------|-------|------|-----------
                                           |       |       |        |
