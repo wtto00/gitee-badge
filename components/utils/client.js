@@ -77,7 +77,7 @@ export function getSvg(query) {
     100}" height="200" fill="${color}" x="${subjectLength + 100}"/>
     <rect width="${subjectLength + statusLength + 200}" height="200" fill="url(#a)"/>
   </g>
-  <g fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
+  <g fill="#fff" text-anchor="start" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
     <text x="60" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${query.subject}</text>
     <text x="50" y="138" textLength="${subjectLength}">${query.subject}</text>
     <text x="${subjectLength +
