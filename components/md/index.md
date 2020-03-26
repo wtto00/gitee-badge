@@ -34,3 +34,14 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
 - **示例**
   - ![black](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan) `https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan`
   - ![black](https://badge.wtto00.now.sh/api/badge/license/MIT/green) `https://badge.wtto00.now.sh/api/badge/license/MIT/green`
+
+## 计划
+
+1. `icon` 渲染
+2. 访问 `https://badge.wtto00.now.sh/api/badge/:subject/:status` 默认蓝色，不报错
+3. `gitee` `api`
+4. `github` `api`
+5. `npm` `api`
+6. `packagist` `api`
+7. `pypi` `api`
+8. ...

@@ -1,27 +1,5 @@
-import TextToSVG from "text-to-svg";
-
-const textToSVG = TextToSVG.loadSync();
-
-const colors = {
-  blue: "#08c",
-  cyan: "#1bc",
-  green: "#3c1",
-  yellow: "#db1",
-  orange: "#f73",
-  red: "#e43",
-  pink: "#e5b",
-  purple: "#94e",
-  grey: "#999",
-  black: "#2a2a2a"
-};
-
-/**
- * 获取颜色
- * @param {string} color
- */
-export function getColor(color) {
-  return colors[color] || colors.blue;
-}
+import chars from "./chars";
+import colors from "./colors";
 
 /**
  * 分割url，得到参数
@@ -52,13 +30,17 @@ export function getQuery(url, format) {
  * @param {string} text
  */
 export function getTextLength(text) {
-  const options = { fontSize: 110, anchor: "left", }
-  // 如果包含大写字母，则添加字间距
-  if (text.toLocaleLowerCase() !== text) {
-    options.letterSpacing = 0.15
+  let width = 0;
+  for (let t of text) {
+    if (t >= "0" && t <= "9") {
+      width += 70;
+    } else if (t >= " " && t <= "~") {
+      width += chars[t] || 0;
+    } else {
+      width += 110;
+    }
   }
-  const metrics = textToSVG.getMetrics(text, options);
-  return metrics.width;
+  return width;
 }
 
 /**
@@ -68,7 +50,7 @@ export function getTextLength(text) {
 export function getSvg(query) {
   const subjectLength = getTextLength(query.subject);
   const statusLength = getTextLength(query.status);
-  const color = getColor(query.color);
+  const color = colors[color] || colors.blue;
 
   return `<svg width="${(subjectLength + statusLength + 200) /
     10}" height="20" viewBox="0 0 ${subjectLength +
@@ -84,23 +66,23 @@ export function getSvg(query) {
   <g mask="url(#m)">
     <rect width="${subjectLength + 100}" height="200" fill="#555"/>
     <rect width="${statusLength +
-    100}" height="200" fill="${color}" x="${subjectLength + 100}"/>
+      100}" height="200" fill="${color}" x="${subjectLength + 100}"/>
     <rect width="${subjectLength +
-    statusLength +
-    200}" height="200" fill="url(#a)"/>
+      statusLength +
+      200}" height="200" fill="url(#a)"/>
   </g>
   <g fill="#fff" text-anchor="start" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
     <text x="60" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${
     query.subject
-    }</text>
+  }</text>
     <text x="50" y="138" textLength="${subjectLength}">${query.subject}</text>
     <text x="${subjectLength +
-    155}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${
+      155}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${
     query.status
-    }</text>
+  }</text>
     <text x="${subjectLength + 145}" y="138" textLength="${statusLength}">${
     query.status
-    }</text>
+  }</text>
   </g>
 </svg>`;
 }
