@@ -5,8 +5,22 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import "./index.scss";
 
+const renderer = new marked.Renderer();
+const linkRenderer = renderer.link;
+renderer.link = (href, title, text) => {
+  const html = linkRenderer.call(renderer, href, title, text);
+  return html.replace(/^<a /, '<a target="_blank" rel="nofollow" ');
+};
 marked.setOptions({
-  highlight: code => hljs.highlightAuto(code).value
+  renderer: renderer,
+  highlight: (code, language) => {
+    const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
+    return hljs.highlight(validLanguage, code).value;
+  },
+  breaks: true,
+  smartLists: true,
+  smartypants: true,
+  tables: true,
 });
 
 
