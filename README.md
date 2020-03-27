@@ -16,11 +16,11 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
                                          主题
 ```
 
-- **subject**
+- **subject**  
   文本 在徽章的左边显示。通常为所要展示的项目名称
-- **status**
+- **status**  
   文本 在徽章的右边显示。通常为所要展示的项目状态数据
-- **可选颜色**
+- **可选颜色**  
   ![blue](https://badge.wtto00.now.sh/api/badge/color/blue/blue) ![cyan](https://badge.wtto00.now.sh/api/badge/color/cyan/cyan) ![green](https://badge.wtto00.now.sh/api/badge/color/green/green) ![yellow](https://badge.wtto00.now.sh/api/badge/color/yellow/yellow) ![orange](https://badge.wtto00.now.sh/api/badge/color/orange/orange) ![red](https://badge.wtto00.now.sh/api/badge/color/red/red) ![pink](https://badge.wtto00.now.sh/api/badge/color/pink/pink) ![purple](https://badge.wtto00.now.sh/api/badge/color/purple/purple) ![grey](https://badge.wtto00.now.sh/api/badge/color/grey/grey) ![black](https://badge.wtto00.now.sh/api/badge/color/black/black)
 
   > 其他参数将显示默认颜色 `blue`
