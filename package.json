@@ -12,6 +12,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "highlight.js": "^9.18.1",
     "marked": "^0.8.2",
     "next": "9.3.1",

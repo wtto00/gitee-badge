@@ -16,8 +16,9 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
                                          主题
 ```
 
-例如：`https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan`  
-[![release](https://github.com/wtto00/badge/blob/master/docs/images/subject-release.png?raw=true "subject release")](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan)  
+例如：`https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?icon=github`  
+[![release](https://github.com/wtto00/badge/blob/master/docs/images/subject-release.png?raw=true "subject release")](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?icon=github)  
+`github` 即为 `icon` 的参数值  
 `release` 即为 `subject` 的参数值  
 `v1.0.2` 即为 `status` 的参数值  
 `cyan` 即为 `color` 的参数值
