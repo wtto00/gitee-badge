@@ -1,4 +1,4 @@
-# badge
+<h1 align="center">badge</h1>
 
 生成徽章服务
 
@@ -32,8 +32,8 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
 1. [x] `readme` `svg` → `png`
 1. [x] color list not use ul>li, just list
 1. [x] 首页使用 `getStaticPaths` & `getStaticProps` 预加载
+1. [x] 访问 `https://badge.wtto00.now.sh/api/badge/:subject/:status` 默认蓝色，不报错
 1. [ ] `icon` 渲染
-1. [ ] 访问 `https://badge.wtto00.now.sh/api/badge/:subject/:status` 默认蓝色，不报错
 1. [ ] `gitee` `api`
 1. [ ] `github` `api`
 1. [ ] `npm` `api`
