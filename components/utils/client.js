@@ -81,6 +81,8 @@ export function getSvg(query) {
   const subjectLength = getTextLength(query.subject);
   const statusLength = getTextLength(query.status);
   const color = colors[query.color] || colors.blue;
+  const labelColor = colors[query.labelColor] || "#555";
+  console.log('labelColor:',labelColor);
   const { icon = null, iconWidth = 0 } = query.icon ? getIcon(query.icon) : {};
   const textPosition = subjectLength === 0 ? 12 + iconWidth : 60 + iconWidth;
 
@@ -100,7 +102,7 @@ export function getSvg(query) {
   <g mask="url(#mask)">
     <rect width="${subjectLength +
       40 +
-      textPosition}" height="200" fill="#555"/>
+      textPosition}" height="200" fill="${labelColor}"/>
     <rect width="${statusLength +
       100}" height="200" fill="${color}" x="${subjectLength +
     40 +
