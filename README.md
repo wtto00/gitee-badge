@@ -1,5 +1,6 @@
 <h1 align="center">badge</h1>
-<p align="center">[![my github](https://github.com/wtto00/badge/blob/master/docs/images/options/options-label.png?raw=true "my github")](https://github.com/wtto00/badge)</p>
+
+[![my github](https://github.com/wtto00/badge/blob/master/docs/images/options/options-label.png?raw=true "my github")](https://github.com/wtto00/badge)
 
 生成徽章服务
 
