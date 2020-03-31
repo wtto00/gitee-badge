@@ -44,6 +44,23 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
     例如：`https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2`  
     [![options scale](https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2 "options scale")](https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2)
 
+#### Gitee
+
+```
+https://badge.wtto00.now.sh/api/gitee/:subject/:owner/:repo
+                               ------|--------|------|-----
+                                  |       |       |     |
+                                  |       |       |  仓库名称
+                                  |       |   仓库所有者
+                                  |      主题
+                              Gitee Api
+```
+
+- **用法**
+  |地址|效果|说明
+  |:---:|:---:|:---:|
+  |[/gitee/release/smallweigit/avue](https://badge.wtto00.now.sh/api/gitee/release/smallweigit/avue)|![latest release](https://badge.wtto00.now.sh/api/gitee/release/smallweigit/avue "latest release")|latest release|
+
 ## 计划
 
 1. [x] `readme` `svg` → `png`

@@ -38,7 +38,7 @@ export function getQuery(url, format) {
  * 获取字符串的宽度
  * @param {string} text
  */
-export function getTextLength(text) {
+const getTextLength = text => {
   let width = 0;
   for (let t of text) {
     if (t >= "0" && t <= "9") {
@@ -50,7 +50,7 @@ export function getTextLength(text) {
     }
   }
   return width;
-}
+};
 
 const getIcon = icon => {
   try {
