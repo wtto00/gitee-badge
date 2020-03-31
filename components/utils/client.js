@@ -63,7 +63,10 @@ const getIcon = icon => {
     };
   } catch (error) {
     console.log("error:", error);
-    return "";
+    return {
+      icon: null,
+      iconWidth: 0
+    };
   }
 };
 
@@ -75,48 +78,50 @@ export function getSvg(query) {
   const subjectLength = getTextLength(query.subject);
   const statusLength = getTextLength(query.status);
   const color = colors[query.color] || colors.blue;
-  const { icon, iconWidth = 0 } = getIcon(query.icon);
+  const { icon = null, iconWidth = 0 } = query.icon ? getIcon(query.icon) : {};
+  const textPosition = subjectLength === 0 ? 12 + iconWidth : 60 + iconWidth;
 
-  return `<svg width="${(subjectLength + statusLength + 200 + iconWidth) /
+  return `<svg width="${(subjectLength + statusLength + 140 + textPosition) /
     10}" height="20" viewBox="0 0 ${subjectLength +
     statusLength +
-    200 +
-    iconWidth} 200" xmlns="http://www.w3.org/2000/svg">
-  <linearGradient id="a" x2="0" y2="100%">
+    140 +
+    textPosition} 200" xmlns="http://www.w3.org/2000/svg">
+  <linearGradient id="badge" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <mask id="m"><rect width="${subjectLength +
+  <mask id="mask"><rect width="${subjectLength +
     statusLength +
-    200 +
-    iconWidth}" height="200" rx="30" fill="#FFF"/></mask>
-  <g mask="url(#m)">
-    <rect width="${subjectLength + 100 + iconWidth}" height="200" fill="#555"/>
+    140 +
+    textPosition}" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#mask)">
+    <rect width="${subjectLength +
+      40 +
+      textPosition}" height="200" fill="#555"/>
     <rect width="${statusLength +
       100}" height="200" fill="${color}" x="${subjectLength +
-    100 +
-    iconWidth}"/>
+    40 +
+    textPosition}"/>
     <rect width="${subjectLength +
       statusLength +
-      200 +
-      iconWidth}" height="200" fill="url(#a)"/>
+      140 +
+      textPosition}" height="200" fill="url(#badge)"/>
   </g>
   <g fill="#fff" text-anchor="start" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
-    <text x="${60 +
-      iconWidth}" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${
+    <text x="${textPosition}" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${
     query.subject
   }</text>
-    <text x="${50 + iconWidth}" y="138" textLength="${subjectLength}">${
+    <text x="${textPosition - 10}" y="138" textLength="${subjectLength}">${
     query.subject
   }</text>
     <text x="${subjectLength +
-      155 +
-      iconWidth}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${
+      95 +
+      textPosition}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${
     query.status
   }</text>
     <text x="${subjectLength +
-      145 +
-      iconWidth}" y="138" textLength="${statusLength}">${query.status}</text>
+      85 +
+      textPosition}" y="138" textLength="${statusLength}">${query.status}</text>
   </g>
   ${icon}
 </svg>`;
