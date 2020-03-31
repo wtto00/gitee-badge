@@ -24,8 +24,11 @@ export function getQuery(url, format) {
       const value = decodeURIComponent(arr4[1] || "");
       if (key === "label") {
         query.subject = value;
+      } else if (key === "list") {
+        query.status = query.status.replace(/,/g, ` ${value} `);
+      } else {
+        query[key] = value;
       }
-      query[key] = value;
     });
   }
   return query;
