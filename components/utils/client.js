@@ -82,12 +82,16 @@ export function getSvg(query) {
   const statusLength = getTextLength(query.status);
   const color = colors[query.color] || colors.blue;
   const labelColor = colors[query.labelColor] || "#555";
-  console.log('labelColor:',labelColor);
   const { icon = null, iconWidth = 0 } = query.icon ? getIcon(query.icon) : {};
   const textPosition = subjectLength === 0 ? 12 + iconWidth : 60 + iconWidth;
+  let width = (subjectLength + statusLength + 140 + textPosition) / 10,
+    height = 20;
+  if (!isNaN(query.scale)) {
+    width *= Number(query.scale);
+    height *= Number(query.scale);
+  }
 
-  return `<svg width="${(subjectLength + statusLength + 140 + textPosition) /
-    10}" height="20" viewBox="0 0 ${subjectLength +
+  return `<svg width="${width}" height="${height}" viewBox="0 0 ${subjectLength +
     statusLength +
     140 +
     textPosition} 200" xmlns="http://www.w3.org/2000/svg">
