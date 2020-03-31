@@ -40,7 +40,7 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
     例如：`https://badge.wtto00.now.sh/api/badge/release/GitHub/cyan?labelColor=pink`  
     [![options labelColor](https://github.com/wtto00/badge/blob/master/docs/images/options/options-labelColor.png?raw=true "options labelColor")](https://badge.wtto00.now.sh/api/badge/release/GitHub/cyan?labelColor=pink)
   - `scale` 自定义缩放大小  
-    例如：`https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2`
+    例如：`https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2`  
     [![options scale](https://github.com/wtto00/badge/blob/master/docs/images/options/options-scale.png?raw=true "options scale")](https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2)
 
 ## 计划
