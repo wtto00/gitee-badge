@@ -57,9 +57,9 @@ https://badge.wtto00.now.sh/api/gitee/:subject/:owner/:repo
 ```
 
 - **用法**
-  |地址|效果|说明
+  |说明|地址|效果|
   |:---:|:---:|:---:|
-  |[/gitee/release/smallweigit/avue](https://badge.wtto00.now.sh/api/gitee/release/smallweigit/avue)|![latest release](https://badge.wtto00.now.sh/api/gitee/release/smallweigit/avue "latest release")|latest release|
+  |latest release|[/gitee/release/smallweigit/avue](https://badge.wtto00.now.sh/api/gitee/release/smallweigit/avue)|![latest release](https://badge.wtto00.now.sh/api/gitee/release/smallweigit/avue "latest release")|
 
 ## 计划
 
