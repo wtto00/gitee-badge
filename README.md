@@ -1,32 +1,39 @@
 <h1 align="center">badge</h1>
+<p align="center">
+[![my github]( "my github")](https://github.com/wtto00/badge)
+</p>
 
 生成徽章服务
 
 ## 使用
 
-#### 自定义
+#### 自定义徽章
 
-```text
+```
 https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
                                       --------|-------|------|-----------
                                           |       |       |        |
-                                          |       |       |      图标
+                                          |       |       |       选项(icon,color,label,list,labelColor,scale)
                                           |       |      颜色
                                           |      状态
                                          主题
 ```
 
-例如：`https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?icon=github`  
-[![release](https://github.com/wtto00/badge/blob/master/docs/images/subject-release.png?raw=true "subject release")](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?icon=github)  
-`github` 即为 `icon` 的参数值  
-`release` 即为 `subject` 的参数值  
-`v1.0.2` 即为 `status` 的参数值  
-`cyan` 即为 `color` 的参数值
-
 - **可选颜色**  
-  [![blue](https://github.com/wtto00/badge/blob/master/docs/images/color-blue.png?raw=true "color blue")](https://badge.wtto00.now.sh/api/badge/color/blue/blue) [![cyan](https://github.com/wtto00/badge/blob/master/docs/images/color-cyan.png?raw=true "color cyan")](https://badge.wtto00.now.sh/api/badge/color/cyan/cyan) [![green](https://github.com/wtto00/badge/blob/master/docs/images/color-green.png?raw=true "color green")](https://badge.wtto00.now.sh/api/badge/color/green/green) [![yellow](https://github.com/wtto00/badge/blob/master/docs/images/color-yellow.png?raw=true "color yellow")](https://badge.wtto00.now.sh/api/badge/color/yellow/yellow) [![orange](https://github.com/wtto00/badge/blob/master/docs/images/color-orange.png?raw=true "color orange")](https://badge.wtto00.now.sh/api/badge/color/orange/orange) [![red](https://github.com/wtto00/badge/blob/master/docs/images/color-red.png?raw=true "color red")](https://badge.wtto00.now.sh/api/badge/color/red/red) [![pink](https://github.com/wtto00/badge/blob/master/docs/images/color-pink.png?raw=true "color pink")](https://badge.wtto00.now.sh/api/badge/color/pink/pink) [![purple](https://github.com/wtto00/badge/blob/master/docs/images/color-purple.png?raw=true "color purple")](https://badge.wtto00.now.sh/api/badge/color/purple/purple) [![grey](https://github.com/wtto00/badge/blob/master/docs/images/color-grey.png?raw=true "color grey")](https://badge.wtto00.now.sh/api/badge/color/grey/grey) [![black](https://github.com/wtto00/badge/blob/master/docs/images/color-black.png?raw=true "color black")](https://badge.wtto00.now.sh/api/badge/color/black/black)
-
-  > 其他参数将显示默认颜色 `blue`
+  [![blue](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-blue.png?raw=true "color blue")](https://badge.wtto00.now.sh/api/badge/color/blue/blue) [![cyan](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-cyan.png?raw=true "color cyan")](https://badge.wtto00.now.sh/api/badge/color/cyan/cyan) [![green](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-green.png?raw=true "color green")](https://badge.wtto00.now.sh/api/badge/color/green/green) [![yellow](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-yellow.png?raw=true "color yellow")](https://badge.wtto00.now.sh/api/badge/color/yellow/yellow) [![orange](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-orange.png?raw=true "color orange")](https://badge.wtto00.now.sh/api/badge/color/orange/orange) [![red](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-red.png?raw=true "color red")](https://badge.wtto00.now.sh/api/badge/color/red/red) [![pink](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-pink.png?raw=true "color pink")](https://badge.wtto00.now.sh/api/badge/color/pink/pink) [![purple](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-purple.png?raw=true "color purple")](https://badge.wtto00.now.sh/api/badge/color/purple/purple) [![grey](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-grey.png?raw=true "color grey")](https://badge.wtto00.now.sh/api/badge/color/grey/grey) [![black](https://github.com/wtto00/badge/blob/master/docs/images/colors/color-black.png?raw=true "color black")](https://badge.wtto00.now.sh/api/badge/color/black/black)
+  > 其他颜色参数或无颜色参数将显示默认颜色 `blue`
+- **可选图标**  
+  ![]()
+- **选项**
+  1. `color` 覆盖默认的徽章颜色  
+     例如：`https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black`  
+     [![options color](https://github.com/wtto00/badge/blob/master/docs/images/options/options-color.png?raw=true "options color")](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black)
+  2. `icon` 在主题 `subject` 中添加图标  
+     例如：`https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black&icon=github`  
+     [![options icon](https://github.com/wtto00/badge/blob/master/docs/images/options/options-icon.png?raw=true "options icon")](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black&icon=github)
+  3. `label` 覆盖主题 `subject` 中的文本  
+     例如：`https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black&icon=github&label`  
+     [![options label](https://github.com/wtto00/badge/blob/master/docs/images/options/options-label.png?raw=true "options label")](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black&icon=github&label)
 
 ## 计划
 
