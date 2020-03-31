@@ -1,6 +1,7 @@
 <h1 align="center">badge</h1>
-
-[![my github](https://badge.wtto00.now.sh/api/badge/release/GitHub/black?icon=github&label&scale=1.3 "my github")](https://github.com/wtto00/badge)
+<p align="center">
+  <a href="https://github.com/wtto00/badge" target="_blank"><img src="https://badge.wtto00.now.sh/api/badge/release/GitHub/black?icon=github&label&scale=1.2" /></a>
+</p>
 
 生成徽章服务
 
