@@ -56,7 +56,8 @@ https://badge.wtto00.now.sh/api/gitee/:subject/:owner/:repo
                               Gitee Api
 ```
 
-- **用法**
+- **用法**  
+  如下表所列出所有的用法。地址前缀：`https://badge.wtto00.now.sh/api`  
   |说明|地址|效果|
   |:---:|:---:|:---:|
   |latest release|[/gitee/release/smallweigit/avue](https://badge.wtto00.now.sh/api/gitee/release/smallweigit/avue)|![latest release](https://badge.wtto00.now.sh/api/gitee/release/smallweigit/avue "latest release")|
