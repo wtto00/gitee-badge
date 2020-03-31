@@ -20,7 +20,12 @@ export function getQuery(url, format) {
     const arr3 = arr1[1].split("&");
     arr3.forEach(q => {
       const arr4 = q.split("=");
-      query[decodeURIComponent(arr4[0])] = decodeURIComponent(arr4[1]);
+      const key = decodeURIComponent(arr4[0]);
+      const value = decodeURIComponent(arr4[1] || "");
+      if (key === "label") {
+        query.subject = value;
+      }
+      query[key] = value;
     });
   }
   return query;

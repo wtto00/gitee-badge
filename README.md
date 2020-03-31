@@ -1,7 +1,5 @@
 <h1 align="center">badge</h1>
-<p align="center">
-[![my github]( "my github")](https://github.com/wtto00/badge)
-</p>
+<p align="center">[![my github](https://github.com/wtto00/badge/blob/master/docs/images/options/options-label.png?raw=true "my github")](https://github.com/wtto00/badge)</p>
 
 生成徽章服务
 
@@ -32,8 +30,8 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
      例如：`https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black&icon=github`  
      [![options icon](https://github.com/wtto00/badge/blob/master/docs/images/options/options-icon.png?raw=true "options icon")](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black&icon=github)
   3. `label` 覆盖主题 `subject` 中的文本  
-     例如：`https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black&icon=github&label`  
-     [![options label](https://github.com/wtto00/badge/blob/master/docs/images/options/options-label.png?raw=true "options label")](https://badge.wtto00.now.sh/api/badge/release/v1.0.2/cyan?color=black&icon=github&label)
+     例如：`https://badge.wtto00.now.sh/api/badge/release/GitHub/cyan?color=black&icon=github&label`  
+     [![options label](https://github.com/wtto00/badge/blob/master/docs/images/options/options-label.png?raw=true "options label")](https://badge.wtto00.now.sh/api/badge/icon/GitHub/black?icon=github&label)
 
 ## 计划
 
