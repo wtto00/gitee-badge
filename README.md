@@ -1,6 +1,6 @@
 <h1 align="center">badge</h1>
 <p align="center">
-  <a href="https://github.com/wtto00/badge" target="_blank"><img src="https://badge.wtto00.now.sh/api/badge/release/GitHub/black?icon=github&label&scale=1.2" /></a>
+  <a href="https://github.com/wtto00/badge" target="_blank"><img src="https://badge.wtto00.now.sh/api/badge/release/GitHub/black?icon=github&label&scale=1.2" /></a> <a href="https://gitee.com/wtto00/badge" target="_black"><img src="https://badge.wtto00.now.sh/api/badge/release/Gitee/orange?icon=gitee&label&scale=1.2" /></a>
 </p>
 
 生成徽章服务
@@ -44,7 +44,7 @@ https://badge.wtto00.now.sh/api/badge/:subject/:status/:color?icon=github
     例如：`https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2`  
     [![options scale](https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2 "options scale")](https://badge.wtto00.now.sh/api/badge/docker/v1.2.3/blue?icon=docker&scale=2)
 
-#### Gitee
+#### Gitee Api
 
 ```
 https://badge.wtto00.now.sh/api/gitee/:subject/:owner/:repo
@@ -64,12 +64,6 @@ https://badge.wtto00.now.sh/api/gitee/:subject/:owner/:repo
 
 ## 计划
 
-1. [x] `readme` `svg` → `png`
-1. [x] color list not use ul>li, just list
-1. [x] 首页使用 `getStaticPaths` & `getStaticProps` 预加载
-1. [x] 访问 `https://badge.wtto00.now.sh/api/badge/:subject/:status` 默认蓝色，不报错
-1. [x] `icon` 渲染
-1. [x] 单独的 icon 描述渲染，`subject` 参数值为 `icon`
 1. [ ] `gitee` `api`
 1. [ ] `github` `api`
 1. [ ] `npm` `api`

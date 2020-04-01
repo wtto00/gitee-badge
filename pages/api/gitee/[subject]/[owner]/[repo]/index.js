@@ -9,13 +9,16 @@ export default async (req, res) => {
   } else {
     const obj = await gitee[query.subject](query.owner, query.repo);
 
+    if (!obj.tag_name && obj.message) {
+      obj.tag_name = obj.message.substr(4);
+    }
+
     if (obj.tag_name) {
       res.setHeader("Content-Type", "image/svg+xml");
-      res.end(getSvg({ ...query, subject: "release", status: obj.tag_name }));
-    } else if (obj.message) {
-      res.end(obj.message);
-    } else {
-      res.end("something wrong! ");
+      return res.end(
+        getSvg({ ...query, subject: "release", status: obj.tag_name })
+      );
     }
+    return res.end("something wrong! ");
   }
 };

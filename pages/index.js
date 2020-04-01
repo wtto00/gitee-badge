@@ -1,6 +1,6 @@
 import marked from "marked";
 import hljs from "highlight.js";
-import fetch from 'node-fetch'
+import fetch from "node-fetch";
 import Header from "components/Header";
 import Footer from "components/Footer";
 import "./index.scss";
@@ -14,15 +14,14 @@ renderer.link = (href, title, text) => {
 marked.setOptions({
   renderer: renderer,
   highlight: (code, language) => {
-    const validLanguage = hljs.getLanguage(language) ? language : 'plaintext';
+    const validLanguage = hljs.getLanguage(language) ? language : "plaintext";
     return hljs.highlight(validLanguage, code).value;
   },
   breaks: true,
   smartLists: true,
   smartypants: true,
-  tables: true,
+  tables: true
 });
-
 
 const Home = ({ content }) => (
   <div className="container">
@@ -38,11 +37,19 @@ const Home = ({ content }) => (
 );
 
 export async function getStaticProps(context) {
-  const res = await fetch('https://raw.githubusercontent.com/wtto00/badge/master/README.md')
-  const content = await res.text()
-  return {
-    props: { content },
+  let res;
+  try {
+    res = await fetch(
+      "https://raw.githubusercontent.com/wtto00/badge/master/README.md"
+    );
+  } catch (error) {
+    res = await fetch("https://gitee.com/wtto00/badge/raw/master/README.md");
   }
+
+  const content = await res.text();
+  return {
+    props: { content }
+  };
 }
 
 export default Home;
