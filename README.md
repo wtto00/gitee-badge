@@ -64,7 +64,7 @@ https://badg.now.sh/api/gitee/:subject/:owner/:repo
   |---:|:---|:---|
   |latest release|[/gitee/release/wtto00/badge](https://badg.now.sh/api/gitee/release/wtto00/badge)|![latest release](https://badg.now.sh/api/gitee/release/wtto00/badge "latest release")|
   |latest tag|[/gitee/tag/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/tag/wtto00/Aliyun-oss-storage)|![latest tag](https://badg.now.sh/api/gitee/tag/wtto00/Aliyun-oss-storage "latest tag")
-  |watchers|[/gitee/watchers/wtto00/dt-read](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read)|![watchers](https://badg.now.sh/api/gitee/watchers/wtto00/Aliyun-oss-storage "watchers")|
+  |watchers|[/gitee/watchers/wtto00/dt-read](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read)|![watchers](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read "watchers")|
 
 ## 计划
 
