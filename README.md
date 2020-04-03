@@ -13,12 +13,12 @@
 ```
 https://badg.now.sh/api/badge/:subject/:status/:color?icon=github
                        ------|--------|-------|------|-----------
-                              |           |       |       |        |
-                              |           |       |       |       选项(icon,color,label,list,labelColor,scale)
-                              |           |       |      颜色
-                              |           |      状态
-                              |          主题
-                          自定义Badge
+                          |       |       |       |        |
+                          |       |       |       |       选项(icon,color,label,list,labelColor,scale)
+                          |       |       |      颜色
+                          |       |      状态
+                          |      主题
+                      自定义Badge
 ```
 
 - **可选颜色**  
@@ -50,12 +50,12 @@ https://badg.now.sh/api/badge/:subject/:status/:color?icon=github
 
 ```
 https://badg.now.sh/api/gitee/:subject/:owner/:repo
-                               ------|--------|------|-----
-                                  |       |       |     |
-                                  |       |       |  仓库名称
-                                  |       |   仓库所有者
-                                  |      主题
-                              Gitee Api
+                       ------|--------|------|-----
+                          |       |       |     |
+                          |       |       |  仓库名称
+                          |       |   仓库所有者
+                          |      主题
+                      Gitee Api
 ```
 
 - **用法**  
