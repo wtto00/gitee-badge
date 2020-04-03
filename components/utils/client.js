@@ -40,7 +40,7 @@ export function getQuery(url, format) {
  */
 const getTextLength = text => {
   let width = 0;
-  for (let t of text) {
+  for (let t of `${text}`) {
     if (t >= "0" && t <= "9") {
       width += 70;
     } else if (t >= " " && t <= "~") {
