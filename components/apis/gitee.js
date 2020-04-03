@@ -59,7 +59,51 @@ export async function watchers(owner, repo) {
         return noneRepo("404 Project Not Found");
       }
 
-      return success(json[0].watchers_count);
+      return success(showBetter(json[0].watchers_count));
+    }
+
+    return noneRepo(json.message);
+  } catch (error) {
+    console.log("error:", error);
+    return errors("something wrong!");
+  }
+}
+
+export async function stars(owner, repo) {
+  try {
+    const url = `https://gitee.com/api/v5/search/repositories?q=${repo}&page=1&per_page=1&owner=${owner}&order=desc`;
+    const res = await fetch(url, options);
+
+    const json = await res.json();
+
+    if (Array.isArray(json)) {
+      if (json.length === 0) {
+        return noneRepo("404 Project Not Found");
+      }
+
+      return success(showBetter(json[0].stargazers_count));
+    }
+
+    return noneRepo(json.message);
+  } catch (error) {
+    console.log("error:", error);
+    return errors("something wrong!");
+  }
+}
+
+export async function forks(owner, repo) {
+  try {
+    const url = `https://gitee.com/api/v5/search/repositories?q=${repo}&page=1&per_page=1&owner=${owner}&order=desc`;
+    const res = await fetch(url, options);
+
+    const json = await res.json();
+
+    if (Array.isArray(json)) {
+      if (json.length === 0) {
+        return noneRepo("404 Project Not Found");
+      }
+
+      return success(showBetter(json[0].forks_count));
     }
 
     return noneRepo(json.message);
@@ -90,4 +134,19 @@ const warning = status => {
 
 const errors = message => {
   return { code: 404, data: message };
+};
+
+const showBetter = (num, unit = 0) => {
+  const map = ["K", "M", "G"];
+  let recurse = false;
+  let nextUnit = map[unit - 1] || "";
+  if (num / 1000 >= 1) {
+    num = (num / 1000).toFixed(2);
+    recurse = true;
+  }
+  if (recurse) {
+    return showBetter(num, unit + 1);
+  } else {
+    return num + nextUnit;
+  }
 };

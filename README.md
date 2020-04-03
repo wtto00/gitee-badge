@@ -12,7 +12,7 @@
 
 ```
 https://badg.now.sh/api/badge/:subject/:status/:color?icon=github
-                           ------|--------|-------|------|-----------
+                       ------|--------|-------|------|-----------
                               |           |       |       |        |
                               |           |       |       |       选项(icon,color,label,list,labelColor,scale)
                               |           |       |      颜色
@@ -65,6 +65,8 @@ https://badg.now.sh/api/gitee/:subject/:owner/:repo
   |latest release|[/gitee/release/wtto00/badge](https://badg.now.sh/api/gitee/release/wtto00/badge)|![latest release](https://badg.now.sh/api/gitee/release/wtto00/badge "latest release")|
   |latest tag|[/gitee/tag/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/tag/wtto00/Aliyun-oss-storage)|![latest tag](https://badg.now.sh/api/gitee/tag/wtto00/Aliyun-oss-storage "latest tag")
   |watchers|[/gitee/watchers/wtto00/dt-read](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read)|![watchers](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read "watchers")|
+  |stars|[/gitee/stars/wtto00/dt-read](https://badg.now.sh/api/gitee/stars/wtto00/dt-read)|![stars](https://badg.now.sh/api/gitee/stars/wtto00/dt-read "stars")|
+  |forks|[/gitee/forks/wtto00/dt-read](https://badg.now.sh/api/gitee/forks/wtto00/dt-read)|![forks](https://badg.now.sh/api/gitee/forks/wtto00/dt-read "forks")|
 
 ## 计划
 
