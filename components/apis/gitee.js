@@ -1,152 +1,115 @@
 import fetch from "node-fetch";
+import {
+  success,
+  warning,
+  noneRepo,
+  errors,
+  noneSubject,
+  showBetter,
+} from "components/utils/api";
 
 const options = {
-  headers: { "Content-Type": "application/json;charset=UTF-8" }
+  headers: { "Content-Type": "application/json;charset=UTF-8" },
 };
 
-export async function release(owner, repo) {
+export default async (subject, owner, repo) => {
   try {
-    const url = `https://gitee.com/api/v5/repos/${owner}/${repo}/releases/latest`;
+    const url = getUrl(subject, owner, repo);
+
+    if (!url) {
+      return noneSubject();
+    }
+
     const res = await fetch(url, options);
     const json = await res.json();
 
-    if (json.tag_name) {
-      return success(json.tag_name);
+    switch (subject) {
+      case "release":
+        if (json.tag_name) {
+          return success(json.tag_name);
+        }
+        if (json.message === "404 Not Found") {
+          return warning("none");
+        }
+        break;
+      case "tag":
+        if (Array.isArray(json)) {
+          if (json.length === 0) {
+            return warning("none");
+          }
+          return success("v" + json[json.length - 1].name);
+        }
+        break;
+      case "watchers":
+        if (Array.isArray(json)) {
+          if (json.length === 0) {
+            return noneRepo("404 Project Not Found");
+          }
+          return success(showBetter(json[0].watchers_count));
+        }
+        break;
+      case "stars":
+        if (Array.isArray(json)) {
+          if (json.length === 0) {
+            return noneRepo("404 Project Not Found");
+          }
+          return success(showBetter(json[0].stargazers_count));
+        }
+        break;
+      case "forks":
+        if (Array.isArray(json)) {
+          if (json.length === 0) {
+            return noneRepo("404 Project Not Found");
+          }
+          return success(showBetter(json[0].forks_count));
+        }
+        break;
+      case "license":
+        if (json.license) {
+          return success(json.license);
+        }
+        if (json.message === "404 Not Found") {
+          return warning("none");
+        }
+        break;
+      case "open-issues":
+        if (Array.isArray(json)) {
+          if (json.length === 0) {
+            return noneRepo("404 Project Not Found");
+          }
+          return success(json[0]["open_issues_count"], "orange");
+        }
+        break;
+      case "branches":
+        if (Array.isArray(json)) {
+          return success(json.length);
+        }
+        break;
+      default:
+        return noneSubject();
     }
-
-    if (json.message === "404 Not Found") {
-      return warning("none");
-    }
-
     return noneRepo(json.message);
   } catch (error) {
     console.log("error:", error);
-    return errors("something wrong!");
-  }
-}
-
-export async function tag(owner, repo) {
-  try {
-    const url = `https://gitee.com/api/v5/repos/${owner}/${repo}/tags`;
-    const res = await fetch(url, options);
-
-    const json = await res.json();
-
-    if (Array.isArray(json)) {
-      if (json.length === 0) {
-        return warning("none");
-      }
-
-      return success("v" + json[json.length - 1].name);
-    }
-
-    return noneRepo(json.message);
-  } catch (error) {
-    console.log("error:", error);
-    return errors("something wrong!");
-  }
-}
-
-export async function watchers(owner, repo) {
-  try {
-    const url = `https://gitee.com/api/v5/search/repositories?q=${repo}&page=1&per_page=1&owner=${owner}&order=desc`;
-    const res = await fetch(url, options);
-
-    const json = await res.json();
-
-    if (Array.isArray(json)) {
-      if (json.length === 0) {
-        return noneRepo("404 Project Not Found");
-      }
-
-      return success(showBetter(json[0].watchers_count));
-    }
-
-    return noneRepo(json.message);
-  } catch (error) {
-    console.log("error:", error);
-    return errors("something wrong!");
-  }
-}
-
-export async function stars(owner, repo) {
-  try {
-    const url = `https://gitee.com/api/v5/search/repositories?q=${repo}&page=1&per_page=1&owner=${owner}&order=desc`;
-    const res = await fetch(url, options);
-
-    const json = await res.json();
-
-    if (Array.isArray(json)) {
-      if (json.length === 0) {
-        return noneRepo("404 Project Not Found");
-      }
-
-      return success(showBetter(json[0].stargazers_count));
-    }
-
-    return noneRepo(json.message);
-  } catch (error) {
-    console.log("error:", error);
-    return errors("something wrong!");
-  }
-}
-
-export async function forks(owner, repo) {
-  try {
-    const url = `https://gitee.com/api/v5/search/repositories?q=${repo}&page=1&per_page=1&owner=${owner}&order=desc`;
-    const res = await fetch(url, options);
-
-    const json = await res.json();
-
-    if (Array.isArray(json)) {
-      if (json.length === 0) {
-        return noneRepo("404 Project Not Found");
-      }
-
-      return success(showBetter(json[0].forks_count));
-    }
-
-    return noneRepo(json.message);
-  } catch (error) {
-    console.log("error:", error);
-    return errors("something wrong!");
-  }
-}
-
-const success = status => {
-  return { code: 200, data: { status } };
-};
-
-const noneRepo = message => {
-  if (message === "404 Project Not Found") {
-    return {
-      code: 200,
-      data: { subject: "gitee", status: "Project Not Found", color: "grey" }
-    };
-  }
-
-  return warning(message);
-};
-
-const warning = status => {
-  return { code: 200, data: { status, color: "yellow" } };
-};
-
-const errors = message => {
-  return { code: 404, data: message };
-};
-
-const showBetter = (num, unit = 0) => {
-  const map = ["K", "M", "G"];
-  let recurse = false;
-  let nextUnit = map[unit - 1] || "";
-  if (num / 1000 >= 1) {
-    num = (num / 1000).toFixed(2);
-    recurse = true;
-  }
-  if (recurse) {
-    return showBetter(num, unit + 1);
-  } else {
-    return num + nextUnit;
+    return errors();
   }
 };
+
+function getUrl(subject, owner, repo) {
+  switch (subject) {
+    case "release":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/releases/latest`;
+    case "tag":
+    case "branches":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/${subject}`;
+    case "watchers":
+    case "stars":
+    case "forks":
+    case "open-issues":
+      return `https://gitee.com/api/v5/search/repositories?q=${repo}&page=1&per_page=1&owner=${owner}&order=desc`;
+    case "license":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/license`;
+    default:
+      return "";
+  }
+}

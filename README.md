@@ -67,6 +67,9 @@ https://badg.now.sh/api/gitee/:subject/:owner/:repo
   |watchers|[/gitee/watchers/wtto00/dt-read](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read)|![watchers](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read "watchers")|
   |stars|[/gitee/stars/wtto00/dt-read](https://badg.now.sh/api/gitee/stars/wtto00/dt-read)|![stars](https://badg.now.sh/api/gitee/stars/wtto00/dt-read "stars")|
   |forks|[/gitee/forks/wtto00/dt-read](https://badg.now.sh/api/gitee/forks/wtto00/dt-read)|![forks](https://badg.now.sh/api/gitee/forks/wtto00/dt-read "forks")|
+  |license|[/gitee/license/wtto00/dt-read](https://badg.now.sh/api/gitee/license/wtto00/dt-read)|![license](https://badg.now.sh/api/gitee/license/wtto00/dt-read "license")|
+  |open issues|[/gitee/open-issues/smallweigit/avue](https://badg.now.sh/api/gitee/open-issues/smallweigit/avue)|![open-issues](https://badg.now.sh/api/gitee/open-issues/smallweigit/avue "open-issues")|
+  |branches|[/gitee/branches/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/branches/wtto00/Aliyun-oss-storage)|![branches](https://badg.now.sh/api/gitee/branches/wtto00/Aliyun-oss-storage "branches")|
 
 ## 计划
 
