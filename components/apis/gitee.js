@@ -100,6 +100,7 @@ function getUrl(subject, owner, repo) {
     case "release":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/releases/latest`;
     case "tag":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/tags`;
     case "branches":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/${subject}`;
     case "watchers":
