@@ -6,4 +6,5 @@ export default {
   "open-prs": "green",
   "closed-prs": "red",
   "merged-prs": "yellow",
+  milestones: "green",
 };
