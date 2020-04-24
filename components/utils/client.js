@@ -1,5 +1,6 @@
 import chars from "./chars";
 import colors from "./colors";
+import { parse } from "qs";
 const cheerio = require("cheerio");
 
 /**
@@ -9,27 +10,48 @@ const cheerio = require("cheerio");
  */
 export function getQuery(url, format) {
   const query = {};
-  const arr1 = url.split("?");
+  const params = url.split("?");
 
-  const arr2 = arr1[0].split("/");
+  const arr2 = params[0].split("/");
   for (const key in format) {
     query[key] = decodeURIComponent(arr2[format[key]]);
   }
 
-  if (arr1.length > 1) {
-    const arr3 = arr1[1].split("&");
-    arr3.forEach((q) => {
-      const arr4 = q.split("=");
-      const key = decodeURIComponent(arr4[0]);
-      const value = decodeURIComponent(arr4[1] || "");
-      if (key === "label") {
-        query.subject = value;
-      } else if (key === "list") {
-        query.status = query.status.replace(/,/g, ` ${value} `);
-      } else {
-        query[key] = value;
-      }
-    });
+  if (params.length > 1) {
+    const options = parse(params[1]);
+    handleOptions(query, options);
+  }
+  return query;
+}
+
+export function getQueryOptions(url, format) {
+  const query = {};
+  const params = url.split("?");
+
+  const queryParams = params[0].split("/");
+  for (const key in format) {
+    query[key] = decodeURIComponent(queryParams[format[key]]);
+  }
+  let options = {};
+  if (params.length > 1) {
+    options = parse(params[1]);
+  }
+  return {
+    query,
+    options,
+  };
+}
+
+export function handleOptions(query, options) {
+  for (const key in options) {
+    const value = options[key];
+    if (key === "label") {
+      query.subject = value;
+    } else if (key === "list") {
+      query.status = query.status.replace(/,/g, ` ${value} `);
+    } else {
+      query[key] = value;
+    }
   }
   return query;
 }
