@@ -67,18 +67,28 @@ https://badg.now.sh/api/gitee/:subject/:owner/:repo
   |watchers|[/gitee/watchers/wtto00/dt-read](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read)|![watchers](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read "watchers")|
   |stars|[/gitee/stars/wtto00/dt-read](https://badg.now.sh/api/gitee/stars/wtto00/dt-read)|![stars](https://badg.now.sh/api/gitee/stars/wtto00/dt-read "stars")|
   |forks|[/gitee/forks/wtto00/dt-read](https://badg.now.sh/api/gitee/forks/wtto00/dt-read)|![forks](https://badg.now.sh/api/gitee/forks/wtto00/dt-read "forks")|
-  |license|[/gitee/license/wtto00/dt-read](https://badg.now.sh/api/gitee/license/wtto00/dt-read)|![license](https://badg.now.sh/api/gitee/license/wtto00/dt-read "license")|
+  |issues|[/gitee/issues/smallweigit/avue](https://badg.now.sh/api/gitee/issues/smallweigit/avue)|![issues](https://badg.now.sh/api/gitee/issues/smallweigit/avue "issues")
   |open issues|[/gitee/open-issues/smallweigit/avue](https://badg.now.sh/api/gitee/open-issues/smallweigit/avue)|![open-issues](https://badg.now.sh/api/gitee/open-issues/smallweigit/avue "open-issues")|
+  |closed issues|[/gitee/closed-issues/smallweigit/avue](https://badg.now.sh/api/gitee/closed-issues/smallweigit/avue)|![closed issues](https://badg.now.sh/api/gitee/closed-issues/smallweigit/avue "closed issues")|
+  |issues by label|[/gitee/label-issues/smallweigit/avue](https://badg.now.sh/api/gitee/label-issues/smallweigit/avue)|![issues by label](https://badg.now.sh/api/gitee/label-issues/smallweigit/avue "issues by label")|
+  |open issues by label|[/gitee/open-label-issues/smallweigit/avue](https://badg.now.sh/api/gitee/open-label-issues/smallweigit/avue)|![open issues by label](https://badg.now.sh/api/gitee/open-label-issues/smallweigit/avue "open issues by label")|
+  |closed issues by label|[/gitee/closed-label-issues/smallweigit/avue](https://badg.now.sh/api/gitee/closed-label-issues/smallweigit/avue)|![closed issues by label](https://badg.now.sh/api/gitee/closed-label-issues/smallweigit/avue "closed issues by label")|
+  |PRs|[/gitee/prs/sentsin/layui](https://badg.now.sh/api/gitee/prs/sentsin/layui)|![PRs](https://badg.now.sh/api/gitee/prs/sentsin/layui "PRs")|
+  |open PRs|[/gitee/open-prs/sentsin/layui](https://badg.now.sh/api/gitee/open-prs/sentsin/layui)|![open PRs](https://badg.now.sh/api/gitee/open-prs/sentsin/layui "open PRs")|
+  |closed PRs|[/gitee/closed-prs/sentsin/layui](https://badg.now.sh/api/gitee/closed-prs/sentsin/layui)|![closed PRs](https://badg.now.sh/api/gitee/closed-prs/sentsin/layui "closed PRs")|
+  |merged PRs|[/gitee/merged-prs/sentsin/layui](https://badg.now.sh/api/gitee/merged-prs/sentsin/layui)|![merged PRs](https://badg.now.sh/api/gitee/merged-prs/sentsin/layui "merged PRs")|
+  |milestone percentage|[/gitee/milestones/smallweigit/avue](https://badg.now.sh/api/gitee/milestones/smallweigit/avue)|![milestone percentage](https://badg.now.sh/api/gitee/milestones/smallweigit/avue "milestone percentage")|
+  |commits count|[/gitee/commits/wtto00/dt-read](https://badg.now.sh/api/gitee/commits/wtto00/dt-read)|![commits count](https://badg.now.sh/api/gitee/commits/wtto00/dt-read "commits count")|
+  |commits count (branch ref)|[/gitee/commits/smallweigit/avue?sha=dev](https://badg.now.sh/api/gitee/commits/smallweigit/avue?sha=dev)|![commits count (branch ref)](https://badg.now.sh/api/gitee/commits/smallweigit/avue?sha=dev "commits count (branch ref)")|
+  |commits count (tag ref)|[/gitee/commits/smallweigit/avue?sha=2.4.1](https://badg.now.sh/api/gitee/commits/smallweigit/avue?sha=2.4.1)|![commits count (tag ref)](https://badg.now.sh/api/gitee/commits/smallweigit/avue?sha=2.4.1 "commits count (tag ref)")|
+  |last commit|[/gitee/last-commit/wtto00/dt-read](https://badg.now.sh/api/gitee/last-commit/wtto00/dt-read)|![last commit](https://badg.now.sh/api/gitee/last-commit/wtto00/dt-read "last commit")|
+  |last commit (branch ref)|[/gitee/last-commit/smallweigit/avue?sha=dev](https://badg.now.sh/api/gitee/last-commit/smallweigit/avue?sha=dev)|![last commit (branch ref)](https://badg.now.sh/api/gitee/last-commit/smallweigit/avue?sha=dev "last commit (branch ref)")|
+  |last commit (tag ref)|[/gitee/last-commit/smallweigit/avue?sha=2.4.1](https://badg.now.sh/api/gitee/last-commit/smallweigit/avue?sha=2.4.1)|![last commit (tag ref)](https://badg.now.sh/api/gitee/last-commit/smallweigit/avue?sha=2.4.1 "last commit (tag ref)")|
   |branches|[/gitee/branches/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/branches/wtto00/Aliyun-oss-storage)|![branches](https://badg.now.sh/api/gitee/branches/wtto00/Aliyun-oss-storage "branches")|
-
-## 计划
-
-1. [ ] `gitee` `api`
-1. [ ] `github` `api`
-1. [ ] `npm` `api`
-1. [ ] `packagist` `api`
-1. [ ] `pypi` `api`
-1. [ ] ...
+  |releases|[/gitee/releases/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/releases/wtto00/Aliyun-oss-storage)|![releases](https://badg.now.sh/api/gitee/releases/wtto00/Aliyun-oss-storage "releases")|
+  |tags|[/gitee/tags/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/tags/wtto00/Aliyun-oss-storage)|![tags](https://badg.now.sh/api/gitee/tags/wtto00/Aliyun-oss-storage "tags")|
+  |license|[/gitee/license/wtto00/dt-read](https://badg.now.sh/api/gitee/license/wtto00/dt-read)|![license](https://badg.now.sh/api/gitee/license/wtto00/dt-read "license")|
+  |contributors|[/gitee/contributors/smallweigit/avue](https://badg.now.sh/api/gitee/contributors/smallweigit/avue)|![contributors](https://badg.now.sh/api/gitee/contributors/smallweigit/avue "contributors")|
 
 ## 问题
 

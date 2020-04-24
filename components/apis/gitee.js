@@ -85,6 +85,16 @@ export default async (subject, owner, repo) => {
           return success(json.length);
         }
         break;
+      case "issues":
+      case "closed-issues":
+        if (Array.isArray(json)) {
+          if (json.length < 100) {
+            return success(json.length);
+          }
+          let count = await caclCount(url);
+          return success(count + json.length);
+        }
+        break;
       default:
         return noneSubject();
     }
@@ -110,7 +120,35 @@ function getUrl(subject, owner, repo) {
       return `https://gitee.com/api/v5/search/repositories?q=${repo}&page=1&per_page=1&owner=${owner}&order=desc`;
     case "license":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/license`;
+    case "issues":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=all&page=1&per_page=100`;
+    case "closed-issues":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=closed&page=1&per_page=100`;
     default:
       return "";
+  }
+}
+
+async function caclCount(url) {
+  try {
+    let length = 100;
+    let count = 0;
+    let page = 2;
+    while (length === 100) {
+      const index = url.indexOf("page=");
+      const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
+      const res = await fetch(uri, options);
+      const json = await res.json();
+      if (Array.isArray(json)) {
+        length = json.length;
+        count += length;
+        page++;
+      } else {
+        throw new Error();
+      }
+    }
+    return count;
+  } catch (error) {
+    return 0;
   }
 }

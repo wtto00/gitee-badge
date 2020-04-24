@@ -1,3 +1,5 @@
 export default {
-  tag: "latest tag"
+  tag: "latest tag",
+  "open-issues": "open issues",
+  "closed-issues": "closed issues",
 };
