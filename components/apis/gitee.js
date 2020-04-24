@@ -11,6 +11,7 @@ import {
 
 const options = {
   headers: { "Content-Type": "application/json;charset=UTF-8" },
+  timeout: 0,
 };
 
 export default async (subject, owner, repo, param) => {
