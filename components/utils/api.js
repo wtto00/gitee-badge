@@ -46,3 +46,13 @@ export const showBetter = (num, unit = 0) => {
     return num + nextUnit;
   }
 };
+
+export const showPercent = (top, bottom, decimal = 0) => {
+  if (top == 0) {
+    return "0%";
+  }
+  if (bottom == 0) {
+    return "infinity";
+  }
+  return ((top / bottom) * 100).toFixed(decimal) + "%";
+};

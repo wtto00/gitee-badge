@@ -4,7 +4,8 @@ import {
   handleOptions,
 } from "components/utils/client.js";
 import gitee from "components/apis/gitee.js";
-import defaultSubject from "components/apis/subject/gitee.js";
+import defaultSubject from "components/apis/gitee/subject";
+import defaultColor from "components/apis/gitee/color";
 
 export default async (req, res) => {
   res.statusCode = 200;
@@ -26,9 +27,18 @@ export default async (req, res) => {
   if (result.code === 200) {
     const search = {
       ...query,
-      subject: defaultSubject[query.subject] || query.subject,
       ...result.data,
     };
+    if (!result.data.subject && defaultSubject[query.subject]) {
+      if (typeof defaultSubject[query.subject] === "function") {
+        search.subject = defaultSubject[query.subject](query);
+      } else {
+        search.subject = defaultSubject[query.subject];
+      }
+    }
+    if (!result.data.color && defaultColor[query.subject]) {
+      search.color = defaultColor[query.subject];
+    }
     return generate(res, handleOptions(search, options));
   }
 

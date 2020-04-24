@@ -6,6 +6,7 @@ import {
   errors,
   noneSubject,
   showBetter,
+  showPercent,
 } from "components/utils/api";
 
 const options = {
@@ -77,7 +78,7 @@ export default async (subject, owner, repo, param) => {
           if (json.length === 0) {
             return noneRepo("404 Project Not Found");
           }
-          return success(json[0]["open_issues_count"], "orange");
+          return success(json[0]["open_issues_count"]);
         }
         break;
       case "branches":
@@ -88,12 +89,45 @@ export default async (subject, owner, repo, param) => {
       case "issues":
       case "closed-issues":
       case "label-issues":
+      case "open-label-issues":
+      case "closed-label-issues":
+      case "prs":
+      case "open-prs":
+      case "closed-prs":
+      case "merged-prs":
         if (Array.isArray(json)) {
           if (json.length < 100) {
             return success(json.length);
           }
           let count = await caclCount(url);
           return success(count + json.length);
+        }
+        break;
+      case "milestones":
+        const count = { closed: 0, open: 0, progressing: 0, rejected: 0 };
+        if (Array.isArray(json)) {
+          if (json.length < 100) {
+            json.forEach((item) => {
+              count[item.state] += 1;
+            });
+            return success(
+              showPercent(
+                count.closed + count.rejected,
+                count.closed + count.open + count.progressing + count.rejected
+              )
+            );
+          }
+          const otherCount = await calcClassCount(url);
+          count.closed += otherCount.closed;
+          count.open += otherCount.open;
+          count.progressing += otherCount.progressing;
+          count.rejected += otherCount.rejected;
+          return success(
+            showPercent(
+              count.closed + count.rejected,
+              count.closed + count.open + count.progressing + count.rejected
+            )
+          );
         }
         break;
       default:
@@ -127,6 +161,20 @@ function getUrl(subject, owner, repo, param) {
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=closed&page=1&per_page=100`;
     case "label-issues":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=all&labels=${param}&page=1&per_page=100`;
+    case "open-label-issues":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=open&labels=${param}&page=1&per_page=100`;
+    case "closed-label-issues":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=closed&labels=${param}&page=1&per_page=100`;
+    case "prs":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/pulls?state=all&page=1&per_page=100`;
+    case "open-prs":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/pulls?state=open&page=1&per_page=100`;
+    case "closed-prs":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/pulls?state=closed&page=1&per_page=100`;
+    case "merged-prs":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/pulls?state=merged&page=1&per_page=100`;
+    case "milestones":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=all&page=1&per_page=100&milestone=${param}`;
     default:
       return "";
   }
@@ -153,5 +201,30 @@ async function caclCount(url) {
     return count;
   } catch (error) {
     return 0;
+  }
+}
+
+async function calcClassCount(url) {
+  const count = { closed: 0, open: 0, progressing: 0, rejected: 0 };
+  try {
+    let length = 100;
+    let page = 2;
+    while (length === 100) {
+      const index = url.indexOf("page=");
+      const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
+      const res = await fetch(uri, options);
+      const json = await res.json();
+      if (Array.isArray(json)) {
+        json.forEach((item) => {
+          count[item.state] += 1;
+        });
+        page++;
+      } else {
+        throw new Error();
+      }
+    }
+    return count;
+  } catch (error) {
+    return count;
   }
 }
