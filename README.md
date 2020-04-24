@@ -70,7 +70,7 @@ https://badg.now.sh/api/gitee/:subject/:owner/:repo
   |issues|[/gitee/issues/smallweigit/avue](https://badg.now.sh/api/gitee/issues/smallweigit/avue)|![issues](https://badg.now.sh/api/gitee/issues/smallweigit/avue "issues")
   |open issues|[/gitee/open-issues/smallweigit/avue](https://badg.now.sh/api/gitee/open-issues/smallweigit/avue)|![open-issues](https://badg.now.sh/api/gitee/open-issues/smallweigit/avue "open-issues")|
   |closed issues|[/gitee/closed-issues/smallweigit/avue](https://badg.now.sh/api/gitee/closed-issues/smallweigit/avue)|![closed issues](https://badg.now.sh/api/gitee/closed-issues/smallweigit/avue "closed issues")|
-  |issues by label|[/gitee/label-issues/smallweigit/avue](https://badg.now.sh/api/gitee/label-issues/smallweigit/avue)|![issues by label](https://badg.now.sh/api/gitee/label-issues/smallweigit/avue "issues by label")|
+  |issues by label|[/gitee/label-issues/smallweigit/avue/bug](https://badg.now.sh/api/gitee/label-issues/smallweigit/avue/bug)|![issues by label](https://badg.now.sh/api/gitee/label-issues/smallweigit/avue/bug "issues by label")|
   |open issues by label|[/gitee/open-label-issues/smallweigit/avue](https://badg.now.sh/api/gitee/open-label-issues/smallweigit/avue)|![open issues by label](https://badg.now.sh/api/gitee/open-label-issues/smallweigit/avue "open issues by label")|
   |closed issues by label|[/gitee/closed-label-issues/smallweigit/avue](https://badg.now.sh/api/gitee/closed-label-issues/smallweigit/avue)|![closed issues by label](https://badg.now.sh/api/gitee/closed-label-issues/smallweigit/avue "closed issues by label")|
   |PRs|[/gitee/prs/sentsin/layui](https://badg.now.sh/api/gitee/prs/sentsin/layui)|![PRs](https://badg.now.sh/api/gitee/prs/sentsin/layui "PRs")|

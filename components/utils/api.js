@@ -1,3 +1,5 @@
+import { getQuery, getSvg } from "components/utils/client.js";
+
 export const success = (status, color) => {
   const data = { status };
   if (color) data.color = color;

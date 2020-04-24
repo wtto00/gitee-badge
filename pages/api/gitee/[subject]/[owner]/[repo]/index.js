@@ -5,9 +5,14 @@ import defaultSubject from "components/apis/subject/gitee.js";
 export default async (req, res) => {
   res.statusCode = 200;
   res.setHeader("Content-Type", "image/svg+xml");
-  const query = getQuery(req.url, { subject: 3, owner: 4, repo: 5 });
+  const query = getQuery(req.url, { subject: 3, owner: 4, repo: 5, param: 6 });
 
-  const result = await gitee(query.subject, query.owner, query.repo);
+  const result = await gitee(
+    query.subject,
+    query.owner,
+    query.repo,
+    query.param
+  );
 
   if (result.code === 200) {
     return generate(res, {

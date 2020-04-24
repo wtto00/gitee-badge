@@ -12,9 +12,9 @@ const options = {
   headers: { "Content-Type": "application/json;charset=UTF-8" },
 };
 
-export default async (subject, owner, repo) => {
+export default async (subject, owner, repo, param) => {
   try {
-    const url = getUrl(subject, owner, repo);
+    const url = getUrl(subject, owner, repo, param);
 
     if (!url) {
       return noneSubject();
@@ -87,6 +87,7 @@ export default async (subject, owner, repo) => {
         break;
       case "issues":
       case "closed-issues":
+      case "label-issues":
         if (Array.isArray(json)) {
           if (json.length < 100) {
             return success(json.length);
@@ -105,7 +106,7 @@ export default async (subject, owner, repo) => {
   }
 };
 
-function getUrl(subject, owner, repo) {
+function getUrl(subject, owner, repo, param) {
   switch (subject) {
     case "release":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/releases/latest`;
@@ -124,6 +125,8 @@ function getUrl(subject, owner, repo) {
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=all&page=1&per_page=100`;
     case "closed-issues":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=closed&page=1&per_page=100`;
+    case "label-issues":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=all&labels=${param}&page=1&per_page=100`;
     default:
       return "";
   }
