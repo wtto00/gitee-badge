@@ -1,6 +1,6 @@
 <h1 align="center">badge</h1>
 <p align="center">
-  <a href="https://github.com/wtto00/badge" target="_blank"><img src="https://badg.now.sh/api/badge/release/GitHub/black?icon=github&label&scale=1.2" /></a> <a href="https://gitee.com/wtto00/badge" target="_black"><img src="https://badg.now.sh/api/badge/release/Gitee/orange?icon=gitee&label&scale=1.2" /></a> <a href="https://badg.now.sh" target="_blank"><img src="https://badg.now.sh/api/badge/icon/My Site/cyan?icon=badg&label&scale=1.2" /></a>
+  <a href="https://github.com/wtto00/badge" target="_blank"><img src="./docs/svgs/my-github.svg" /></a> <a href="https://gitee.com/wtto00/badge" target="_black"><img src="https://badg.now.sh/api/badge/release/Gitee/orange?icon=gitee&label&scale=1.2" /></a> <a href="https://badg.now.sh" target="_blank"><img src="https://badg.now.sh/api/badge/icon/My Site/cyan?icon=badg&label&scale=1.2" /></a>
 </p>
 
 生成徽章服务。  
