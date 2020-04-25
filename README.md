@@ -62,7 +62,7 @@ https://badg.now.sh/api/gitee/:subject/:owner/:repo
   如下表所列出所有的用法。地址前缀：`https://badg.now.sh/api`  
   |说明|地址|效果|
   |---:|:---|:---|
-  |latest release|[/gitee/release/wtto00/badge](https://badg.now.sh/api/gitee/release/wtto00/badge)|![latest release](https://badg.now.sh/api/gitee/release/wtto00/badge "latest release")|
+  |latest release|[/gitee/release/wtto00/dt-read](https://badg.now.sh/api/gitee/release/wtto00/dt-read)|![latest release](https://badg.now.sh/api/gitee/release/wtto00/dt-read "latest release")|
   |latest tag|[/gitee/tag/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/tag/wtto00/Aliyun-oss-storage)|![latest tag](https://badg.now.sh/api/gitee/tag/wtto00/Aliyun-oss-storage "latest tag")
   |watchers|[/gitee/watchers/wtto00/dt-read](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read)|![watchers](https://badg.now.sh/api/gitee/watchers/wtto00/dt-read "watchers")|
   |stars|[/gitee/stars/wtto00/dt-read](https://badg.now.sh/api/gitee/stars/wtto00/dt-read)|![stars](https://badg.now.sh/api/gitee/stars/wtto00/dt-read "stars")|
