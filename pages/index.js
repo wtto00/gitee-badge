@@ -53,7 +53,6 @@ export async function getStaticProps(context) {
       "http://localhost:3000/api/"
     );
   }
-  console.log(content);
 
   return {
     props: {
