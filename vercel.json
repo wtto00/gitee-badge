@@ -9,9 +9,6 @@
       "maxDuration": 60
     }
   },
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/gitee/:", "destination": "/api/gitee" },
-    { "source": "/badge/:subject/:status/:color", "destination": "/api/badge" }
-  ]
+  "regions": ["hkg1"],
+  "routes": [{ "src": "/gitee/.*", "dest": "/api/gitee/$1" }]
 }
