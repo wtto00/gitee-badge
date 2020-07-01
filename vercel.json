@@ -11,7 +11,7 @@
   },
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/gitee/(.*)", "destination": "/api/gitee/$1" },
-    { "source": "/badge/(.*)", "destination": "/api/badge/$1" }
+    { "source": "/gitee/*", "destination": "/api/gitee" },
+    { "source": "/badge/", "destination": "/api/badge/" }
   ]
 }
