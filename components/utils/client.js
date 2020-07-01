@@ -29,8 +29,10 @@ export function getQueryOptions(url, format) {
   const params = url.split("?");
 
   const queryParams = params[0].split("/");
+
   for (const key in format) {
-    query[key] = decodeURIComponent(queryParams[format[key]]);
+    query[key] = queryParams[format[key]];
+    if (query[key]) query[key] = encodeURIComponent(query[key]);
   }
   let options = {};
   if (params.length > 1) {

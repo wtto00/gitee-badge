@@ -1,4 +1,4 @@
-import { getQuery, getSvg } from "components/utils/client.js";
+const userFriendlyDate = require("user-friendly-date");
 
 export const success = (status, color) => {
   const data = { status };
@@ -55,4 +55,9 @@ export const showPercent = (top, bottom, decimal = 0) => {
     return "infinity";
   }
   return ((top / bottom) * 100).toFixed(decimal) + "%";
+};
+
+export const betterDate = (date) => {
+  const d = new Date(date);
+  return userFriendlyDate(d.getTime());
 };

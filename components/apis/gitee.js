@@ -7,6 +7,7 @@ import {
   noneSubject,
   showBetter,
   showPercent,
+  betterDate,
 } from "components/utils/api";
 
 const options = {
@@ -43,27 +44,27 @@ export default async (subject, owner, repo, param) => {
         }
         break;
       case "watchers":
-        if (Array.isArray(json)) {
-          if (json.length === 0) {
-            return noneRepo("404 Project Not Found");
-          }
-          return success(showBetter(json[0].watchers_count));
+        if (json.watchers_count) {
+          return success(showBetter(json.watchers_count));
+        }
+        if (json.message === "404 Not Found") {
+          return warning("none");
         }
         break;
       case "stars":
-        if (Array.isArray(json)) {
-          if (json.length === 0) {
-            return noneRepo("404 Project Not Found");
-          }
-          return success(showBetter(json[0].stargazers_count));
+        if (json.stargazers_count) {
+          return success(showBetter(json.stargazers_count));
+        }
+        if (json.message === "404 Not Found") {
+          return warning("none");
         }
         break;
       case "forks":
-        if (Array.isArray(json)) {
-          if (json.length === 0) {
-            return noneRepo("404 Project Not Found");
-          }
-          return success(showBetter(json[0].forks_count));
+        if (json.forks_count) {
+          return success(showBetter(json.forks_count));
+        }
+        if (json.message === "404 Not Found") {
+          return warning("none");
         }
         break;
       case "license":
@@ -75,12 +76,21 @@ export default async (subject, owner, repo, param) => {
         }
         break;
       case "open-issues":
-        if (Array.isArray(json)) {
-          if (json.length === 0) {
-            return noneRepo("404 Project Not Found");
-          }
-          return success(json[0]["open_issues_count"]);
+        if (json.open_issues_count) {
+          return success(showBetter(json.open_issues_count));
         }
+        if (json.message === "404 Not Found") {
+          return warning("none");
+        }
+        break;
+      case "last-commit":
+        if (json.pushed_at) {
+          return success(betterDate(json.pushed_at));
+        }
+        if (json.message === "404 Not Found") {
+          return warning("none");
+        }
+        break;
         break;
       case "branches":
         if (Array.isArray(json)) {
@@ -96,6 +106,7 @@ export default async (subject, owner, repo, param) => {
       case "open-prs":
       case "closed-prs":
       case "merged-prs":
+      case "commits":
         if (Array.isArray(json)) {
           if (json.length < 100) {
             return success(json.length);
@@ -153,7 +164,10 @@ function getUrl(subject, owner, repo, param) {
     case "stars":
     case "forks":
     case "open-issues":
-      return `https://gitee.com/api/v5/search/repositories?q=${repo}&page=1&per_page=1&owner=${owner}&order=desc`;
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}`;
+    case "last-commit":
+      // if(param === ''){}
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}`;
     case "license":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/license`;
     case "issues":
@@ -176,6 +190,10 @@ function getUrl(subject, owner, repo, param) {
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/pulls?state=merged&page=1&per_page=100`;
     case "milestones":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/issues?state=all&page=1&per_page=100&milestone=${param}`;
+    case "commits":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/commits?page=1&per_page=100${
+        param ? "&sha=" + param : ""
+      }`;
     default:
       return "";
   }

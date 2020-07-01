@@ -20,7 +20,7 @@ marked.setOptions({
   breaks: true,
   smartLists: true,
   smartypants: true,
-  tables: true
+  tables: true,
 });
 
 const Home = ({ content }) => (
@@ -46,9 +46,19 @@ export async function getStaticProps(context) {
     res = await fetch("https://gitee.com/wtto00/badge/raw/master/README.md");
   }
 
-  const content = await res.text();
+  let content = await res.text();
+  if (process.env.NODE_ENV === "development") {
+    content = content.replace(
+      /https:\/\/badg\.now\.sh\/api\//g,
+      "http://localhost:3000/api/"
+    );
+  }
+  console.log(content);
+
   return {
-    props: { content }
+    props: {
+      content,
+    },
   };
 }
 
