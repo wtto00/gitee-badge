@@ -1,0 +1,11 @@
+{
+  "name": "badg",
+  "version": 2,
+  "alias": ["badg.now.sh"],
+  "functions": {
+    "api/gitee/[subject]/[owner]/[repo]/index.js": {
+      "memory": 3008,
+      "maxDuration": 60
+    }
+  }
+}
