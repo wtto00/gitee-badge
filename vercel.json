@@ -5,8 +5,20 @@
   "regions": ["hkg1"],
   "rewrites": [
     {
+      "source": "/badge/:subject/:status",
+      "destination": "/api/badge/[subject]/[status]/index.js"
+    },
+    {
+      "source": "/badge/:subject/:status/:color",
+      "destination": "/api/badge/[subject]/[status]/[color].js"
+    },
+    {
       "source": "/gitee/:subject/:owner/:repo",
       "destination": "/api/gitee/[subject]/[owner]/[repo]/index.js"
+    },
+    {
+      "source": "/gitee/:subject/:owner/:repo/:param",
+      "destination": "/api/gitee/[subject]/[owner]/[repo]/[param].js"
     }
   ]
 }

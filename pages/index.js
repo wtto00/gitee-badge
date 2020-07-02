@@ -49,7 +49,7 @@ export async function getStaticProps(context) {
   let content = await res.text();
   if (process.env.NODE_ENV === "development") {
     content = content.replace(
-      /https:\/\/badg\.now\.sh\/api\//g,
+      /https:\/\/badg\.now\.sh\//g,
       "http://localhost:3000/api/"
     );
   }

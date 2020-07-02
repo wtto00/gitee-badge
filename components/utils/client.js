@@ -3,6 +3,20 @@ import colors from "./colors";
 import { parse } from "qs";
 const cheerio = require("cheerio");
 
+export const handleQuery = (query, ignore = []) => {
+  for (const key in query) {
+    const value = query[key];
+    if (key === "label") {
+      query.subject = value;
+    } else if (key === "list") {
+      query.status = query.status.replace(/,/g, ` ${value} `);
+    } else if (!ignore.includes(key)) {
+      query[key] = value;
+    }
+  }
+  return query;
+};
+
 /**
  * 分割url，得到参数
  * @param {string} url
