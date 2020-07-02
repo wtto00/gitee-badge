@@ -13,4 +13,5 @@ export default {
   "last-commit": "last commit",
   "last-commit-branch": (query) => `last commit (${query.param})`,
   "last-commit-tag": (query) => `last commit (${query.param})`,
+  commits: (query) => `commits${query.param ? ` (${query.param})` : ""}`,
 };
