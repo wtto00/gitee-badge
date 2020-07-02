@@ -16,6 +16,7 @@ export default async (req, res) => {
     repo: 5,
     param: 6,
   });
+  res.send(JSON.stringify({ query, options }));
   console.log(query, options);
 
   const result = await gitee(
