@@ -4,6 +4,9 @@
   "alias": ["badg.now.sh"],
   "regions": ["hkg1"],
   "rewrites": [
-    { "source": "/gitee/:subject/:owner/:repo", "destination": "/api/gitee" }
+    {
+      "source": "/gitee/:subject/:owner/:repo",
+      "destination": "/api/gitee/[subject]/[owner]/[repo]/index.js"
+    }
   ]
 }
