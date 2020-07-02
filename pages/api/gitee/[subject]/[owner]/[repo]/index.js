@@ -9,7 +9,6 @@ import defaultColor from "components/apis/gitee/color";
 
 export default async (req, res) => {
   res.statusCode = 200;
-  res.setHeader("Content-Type", "image/svg+xml");
   const { query, options } = getQueryOptions(req.url, {
     subject: 3,
     owner: 4,
@@ -17,6 +16,7 @@ export default async (req, res) => {
     param: 6,
   });
   res.send(JSON.stringify({ query, options }));
+  res.setHeader("Content-Type", "image/svg+xml");
   console.log(query, options);
 
   const result = await gitee(
