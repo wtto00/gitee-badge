@@ -17,47 +17,6 @@ export const handleQuery = (query, ignore = []) => {
   return query;
 };
 
-/**
- * 分割url，得到参数
- * @param {string} url
- * @param {object} format
- */
-export function getQuery(url, format) {
-  const query = {};
-  const params = url.split("?");
-
-  const arr2 = params[0].split("/");
-  for (const key in format) {
-    query[key] = decodeURIComponent(arr2[format[key]]);
-  }
-
-  if (params.length > 1) {
-    const options = parse(params[1]);
-    handleOptions(query, options);
-  }
-  return query;
-}
-
-export function getQueryOptions(url, format) {
-  const query = {};
-  const params = url.split("?");
-
-  const queryParams = params[0].split("/");
-
-  for (const key in format) {
-    query[key] = queryParams[format[key]];
-    if (query[key]) query[key] = encodeURIComponent(query[key]);
-  }
-  let options = {};
-  if (params.length > 1) {
-    options = parse(params[1]);
-  }
-  return {
-    query,
-    options,
-  };
-}
-
 export function handleOptions(query, options) {
   for (const key in options) {
     const value = options[key];
