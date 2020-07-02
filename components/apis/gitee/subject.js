@@ -10,4 +10,7 @@ export default {
   "closed-prs": "closed PRs",
   "merged-prs": "merged PRs",
   milestones: (query) => query.param,
+  "last-commit": "last commit",
+  "last-commit-branch": (query) => `last commit (${query.param})`,
+  "last-commit-tag": (query) => `last commit (${query.param})`,
 };

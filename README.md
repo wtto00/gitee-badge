@@ -82,11 +82,11 @@ https://badg.now.sh/api/gitee/:subject/:owner/:repo
   |commits count (branch ref)|[/gitee/commits/smallweigit/avue/dev](https://badg.now.sh/api/gitee/commits/smallweigit/avue/dev)|![commits count (branch ref)](https://badg.now.sh/api/gitee/commits/smallweigit/avue/dev "commits count (branch ref)")|
   |commits count (tag ref)|[/gitee/commits/smallweigit/avue/v2.4.1](https://badg.now.sh/api/gitee/commits/smallweigit/avue/v2.4.1)|![commits count (tag ref)](https://badg.now.sh/api/gitee/commits/smallweigit/avue/v2.4.1 "commits count (tag ref)")|
   |last commit|[/gitee/last-commit/wtto00/dt-read](https://badg.now.sh/api/gitee/last-commit/wtto00/dt-read)|![last commit](https://badg.now.sh/api/gitee/last-commit/wtto00/dt-read "last commit")|
-  |last commit (branch ref)|[/gitee/last-commit/smallweigit/avue?sha=dev](https://badg.now.sh/api/gitee/last-commit/smallweigit/avue?sha=dev)|![last commit (branch ref)](https://badg.now.sh/api/gitee/last-commit/smallweigit/avue?sha=dev "last commit (branch ref)")|
-  |last commit (tag ref)|[/gitee/last-commit/smallweigit/avue?sha=2.4.1](https://badg.now.sh/api/gitee/last-commit/smallweigit/avue?sha=2.4.1)|![last commit (tag ref)](https://badg.now.sh/api/gitee/last-commit/smallweigit/avue?sha=2.4.1 "last commit (tag ref)")|
-  |branches|[/gitee/branches/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/branches/wtto00/Aliyun-oss-storage)|![branches](https://badg.now.sh/api/gitee/branches/wtto00/Aliyun-oss-storage "branches")|
-  |releases|[/gitee/releases/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/releases/wtto00/Aliyun-oss-storage)|![releases](https://badg.now.sh/api/gitee/releases/wtto00/Aliyun-oss-storage "releases")|
-  |tags|[/gitee/tags/wtto00/Aliyun-oss-storage](https://badg.now.sh/api/gitee/tags/wtto00/Aliyun-oss-storage)|![tags](https://badg.now.sh/api/gitee/tags/wtto00/Aliyun-oss-storage "tags")|
+  |last commit (branch ref)|[/gitee/last-commit-branch/smallweigit/avue/dev](https://badg.now.sh/api/gitee/last-commit-branch/smallweigit/avue/dev)|![last commit (branch ref)](https://badg.now.sh/api/gitee/last-commit-branch/smallweigit/avue/dev "last commit (branch ref)")|
+  |last commit (tag ref)|[/gitee/last-commit-tag/smallweigit/avue/v2.4.1](https://badg.now.sh/api/gitee/last-commit-tag/smallweigit/avue/v2.4.1)|![last commit (tag ref)](https://badg.now.sh/api/gitee/last-commit-tag/smallweigit/avue/v2.4.1 "last commit (tag ref)")|
+  |branches|[/gitee/branches/wtto00/dt-read](https://badg.now.sh/api/gitee/branches/wtto00/dt-read)|![branches](https://badg.now.sh/api/gitee/branches/wtto00/dt-read "branches")|
+  |releases|[/gitee/releases/wtto00/dt-read](https://badg.now.sh/api/gitee/releases/wtto00/dt-read)|![releases](https://badg.now.sh/api/gitee/releases/wtto00/dt-read "releases")|
+  |tags|[/gitee/tags/wtto00/dt-read](https://badg.now.sh/api/gitee/tags/wtto00/dt-read)|![tags](https://badg.now.sh/api/gitee/tags/wtto00/dt-read "tags")|
   |license|[/gitee/license/wtto00/dt-read](https://badg.now.sh/api/gitee/license/wtto00/dt-read)|![license](https://badg.now.sh/api/gitee/license/wtto00/dt-read "license")|
   |contributors|[/gitee/contributors/smallweigit/avue](https://badg.now.sh/api/gitee/contributors/smallweigit/avue)|![contributors](https://badg.now.sh/api/gitee/contributors/smallweigit/avue "contributors")|
 

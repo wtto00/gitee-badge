@@ -91,10 +91,17 @@ export default async (subject, owner, repo, param) => {
           return warning("none");
         }
         break;
-        break;
       case "branches":
         if (Array.isArray(json)) {
           return success(json.length);
+        }
+        break;
+      case "contributors":
+        if (json.members && Array.isArray(json.members)) {
+          return success(json.members.length);
+        }
+        if (json.message === "404 Not Found") {
+          return warning("none");
         }
         break;
       case "issues":
@@ -107,12 +114,18 @@ export default async (subject, owner, repo, param) => {
       case "closed-prs":
       case "merged-prs":
       case "commits":
+      case "releases":
         if (Array.isArray(json)) {
           if (json.length < 100) {
             return success(json.length);
           }
           let count = await caclCount(url);
           return success(count + json.length);
+        }
+        break;
+      case "tags":
+        if (Array.isArray(json)) {
+          return success(json.length);
         }
         break;
       case "milestones":
@@ -142,6 +155,27 @@ export default async (subject, owner, repo, param) => {
           );
         }
         break;
+      case "last-commit-branch":
+        const date = json?.commit?.commit?.committer?.date;
+
+        if (date) {
+          return success(betterDate(date));
+        }
+        if (json.message === "404 Not Found") {
+          return warning("none");
+        }
+        break;
+      case "last-commit-tag":
+        if (Array.isArray(json)) {
+          const tag = json.find((t) => t.name === param);
+          if (tag) {
+            const date = tag?.commit?.date;
+            if (date) {
+              return success(betterDate(date));
+            }
+          }
+        }
+        break;
       default:
         return noneSubject();
     }
@@ -157,16 +191,20 @@ function getUrl(subject, owner, repo, param) {
     case "release":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/releases/latest`;
     case "tag":
+    case "last-commit-tag":
+    case "tags":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/tags`;
     case "branches":
-      return `https://gitee.com/api/v5/repos/${owner}/${repo}/${subject}`;
+    case "last-commit-branch":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/branches${
+        param ? "/" + param : ""
+      }`;
     case "watchers":
     case "stars":
     case "forks":
     case "open-issues":
-      return `https://gitee.com/api/v5/repos/${owner}/${repo}`;
     case "last-commit":
-      // if(param === ''){}
+    case "contributors":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}`;
     case "license":
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/license`;
@@ -194,6 +232,8 @@ function getUrl(subject, owner, repo, param) {
       return `https://gitee.com/api/v5/repos/${owner}/${repo}/commits?page=1&per_page=100${
         param ? "&sha=" + param : ""
       }`;
+    case "releases":
+      return `https://gitee.com/api/v5/repos/${owner}/${repo}/releases?page=1&per_page=100`;
     default:
       return "";
   }
