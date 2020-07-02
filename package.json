@@ -22,6 +22,7 @@
     "user-friendly-date": "^1.1.1"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.10.4",
     "@zeit/next-sass": "^1.0.1",
     "node-sass": "^4.13.1",
     "raw-loader": "^4.0.0"
