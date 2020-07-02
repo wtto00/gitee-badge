@@ -50,12 +50,12 @@ https://badg.now.sh/badge/:subject/:status/:color?icon=github
 
 ```
 https://badg.now.sh/gitee/:subject/:owner/:repo
-                       ------|--------|------|-----
-                          |       |       |     |
-                          |       |       |  仓库名称
-                          |       |   仓库所有者
-                          |      主题
-                      Gitee Api
+                   ------|--------|------|-----
+                     |       |       |     |
+                     |       |       |  仓库名称
+                     |       |   仓库所有者
+                     |      主题
+                 Gitee Api
 ```
 
 - **用法**  
