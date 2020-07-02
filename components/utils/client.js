@@ -51,7 +51,7 @@ export function handleOptions(query, options) {
       query.subject = value;
     } else if (key === "list") {
       query.status = query.status.replace(/,/g, ` ${value} `);
-    } else {
+    } else if (key !== "subject" && key !== "status") {
       query[key] = value;
     }
   }

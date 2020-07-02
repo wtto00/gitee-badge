@@ -16,6 +16,7 @@ export default async (req, res) => {
     repo: 5,
     param: 6,
   });
+  console.log(query, options);
 
   const result = await gitee(
     query.subject,
@@ -25,6 +26,8 @@ export default async (req, res) => {
   );
 
   if (result.code === 200) {
+    console.log(result.data);
+
     const search = {
       ...query,
       ...result.data,
