@@ -4,7 +4,7 @@
 </p>
 
 生成徽章服务。  
-使用 [Next.js](https://nextjs.org/) 框架开发，[ZEIT Now](https://zeit.co/) 自动化部署.
+使用 [Next.js](https://nextjs.org/) 框架开发，[vercel](https://vercel.com/) 自动化云部署.
 
 ## 使用
 
