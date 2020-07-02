@@ -2,11 +2,6 @@
   "name": "badg",
   "version": 2,
   "alias": ["badg.now.sh"],
-  "functions": {
-    "api/gitee/[subject]/[owner]/[repo]/index.js": {
-      "maxDuration": 60
-    }
-  },
   "regions": ["hkg1"],
   "routes": [{ "src": "/gitee/.*", "dest": "/api/gitee/$1" }]
 }
