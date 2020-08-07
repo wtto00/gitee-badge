@@ -7,7 +7,7 @@ export default (props) => {
             target="_blank"
             rel="noopener noreferrer"
         >
-            Powered by <img src="/zeit.svg" alt="ZEIT Logo" />
+            Powered by <img src="/vercel.svg" alt="vercel Logo" />
         </a>
     </footer>
 }
