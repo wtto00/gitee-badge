@@ -26,15 +26,12 @@ export default async (subject, owner, repo, param) => {
     let res = await redis.getAsync(url);
     let json = {};
 
-    console.log(res);
-
     if (!res) {
       const result = await fetch(url, options);
       json = await result.json();
     } else {
       json = JSON.parse(res);
     }
-    console.log(json);
 
     switch (subject) {
       case "release":
@@ -298,8 +295,8 @@ async function caclCount(url) {
           throw new Error();
         }
       } else {
-        length = res;
-        count += res;
+        length = Number(res);
+        count += Number(res);
         page++;
       }
     }
