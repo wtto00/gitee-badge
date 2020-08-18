@@ -1,4 +1,3 @@
-import request from "components/utils/request";
 import {
   success,
   warning,

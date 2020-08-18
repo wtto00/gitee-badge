@@ -1,9 +1,8 @@
 import marked from "marked";
 import hljs from "highlight.js";
+import fetch from "node-fetch";
 import Header from "components/Header";
 import Footer from "components/Footer";
-import request from "components/utils/request";
-import "./index.scss";
 
 const renderer = new marked.Renderer();
 const linkRenderer = renderer.link;
@@ -39,18 +38,18 @@ const Home = ({ content }) => (
 export async function getStaticProps(context) {
   let res;
   try {
-    res = await request(
+    res = await fetch(
       "https://raw.githubusercontent.com/wtto00/badge/master/README.md"
     );
   } catch (error) {
-    res = await request("https://gitee.com/wtto00/badge/raw/master/README.md");
+    res = await fetch("https://gitee.com/wtto00/badge/raw/master/README.md");
   }
 
   let content = await res.text();
   if (process.env.NODE_ENV === "development") {
     content = content.replace(
-      /https:\/\/badg\.now\.sh/g,
-      "http://localhost:3000/api"
+      /https:\/\/badg\.now\.sh\//g,
+      "http://localhost:3000/api/"
     );
   }
 
