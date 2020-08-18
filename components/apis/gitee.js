@@ -285,8 +285,8 @@ async function caclCount(url) {
           count += length;
           page++;
 
-          redis.set(uri, length);
           if (length === 100) {
+            redis.set(uri, length);
             // 缓存30天
             redis.expire(uri, 30 * 24 * 3600);
           }

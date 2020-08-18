@@ -18,7 +18,7 @@ export default async (req, res, hasParam) => {
       hasParam === true
         ? await gitee(subject, owner, repo, param)
         : await gitee(subject, owner, repo);
-    if (result.code === 200) {
+    if (result.code === 200 && result.data.status) {
       redis.set(key, JSON.stringify(result));
       // 缓存24小时
       redis.expire(key, 24 * 3600);
