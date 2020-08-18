@@ -3,7 +3,6 @@ import hljs from "highlight.js";
 import fetch from "node-fetch";
 import Header from "components/Header";
 import Footer from "components/Footer";
-import "./index.scss";
 
 const renderer = new marked.Renderer();
 const linkRenderer = renderer.link;
