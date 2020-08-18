@@ -26,12 +26,15 @@ export default async (subject, owner, repo, param) => {
     let res = await redis.getAsync(url);
     let json = {};
 
+    console.log(res);
+
     if (!res) {
       const result = await fetch(url, options);
       json = await result.json();
     } else {
       json = JSON.parse(res);
     }
+    console.log(json);
 
     switch (subject) {
       case "release":
@@ -122,7 +125,7 @@ export default async (subject, owner, repo, param) => {
       case "merged-prs":
       case "commits":
       case "releases":
-        if (Array.isArray(json)) {
+        if (Array.isArray(json) || "length" in json) {
           if (json.length < 100) {
             return success(json.length);
           }
@@ -142,7 +145,7 @@ export default async (subject, owner, repo, param) => {
         break;
       case "milestones":
         const count = { closed: 0, open: 0, progressing: 0, rejected: 0 };
-        if (Array.isArray(json)) {
+        if (Array.isArray(json) || "length" in json) {
           let length = 0;
           if (!res) {
             json.forEach((item) => {
@@ -291,10 +294,13 @@ async function caclCount(url) {
             redis.expire(uri, 30 * 24 * 3600);
           }
         } else {
+          length = 0;
           throw new Error();
         }
       } else {
+        length = res;
         count += res;
+        page++;
       }
     }
     return count;
@@ -344,9 +350,12 @@ async function calcClassCount(url) {
         }
       } else {
         res = JSON.parse(res);
+        length = 0;
         Object.keys(res).forEach((item) => {
           count[item] += res[item];
+          length += res[item];
         });
+        page++;
       }
     }
     return count;
