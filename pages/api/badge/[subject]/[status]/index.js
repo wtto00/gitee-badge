@@ -5,5 +5,7 @@ export default (req, res) => {
   res.setHeader("Content-Type", "image/svg+xml");
   const query = handleQuery(req.query, ["subject", "status"]);
   if (!query.color) query.color = "blue";
+  console.log(query);
+  console.log(getSvg(query));
   res.send(getSvg(query));
 };
