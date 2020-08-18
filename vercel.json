@@ -1,24 +1,28 @@
 {
   "name": "badg",
   "version": 2,
-  "alias": ["badg.now.sh"],
-  "regions": ["hkg1"],
+  "alias": [
+    "badg.now.sh"
+  ],
+  "regions": [
+    "hkg1"
+  ],
   "rewrites": [
     {
       "source": "/badge/:subject/:status",
-      "destination": "/api/badge/[subject]/[status]/index.js"
+      "destination": "/api/badge/:subject/:status"
     },
     {
       "source": "/badge/:subject/:status/:color",
-      "destination": "/api/badge/[subject]/[status]/[color].js"
+      "destination": "/api/badge/:subject/:status/:color"
     },
     {
       "source": "/gitee/:subject/:owner/:repo",
-      "destination": "/api/gitee/[subject]/[owner]/[repo]/index.js"
+      "destination": "/api/gitee/:subject/:owner/:repo"
     },
     {
       "source": "/gitee/:subject/:owner/:repo/:param",
-      "destination": "/api/gitee/[subject]/[owner]/[repo]/[param].js"
+      "destination": "/api/gitee/:subject/:owner/:repo/:param"
     }
   ]
 }
