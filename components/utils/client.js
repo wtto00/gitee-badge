@@ -3,6 +3,7 @@ import colors from "./colors";
 const cheerio = require("cheerio");
 
 export const handleQuery = (query, ignore = []) => {
+  console.log(query);
   for (const key in query) {
     const value = query[key];
     if (key === "label") {
