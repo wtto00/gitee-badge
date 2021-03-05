@@ -1,3 +1,4 @@
+import request from "components/utils/request";
 import {
   success,
   warning,
@@ -8,7 +9,6 @@ import {
   showPercent,
   betterDate,
 } from "components/utils/api";
-import redis from "components/utils/redis";
 
 const options = {
   headers: { "Content-Type": "application/json;charset=UTF-8" },
@@ -23,15 +23,8 @@ export default async (subject, owner, repo, param) => {
       return noneSubject();
     }
 
-    let res = await redis.getAsync(url);
-    let json = {};
-
-    if (!res) {
-      const result = await fetch(url, options);
-      json = await result.json();
-    } else {
-      json = JSON.parse(res);
-    }
+    const res = await request(url, options);
+    const json = await res.json();
 
     switch (subject) {
       case "release":
@@ -47,7 +40,7 @@ export default async (subject, owner, repo, param) => {
           if (json.length === 0) {
             return warning("none");
           }
-          return success(json[json.length - 1].name);
+          return success("v" + json[json.length - 1].name);
         }
         break;
       case "watchers":
@@ -122,14 +115,9 @@ export default async (subject, owner, repo, param) => {
       case "merged-prs":
       case "commits":
       case "releases":
-        if (Array.isArray(json) || "length" in json) {
+        if (Array.isArray(json)) {
           if (json.length < 100) {
             return success(json.length);
-          }
-          if (!res) {
-            redis.set(url, JSON.stringify({ length: json.length }));
-            // 缓存30天
-            redis.expire(url, 30 * 24 * 3600);
           }
           let count = await caclCount(url);
           return success(count + json.length);
@@ -142,25 +130,11 @@ export default async (subject, owner, repo, param) => {
         break;
       case "milestones":
         const count = { closed: 0, open: 0, progressing: 0, rejected: 0 };
-        if (Array.isArray(json) || "length" in json) {
-          let length = 0;
-          if (!res) {
+        if (Array.isArray(json)) {
+          if (json.length < 100) {
             json.forEach((item) => {
               count[item.state] += 1;
             });
-            length = json.length;
-            if (length === 100) {
-              redis.set(url, JSON.stringify(count));
-              // 缓存30天
-              redis.expire(url, 30 * 24 * 3600);
-            }
-          } else {
-            Object.keys(json).forEach((key) => {
-              count[key] += json[key];
-              length += json[key];
-            });
-          }
-          if (length < 100) {
             return success(
               showPercent(
                 count.closed + count.rejected,
@@ -168,7 +142,6 @@ export default async (subject, owner, repo, param) => {
               )
             );
           }
-
           const otherCount = await calcClassCount(url);
           count.closed += otherCount.closed;
           count.open += otherCount.open;
@@ -274,30 +247,14 @@ async function caclCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
-
-      let res = await redis.getAsync(uri);
-
-      if (!res) {
-        res = await fetch(uri, options);
-        const json = await res.json();
-        if (Array.isArray(json)) {
-          length = json.length;
-          count += length;
-          page++;
-
-          if (length === 100) {
-            redis.set(uri, length);
-            // 缓存30天
-            redis.expire(uri, 30 * 24 * 3600);
-          }
-        } else {
-          length = 0;
-          throw new Error();
-        }
-      } else {
-        length = Number(res);
-        count += Number(res);
+      const res = await request(uri, options);
+      const json = await res.json();
+      if (Array.isArray(json)) {
+        length = json.length;
+        count += length;
         page++;
+      } else {
+        throw new Error();
       }
     }
     return count;
@@ -314,45 +271,15 @@ async function calcClassCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
-
-      let res = await redis.getAsync(uri);
-
-      if (!res) {
-        res = await fetch(uri, options);
-        const json = await res.json();
-        if (Array.isArray(json)) {
-          length = json.length;
-          json.forEach((item) => {
-            count[item.state] += 1;
-          });
-          page++;
-          redis.set(
-            uri,
-            JSON.stringify(
-              json.reduce(
-                (obj, item) => {
-                  obj[item.state] += 1;
-                  return obj;
-                },
-                { closed: 0, open: 0, progressing: 0, rejected: 0 }
-              )
-            )
-          );
-          if (length === 100) {
-            // 缓存30天
-            redis.expire(uri, 30 * 24 * 3600);
-          }
-        } else {
-          throw new Error();
-        }
-      } else {
-        res = JSON.parse(res);
-        length = 0;
-        Object.keys(res).forEach((item) => {
-          count[item] += res[item];
-          length += res[item];
+      const res = await request(uri, options);
+      const json = await res.json();
+      if (Array.isArray(json)) {
+        json.forEach((item) => {
+          count[item.state] += 1;
         });
         page++;
+      } else {
+        throw new Error();
       }
     }
     return count;
