@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import fetch from "node-fetch";
->>>>>>> parent of d145c93... 设置代理
 import {
   success,
   warning,
@@ -27,20 +24,8 @@ export default async (subject, owner, repo, param) => {
       return noneSubject();
     }
 
-<<<<<<< HEAD
-    let res = await redis.getAsync(url);
-    let json = {};
-
-    if (!res) {
-      const result = await fetch(url, options);
-      json = await result.json();
-    } else {
-      json = JSON.parse(res);
-    }
-=======
     const res = await fetch(url, options);
     const json = await res.json();
->>>>>>> parent of d145c93... 设置代理
 
     switch (subject) {
       case "release":
@@ -283,35 +268,13 @@ async function caclCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
-<<<<<<< HEAD
 
-      let res = await redis.getAsync(uri);
-
-      if (!res) {
-        res = await fetch(uri, options);
-        const json = await res.json();
-        if (Array.isArray(json)) {
-          length = json.length;
-          count += length;
-          page++;
-
-          if (length === 100) {
-            redis.set(uri, length);
-            // 缓存30天
-            redis.expire(uri, 30 * 24 * 3600);
-          }
-        } else {
-          length = 0;
-          throw new Error();
-        }
-=======
       const res = await fetch(uri, options);
       const json = await res.json();
       if (Array.isArray(json)) {
         length = json.length;
         count += length;
         page++;
->>>>>>> parent of d145c93... 设置代理
       } else {
         length = Number(res);
         count += Number(res);
@@ -332,51 +295,12 @@ async function calcClassCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
-<<<<<<< HEAD
 
-      let res = await redis.getAsync(uri);
-
-      if (!res) {
-        res = await fetch(uri, options);
-        const json = await res.json();
-        if (Array.isArray(json)) {
-          length = json.length;
-          json.forEach((item) => {
-            count[item.state] += 1;
-          });
-          page++;
-          redis.set(
-            uri,
-            JSON.stringify(
-              json.reduce(
-                (obj, item) => {
-                  obj[item.state] += 1;
-                  return obj;
-                },
-                { closed: 0, open: 0, progressing: 0, rejected: 0 }
-              )
-            )
-          );
-          if (length === 100) {
-            // 缓存30天
-            redis.expire(uri, 30 * 24 * 3600);
-          }
-        } else {
-          throw new Error();
-        }
-      } else {
-        res = JSON.parse(res);
-        length = 0;
-        Object.keys(res).forEach((item) => {
-          count[item] += res[item];
-          length += res[item];
-=======
       const res = await fetch(uri, options);
       const json = await res.json();
       if (Array.isArray(json)) {
         json.forEach((item) => {
           count[item.state] += 1;
->>>>>>> parent of d145c93... 设置代理
         });
         page++;
       }
