@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import fetch from "node-fetch";
+>>>>>>> parent of d145c93... 设置代理
 import {
   success,
   warning,
@@ -23,6 +27,7 @@ export default async (subject, owner, repo, param) => {
       return noneSubject();
     }
 
+<<<<<<< HEAD
     let res = await redis.getAsync(url);
     let json = {};
 
@@ -32,6 +37,10 @@ export default async (subject, owner, repo, param) => {
     } else {
       json = JSON.parse(res);
     }
+=======
+    const res = await fetch(url, options);
+    const json = await res.json();
+>>>>>>> parent of d145c93... 设置代理
 
     switch (subject) {
       case "release":
@@ -274,6 +283,7 @@ async function caclCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
+<<<<<<< HEAD
 
       let res = await redis.getAsync(uri);
 
@@ -294,6 +304,14 @@ async function caclCount(url) {
           length = 0;
           throw new Error();
         }
+=======
+      const res = await fetch(uri, options);
+      const json = await res.json();
+      if (Array.isArray(json)) {
+        length = json.length;
+        count += length;
+        page++;
+>>>>>>> parent of d145c93... 设置代理
       } else {
         length = Number(res);
         count += Number(res);
@@ -314,6 +332,7 @@ async function calcClassCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
+<<<<<<< HEAD
 
       let res = await redis.getAsync(uri);
 
@@ -351,6 +370,13 @@ async function calcClassCount(url) {
         Object.keys(res).forEach((item) => {
           count[item] += res[item];
           length += res[item];
+=======
+      const res = await fetch(uri, options);
+      const json = await res.json();
+      if (Array.isArray(json)) {
+        json.forEach((item) => {
+          count[item.state] += 1;
+>>>>>>> parent of d145c93... 设置代理
         });
         page++;
       }

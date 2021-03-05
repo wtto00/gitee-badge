@@ -3,6 +3,10 @@ import hljs from "highlight.js";
 import fetch from "node-fetch";
 import Header from "components/Header";
 import Footer from "components/Footer";
+<<<<<<< HEAD
+=======
+import "./index.scss";
+>>>>>>> parent of d145c93... 设置代理
 
 const renderer = new marked.Renderer();
 const linkRenderer = renderer.link;
