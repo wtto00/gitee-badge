@@ -1,4 +1,3 @@
-@import "components/Footer/index.scss";
 @import "components/static/css/markdown.scss";
 
 .container {
@@ -27,4 +26,21 @@
   .container {
     max-width: 1140px;
   }
+}
+
+a {
+  color: #00965e;
+  background-color: transparent;
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+a:hover {
+  color: #004a2e;
+}
+a:not([href]),
+a:not([href]):hover {
+  color: inherit;
+  text-decoration: none;
 }

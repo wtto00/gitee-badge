@@ -1,5 +1,6 @@
 import chars from "./chars";
 import colors from "./colors";
+import { parse } from "qs";
 const cheerio = require("cheerio");
 
 export const handleQuery = (query, ignore = []) => {

@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import request from "components/utils/request";
 import {
   success,
   warning,
@@ -23,7 +23,7 @@ export default async (subject, owner, repo, param) => {
       return noneSubject();
     }
 
-    const res = await fetch(url, options);
+    const res = await request(url, options);
     const json = await res.json();
 
     switch (subject) {
@@ -247,7 +247,7 @@ async function caclCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
-      const res = await fetch(uri, options);
+      const res = await request(uri, options);
       const json = await res.json();
       if (Array.isArray(json)) {
         length = json.length;
@@ -271,7 +271,7 @@ async function calcClassCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
-      const res = await fetch(uri, options);
+      const res = await request(uri, options);
       const json = await res.json();
       if (Array.isArray(json)) {
         json.forEach((item) => {
