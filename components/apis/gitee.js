@@ -24,18 +24,8 @@ export default async (subject, owner, repo, param) => {
       return noneSubject();
     }
 
-    let res = await redis.getAsync(url);
-    let json = {};
-
-    console.log(res);
-
-    if (!res) {
-      const result = await fetch(url, options);
-      json = await result.json();
-    } else {
-      json = JSON.parse(res);
-    }
-    console.log(json);
+    const res = await fetch(url, options);
+    const json = await res.json();
 
     switch (subject) {
       case "release":
@@ -278,7 +268,6 @@ async function caclCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
-
       const res = await fetch(uri, options);
       const json = await res.json();
       if (Array.isArray(json)) {
@@ -305,7 +294,6 @@ async function calcClassCount(url) {
     while (length === 100) {
       const index = url.indexOf("page=");
       const uri = url.substr(0, index) + "page=" + page + url.substr(index + 6);
-
       const res = await fetch(uri, options);
       const json = await res.json();
       if (Array.isArray(json)) {
