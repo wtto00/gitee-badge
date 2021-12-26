@@ -5,7 +5,19 @@ import styles from 'styles/Home.module.scss';
 import { marked } from 'marked';
 import README from 'README.md';
 
-const mdText = README.replace(/https:\/\/badg\.vercel\.app/g, '');
+const renderer = new marked.Renderer();
+const linkRenderer = renderer.link;
+
+renderer.link = function (href, title, text) {
+  const html = linkRenderer.call(this, href, title, text);
+  return html.replace(/^<a /, '<a target="_blank" rel="nofollow" ');
+};
+marked.use({ renderer });
+
+const mdText = README.replace(
+  /https:\/\/badg\.vercel\.app/g,
+  process.env.NODE_ENV === 'development' ? '/api' : ''
+);
 const html = marked.parse(mdText);
 
 const Home: NextPage = () => {
