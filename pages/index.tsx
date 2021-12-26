@@ -1,11 +1,11 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from 'styles/Home.module.scss'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Image from 'next/image';
+import styles from 'styles/Home.module.scss';
 import { marked } from 'marked';
-import README from 'README.md'
+import README from 'README.md';
 
-const mdText = README.replace(/https:\/\/badg\.vercel\.app/g, '')
+const mdText = README.replaceAll(/https:\/\/badg\.vercel\.app/, '');
 const html = marked.parse(mdText);
 
 const Home: NextPage = () => {
@@ -17,8 +17,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.markdown} dangerouslySetInnerHTML={{ __html: html }}>
-      </main>
+      <main
+        className={styles.markdown}
+        dangerouslySetInnerHTML={{ __html: html }}
+      ></main>
 
       <footer className={styles.footer}>
         <a
@@ -33,7 +35,7 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
