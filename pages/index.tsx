@@ -6,11 +6,9 @@ import { marked } from 'marked';
 import README from 'README.md'
 
 const mdText = README.replace(/https:\/\/badg\.vercel\.app/g, '')
-
 const html = marked.parse(mdText);
 
 const Home: NextPage = () => {
-
   return (
     <div className={styles.container}>
       <Head>
