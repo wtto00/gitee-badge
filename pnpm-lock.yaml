@@ -16,7 +16,6 @@ specifiers:
   marked: ^4.0.12
   next: 12.0.7
   prettier: ^2.6.1
-  qs: ^6.10.3
   raw-loader: ^4.0.2
   react: 17.0.2
   react-dom: 17.0.2
@@ -27,7 +26,6 @@ dependencies:
   cheerio: 1.0.0-rc.10
   marked: 4.0.12
   next: 12.0.7_770cdee6eac9f5b17619eec686780a53
-  qs: 6.10.3
   raw-loader: 4.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
@@ -2785,13 +2783,6 @@ packages:
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
-
-  /qs/6.10.3:
-    resolution: {integrity: sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ==}
-    engines: {node: '>=0.6'}
-    dependencies:
-      side-channel: 1.0.4
-    dev: false
 
   /querystring-es3/0.2.1:
     resolution: {integrity: sha1-nsYfeQSYdXB9aUFFlv2Qek1xHnM=}
