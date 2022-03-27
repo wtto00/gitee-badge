@@ -27,7 +27,11 @@
     max-width: 1140px;
   }
 }
-
+.markdown {
+  :global(#gitee-api + pre + ul) {
+    overflow-x: auto;
+  }
+}
 .footer {
   display: flex;
   flex: 1;
