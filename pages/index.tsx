@@ -14,10 +14,10 @@ renderer.link = function (href, title, text) {
 };
 marked.use({ renderer });
 
-const mdText = README.replace(
-  /https:\/\/badg\.vercel\.app/g,
-  process.env.NODE_ENV === 'development' ? '/api' : ''
-);
+const mdText =
+  process.env.NODE_ENV === 'development'
+    ? README.replace(/https:\/\/badg\.vercel\.app/g, '/api')
+    : README;
 const html = marked.parse(mdText);
 
 const Home: NextPage = () => {

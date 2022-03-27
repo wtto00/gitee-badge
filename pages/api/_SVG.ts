@@ -1,13 +1,56 @@
-import cheerio from 'cheerio';
-import { chars, colors } from 'pages/api/_const';
+import { load } from 'cheerio';
+import { NextApiRequest } from 'next';
+import { chars, Colors, Icons } from './_const';
 
 export default class SVG {
+  // 类目
+  subject: string;
+  // 类目状态值
+  status: string;
+  // 状态值背景色
+  color?: Colors;
+  // 类目背景色
+  labelColor?: Colors;
+  // 类目前面的图标
+  icon?: Icons;
+  // 缩放大小
+  scale?: number;
+
+  constructor(props: NextApiRequest['query']) {
+    const { subject, status, label, list, color, labelColor, icon, scale } =
+      props;
+    // subject可被label参数覆盖
+    this.subject = (subject || '').toString();
+    if (label !== undefined) {
+      this.subject = label.toString();
+    }
+    // status中的,可被list参数替换
+    this.status = (status || '').toString();
+    if (typeof list === 'string' && list) {
+      this.status = this.status.replace(/,/g, ` ${list} `);
+    }
+    // color
+    if (color) this.color = Colors[color.toString()];
+    // labelColor
+    if (labelColor) this.labelColor = Colors[labelColor.toString()];
+    // icon
+    if (icon) this.icon = Icons[icon.toString()];
+
+    // scale
+    if (scale) {
+      const scaleNum = Number(scale);
+      if (!isNaN(scaleNum)) {
+        this.scale = scaleNum;
+      }
+    }
+  }
+
   /**
    * 获取字符串的宽度
    * @param text 文本字符串
    * @returns 字符串的宽度
    */
-  private static getTextLength = (text: string) => {
+  private getTextLength = (text: string) => {
     let width = 0;
     for (const t of `${text}`) {
       if (t >= '0' && t <= '9') {
@@ -26,10 +69,18 @@ export default class SVG {
    * @param icon 图标名称
    * @returns
    */
-  private static async getIcon(icon: string) {
+  private async getIcon(): Promise<{ icon: string | null; iconWidth: number }> {
+    if (!this.icon) {
+      return {
+        icon: null,
+        iconWidth: 0,
+      };
+    }
     try {
-      const { default: iconRaw } = await import(`assets/icons/${icon}.svg`);
-      const $ = cheerio.load(iconRaw);
+      const { default: iconRaw } = await import(
+        `assets/icons/${this.icon}.svg`
+      );
+      const $ = load(iconRaw);
       const svg = $('svg');
       svg.attr('x', '40');
       svg.attr('y', '35');
@@ -52,21 +103,16 @@ export default class SVG {
    * @param query 请求Request query
    * @returns SVG代码
    */
-  static async generate(query: NextApiRequestQuery) {
-    const subjectLength = this.getTextLength(query.subject);
-    const statusLength = this.getTextLength(query.status);
-    const color = colors[query.color] || colors.blue;
-    const labelColor = colors[query.labelColor] || '#555';
-    const { icon = '', iconWidth = 0 } = query.icon
-      ? await this.getIcon(query.icon)
-      : {};
+  async generate(): Promise<string> {
+    const subjectLength = this.getTextLength(this.subject);
+    const statusLength = this.getTextLength(this.status);
+    const { icon, iconWidth } = await this.getIcon();
     const textPosition = subjectLength === 0 ? 12 + iconWidth : 60 + iconWidth;
     let width = (subjectLength + statusLength + 140 + textPosition) / 10;
     let height = 20;
-    const scale = Number(query.scale);
-    if (!isNaN(scale)) {
-      width *= scale;
-      height *= scale;
+    if (this.scale) {
+      width *= this.scale;
+      height *= this.scale;
     }
 
     return `<svg width="${width}" height="${height}" viewBox="0 0 ${
@@ -80,31 +126,31 @@ export default class SVG {
   subjectLength + statusLength + 140 + textPosition
 }" height="200" rx="30" fill="#FFF"/></mask>
   <g mask="url(#mask)">
-    <rect width="${
-  subjectLength + 40 + textPosition
-}" height="200" fill="${labelColor}"/>
-    <rect width="${statusLength + 100}" height="200" fill="${color}" x="${
-  subjectLength + 40 + textPosition
+    <rect width="${subjectLength + 40 + textPosition}" height="200" fill="${
+  this.labelColor || '#555'
 }"/>
+    <rect width="${statusLength + 100}" height="200" fill="${
+  this.color || Colors.blue
+}" x="${subjectLength + 40 + textPosition}"/>
     <rect width="${
   subjectLength + statusLength + 140 + textPosition
 }" height="200" fill="url(#badge)"/>
   </g>
   <g fill="#fff" text-anchor="start" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
     <text x="${textPosition}" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${
-  query.subject
+  this.subject
 }</text>
     <text x="${textPosition - 10}" y="138" textLength="${subjectLength}">${
-  query.subject
+  this.subject
 }</text>
     <text x="${
   subjectLength + 95 + textPosition
 }" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${
-  query.status
+  this.status
 }</text>
     <text x="${
   subjectLength + 85 + textPosition
-}" y="138" textLength="${statusLength}">${query.status}</text>
+}" y="138" textLength="${statusLength}">${this.status}</text>
   </g>
   ${icon}
 </svg>`;
