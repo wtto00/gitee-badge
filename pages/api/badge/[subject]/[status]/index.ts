@@ -3,7 +3,7 @@ import SVG from 'pages/api/_SVG';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const svg = new SVG(req.query);
   const svgCode = await svg.generate();

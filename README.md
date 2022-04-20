@@ -78,11 +78,14 @@ https://badg.vercel.app/gitee/:subject/:owner/:repo?icon&color
                  Gitee Api
 ```
 
+- **选项**
+  参数同`自定义徽章`：`color`,`icon`,`list`,`label`,`labelColor`,`scale`。
 - **用法**  
   如下表所列出所有的用法。地址前缀：`https://badg.vercel.app`  
   |说明|地址|效果|
   |---:|:---|:---|
   |latest release|[/gitee/release/wtto00/dt-read](https://badg.vercel.app/gitee/release/wtto00/dt-read)|![latest release](https://badg.vercel.app/gitee/release/wtto00/dt-read 'latest release')|
+  |latest stable release|[/gitee/release/running-elephant/datart/stable](https://badg.vercel.app/gitee/release/running-elephant/datart/stable)|![latest stable release](https://badg.vercel.app/gitee/release/running-elephant/datart/stable 'latest stable release')|
   |latest tag|[/gitee/tag/wtto00/Aliyun-oss-storage](https://badg.vercel.app/gitee/tag/wtto00/Aliyun-oss-storage)|![latest tag](https://badg.vercel.app/gitee/tag/wtto00/Aliyun-oss-storage 'latest tag')
   |watchers|[/gitee/watchers/wtto00/dt-read](https://badg.vercel.app/gitee/watchers/wtto00/dt-read)|![watchers](https://badg.vercel.app/gitee/watchers/wtto00/dt-read 'watchers')|
   |stars|[/gitee/stars/wtto00/dt-read](https://badg.vercel.app/gitee/stars/wtto00/dt-read)|![stars](https://badg.vercel.app/gitee/stars/wtto00/dt-read 'stars')|

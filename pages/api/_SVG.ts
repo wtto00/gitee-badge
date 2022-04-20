@@ -1,31 +1,36 @@
 import { load } from 'cheerio';
-import { NextApiRequest } from 'next';
 import { chars, Colors, Icons } from './_const';
 
 export default class SVG {
   // 类目
   subject: string;
+
   // 类目状态值
   status: string;
+
   // 状态值背景色
   color?: Colors;
+
   // 类目背景色
   labelColor?: Colors;
+
   // 类目前面的图标
   icon?: Icons;
+
   // 缩放大小
   scale?: number;
 
-  constructor(props: NextApiRequest['query']) {
-    const { subject, status, label, list, color, labelColor, icon, scale } =
-      props;
+  constructor(props: NextQuery) {
+    const {
+      subject, status, label, list, color, labelColor, icon, scale,
+    } = props;
     // subject可被label参数覆盖
     this.subject = (subject || '').toString();
     if (label !== undefined) {
       this.subject = label.toString();
     }
     // status中的,可被list参数替换
-    this.status = (status || '').toString();
+    this.status = (status ?? '').toString();
     if (typeof list === 'string' && list) {
       this.status = this.status.replace(/,/g, ` ${list} `);
     }
@@ -39,7 +44,7 @@ export default class SVG {
     // scale
     if (scale) {
       const scaleNum = Number(scale);
-      if (!isNaN(scaleNum)) {
+      if (!Number.isNaN(scaleNum)) {
         this.scale = scaleNum;
       }
     }
@@ -52,7 +57,8 @@ export default class SVG {
    */
   private getTextLength = (text: string) => {
     let width = 0;
-    for (const t of `${text}`) {
+    for (let i = 0; i < text.length; i += 1) {
+      const t = text[i];
       if (t >= '0' && t <= '9') {
         width += 70;
       } else if (t >= ' ' && t <= '~') {
@@ -77,9 +83,7 @@ export default class SVG {
       };
     }
     try {
-      const { default: iconRaw } = await import(
-        `assets/icons/${this.icon}.svg`
-      );
+      const { default: iconRaw } = await import(`assets/icons/${this.icon}.svg`);
       const $ = load(iconRaw);
       const svg = $('svg');
       svg.attr('x', '40');
@@ -90,7 +94,6 @@ export default class SVG {
         iconWidth: width + 30,
       };
     } catch (error) {
-      console.log('error:', error);
       return {
         icon: null,
         iconWidth: 0,
@@ -122,37 +125,23 @@ export default class SVG {
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <mask id="mask"><rect width="${
-  subjectLength + statusLength + 140 + textPosition
-}" height="200" rx="30" fill="#FFF"/></mask>
+  <mask id="mask"><rect width="${subjectLength + statusLength + 140 + textPosition}" height="200" rx="30" fill="#FFF"/></mask>
   <g mask="url(#mask)">
-    <rect width="${subjectLength + 40 + textPosition}" height="200" fill="${
-  this.labelColor || '#555'
+    <rect width="${subjectLength + 40 + textPosition}" height="200" fill="${this.labelColor || '#555'}"/>
+    <rect width="${statusLength + 100}" height="200" fill="${this.color || Colors.blue}" x="${
+  subjectLength + 40 + textPosition
 }"/>
-    <rect width="${statusLength + 100}" height="200" fill="${
-  this.color || Colors.blue
-}" x="${subjectLength + 40 + textPosition}"/>
-    <rect width="${
-  subjectLength + statusLength + 140 + textPosition
-}" height="200" fill="url(#badge)"/>
+    <rect width="${subjectLength + statusLength + 140 + textPosition}" height="200" fill="url(#badge)"/>
   </g>
-  <g fill="#fff" text-anchor="start" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
-    <text x="${textPosition}" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${
-  this.subject
-}</text>
-    <text x="${textPosition - 10}" y="138" textLength="${subjectLength}">${
-  this.subject
-}</text>
-    <text x="${
-  subjectLength + 95 + textPosition
-}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${
+  <g fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
+    <text x="${textPosition}" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${this.subject}</text>
+    <text x="${textPosition - 10}" y="138" textLength="${subjectLength}">${this.subject}</text>
+    <text x="${subjectLength + 95 + textPosition}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${
   this.status
 }</text>
-    <text x="${
-  subjectLength + 85 + textPosition
-}" y="138" textLength="${statusLength}">${this.status}</text>
+    <text x="${subjectLength + 85 + textPosition}" y="138" textLength="${statusLength}">${this.status}</text>
   </g>
-  ${icon}
+  ${icon || ''}
 </svg>`;
   }
 }
