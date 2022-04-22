@@ -15,5 +15,7 @@
     "project": ["./tsconfig.json"]
   },
   "extends": ["airbnb", "airbnb-typescript", "next/core-web-vitals"],
-  "rules": {}
+  "rules": {
+    "no-param-reassign": ["error", { "props": false }]
+  }
 }

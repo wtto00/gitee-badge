@@ -1,6 +1,7 @@
 import { load } from 'cheerio';
 import { chars, Colors, Icons } from './_const';
 
+const colorChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
 export default class SVG {
   // 类目
   subject: string;
@@ -9,10 +10,10 @@ export default class SVG {
   status: string;
 
   // 状态值背景色
-  color?: Colors;
+  color?: ColorsType;
 
   // 类目背景色
-  labelColor?: Colors;
+  labelColor?: ColorsType;
 
   // 类目前面的图标
   icon?: Icons;
@@ -35,9 +36,10 @@ export default class SVG {
       this.status = this.status.replace(/,/g, ` ${list} `);
     }
     // color
-    if (color) this.color = Colors[color.toString()];
+    if (color) this.color = this.getValidColor(color.toString());
+
     // labelColor
-    if (labelColor) this.labelColor = Colors[labelColor.toString()];
+    if (labelColor) this.labelColor = this.getValidColor(labelColor.toString());
     // icon
     if (icon) this.icon = Icons[icon.toString()];
 
@@ -49,6 +51,31 @@ export default class SVG {
       }
     }
   }
+
+  private getValidColor = (color:string) => {
+    if (!color) {
+      return undefined;
+    }
+    if (Colors[color]) {
+      return Colors[color];
+    }
+    if (color.length !== 3 && color.length !== 6) {
+      // 判断16进制颜色
+      return Colors.black;
+    }
+    let isColor = true;
+    for (let i = 0; i < color.length; i += 1) {
+      const c = color[i].toLocaleLowerCase();
+      if (!colorChars.includes(c)) {
+        isColor = false;
+        break;
+      }
+    }
+    if (!isColor) {
+      return Colors.black;
+    }
+    return `#${color}`;
+  };
 
   /**
    * 获取字符串的宽度

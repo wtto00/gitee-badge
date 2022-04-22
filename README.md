@@ -84,34 +84,38 @@ https://badg.vercel.app/gitee/:subject/:owner/:repo?icon&color
   如下表所列出所有的用法。地址前缀：`https://badg.vercel.app`  
   |说明|地址|效果|
   |---:|:---|:---|
-  |latest release|[/gitee/release/wtto00/dt-read](https://badg.vercel.app/gitee/release/wtto00/dt-read)|![latest release](https://badg.vercel.app/gitee/release/wtto00/dt-read 'latest release')|
-  |latest stable release|[/gitee/release/running-elephant/datart/stable](https://badg.vercel.app/gitee/release/running-elephant/datart/stable)|![latest stable release](https://badg.vercel.app/gitee/release/running-elephant/datart/stable 'latest stable release')|
-  |latest tag|[/gitee/tag/wtto00/Aliyun-oss-storage](https://badg.vercel.app/gitee/tag/wtto00/Aliyun-oss-storage)|![latest tag](https://badg.vercel.app/gitee/tag/wtto00/Aliyun-oss-storage 'latest tag')
-  |watchers|[/gitee/watchers/wtto00/dt-read](https://badg.vercel.app/gitee/watchers/wtto00/dt-read)|![watchers](https://badg.vercel.app/gitee/watchers/wtto00/dt-read 'watchers')|
-  |stars|[/gitee/stars/wtto00/dt-read](https://badg.vercel.app/gitee/stars/wtto00/dt-read)|![stars](https://badg.vercel.app/gitee/stars/wtto00/dt-read 'stars')|
-  |forks|[/gitee/forks/wtto00/dt-read](https://badg.vercel.app/gitee/forks/wtto00/dt-read)|![forks](https://badg.vercel.app/gitee/forks/wtto00/dt-read 'forks')|
-  |issues|[/gitee/issues/smallweigit/avue](https://badg.vercel.app/gitee/issues/smallweigit/avue)|![issues](https://badg.vercel.app/gitee/issues/smallweigit/avue 'issues')
-  |open issues|[/gitee/open-issues/smallweigit/avue](https://badg.vercel.app/gitee/open-issues/smallweigit/avue)|![open-issues](https://badg.vercel.app/gitee/open-issues/smallweigit/avue 'open-issues')|
-  |closed issues|[/gitee/closed-issues/smallweigit/avue](https://badg.vercel.app/gitee/closed-issues/smallweigit/avue)|![closed issues](https://badg.vercel.app/gitee/closed-issues/smallweigit/avue 'closed issues')|
-  |issues by label|[/gitee/label-issues/smallweigit/avue/bug](https://badg.vercel.app/gitee/label-issues/smallweigit/avue/bug)|![issues by label](https://badg.vercel.app/gitee/label-issues/smallweigit/avue/bug 'issues by label')|
-  |open issues by label|[/gitee/open-label-issues/smallweigit/avue/bug](https://badg.vercel.app/gitee/open-label-issues/smallweigit/avue/bug)|![open issues by label](https://badg.vercel.app/gitee/open-label-issues/smallweigit/avue/bug 'open issues by label')|
-  |closed issues by label|[/gitee/closed-label-issues/smallweigit/avue/bug](https://badg.vercel.app/gitee/closed-label-issues/smallweigit/avue/bug)|![closed issues by label](https://badg.vercel.app/gitee/closed-label-issues/smallweigit/avue/bug 'closed issues by label')|
+  |latest release|[/gitee/release/wtto00/badge-test](https://badg.vercel.app/gitee/release/wtto00/badge-test)|![latest release](https://badg.vercel.app/gitee/release/wtto00/badge-test 'latest release')|
+  |latest stable release|[/gitee/release/wtto00/badge-test/stable](https://badg.vercel.app/gitee/release/wtto00/badge-test/stable)|![latest stable release](https://badg.vercel.app/gitee/release/wtto00/badge-test/stable 'latest stable release')|
+  |latest tag|[/gitee/tag/wtto00/badge-test](https://badg.vercel.app/gitee/tag/wtto00/badge-test)|![latest tag](https://badg.vercel.app/gitee/tag/wtto00/badge-test 'latest tag')
+  |watchers|[/gitee/watchers/wtto00/badge-test](https://badg.vercel.app/gitee/watchers/wtto00/badge-test)|![watchers](https://badg.vercel.app/gitee/watchers/wtto00/badge-test 'watchers')|
+  |stars|[/gitee/stars/wtto00/badge-test](https://badg.vercel.app/gitee/stars/wtto00/badge-test)|![stars](https://badg.vercel.app/gitee/stars/wtto00/badge-test 'stars')|
+  |forks|[/gitee/forks/wtto00/badge-test](https://badg.vercel.app/gitee/forks/wtto00/badge-test)|![forks](https://badg.vercel.app/gitee/forks/wtto00/badge-test 'forks')|
+  |issues|[/gitee/issues/wtto00/badge-test](https://badg.vercel.app/gitee/issues/wtto00/badge-test)|![issues](https://badg.vercel.app/gitee/issues/wtto00/badge-test 'issues')
+  |open issues|[/gitee/open-issues/wtto00/badge-test](https://badg.vercel.app/gitee/open-issues/wtto00/badge-test)|![open issues](https://badg.vercel.app/gitee/open-issues/wtto00/badge-test 'open issues')|
+  |progressing issues|[/gitee/progressing-issues/wtto00/badge-test](https://badg.vercel.app/gitee/progressing-issues/wtto00/badge-test)|![progressing issues](https://badg.vercel.app/gitee/progressing-issues/wtto00/badge-test 'progressing issues')|
+  |closed issues|[/gitee/closed-issues/wtto00/badge-test](https://badg.vercel.app/gitee/closed-issues/wtto00/badge-test)|![closed issues](https://badg.vercel.app/gitee/closed-issues/wtto00/badge-test 'closed issues')|
+  |rejected issues|[/gitee/rejected-issues/wtto00/badge-test](https://badg.vercel.app/gitee/rejected-issues/wtto00/badge-test)|![rejected issues](https://badg.vercel.app/gitee/rejected-issues/wtto00/badge-test 'rejected issues')|
+  |issues by label|[/gitee/label-issues/wtto00/badge-test/bug](https://badg.vercel.app/gitee/label-issues/wtto00/badge-test/bug)|![issues by label](https://badg.vercel.app/gitee/label-issues/wtto00/badge-test/bug 'issues by label')|
+  |open issues by label|[/gitee/open-label-issues/wtto00/badge-test/question](https://badg.vercel.app/gitee/open-label-issues/wtto00/badge-test/question)|![open issues by label](https://badg.vercel.app/gitee/open-label-issues/wtto00/badge-test/question 'open issues by label')|
+  |progressing issues by label|[/gitee/progressing-label-issues/wtto00/badge-test/bug](https://badg.vercel.app/gitee/progressing-label-issues/wtto00/badge-test/bug)|![progressing issues  by label](https://badg.vercel.app/gitee/progressing-label-issues/wtto00/badge-test/bug 'progressing issues by label')|
+  |closed issues by label|[/gitee/closed-label-issues/wtto00/badge-test/bug](https://badg.vercel.app/gitee/closed-label-issues/wtto00/badge-test/bug)|![closed issues by label](https://badg.vercel.app/gitee/closed-label-issues/wtto00/badge-test/bug 'closed issues by label')|
+  |rejected issues by label|[/gitee/rejected-label-issues/wtto00/badge-test/bug](https://badg.vercel.app/gitee/rejected-label-issues/wtto00/badge-test/bug)|![rejected issues by label](https://badg.vercel.app/gitee/rejected-label-issues/wtto00/badge-test/bug 'rejected issues by label')|
   |PRs|[/gitee/prs/sentsin/layui](https://badg.vercel.app/gitee/prs/sentsin/layui)|![PRs](https://badg.vercel.app/gitee/prs/sentsin/layui 'PRs')|
   |open PRs|[/gitee/open-prs/sentsin/layui](https://badg.vercel.app/gitee/open-prs/sentsin/layui)|![open PRs](https://badg.vercel.app/gitee/open-prs/sentsin/layui 'open PRs')|
   |closed PRs|[/gitee/closed-prs/sentsin/layui](https://badg.vercel.app/gitee/closed-prs/sentsin/layui)|![closed PRs](https://badg.vercel.app/gitee/closed-prs/sentsin/layui 'closed PRs')|
   |merged PRs|[/gitee/merged-prs/sentsin/layui](https://badg.vercel.app/gitee/merged-prs/sentsin/layui)|![merged PRs](https://badg.vercel.app/gitee/merged-prs/sentsin/layui 'merged PRs')|
-  |milestone percentage|[/gitee/milestones/smallweigit/avue/v2.5.1](https://badg.vercel.app/gitee/milestones/smallweigit/avue/v2.5.1)|![milestone percentage](https://badg.vercel.app/gitee/milestones/smallweigit/avue/v2.5.1 'milestone percentage')|
-  |commits count|[/gitee/commits/smallweigit/avue](https://badg.vercel.app/gitee/commits/smallweigit/avue)|![commits count](https://badg.vercel.app/gitee/commits/smallweigit/avue 'commits count')|
-  |commits count (branch ref)|[/gitee/commits/smallweigit/avue/dev](https://badg.vercel.app/gitee/commits/smallweigit/avue/dev)|![commits count (branch ref)](https://badg.vercel.app/gitee/commits/smallweigit/avue/dev 'commits count (branch ref)')|
-  |commits count (tag ref)|[/gitee/commits/smallweigit/avue/v2.4.1](https://badg.vercel.app/gitee/commits/smallweigit/avue/v2.4.1)|![commits count (tag ref)](https://badg.vercel.app/gitee/commits/smallweigit/avue/v2.4.1 'commits count (tag ref)')|
-  |last commit|[/gitee/last-commit/wtto00/dt-read](https://badg.vercel.app/gitee/last-commit/wtto00/dt-read)|![last commit](https://badg.vercel.app/gitee/last-commit/wtto00/dt-read 'last commit')|
-  |last commit (branch ref)|[/gitee/last-commit-branch/smallweigit/avue/dev](https://badg.vercel.app/gitee/last-commit-branch/smallweigit/avue/dev)|![last commit (branch ref)](https://badg.vercel.app/gitee/last-commit-branch/smallweigit/avue/dev 'last commit (branch ref)')|
-  |last commit (tag ref)|[/gitee/last-commit-tag/smallweigit/avue/v2.4.1](https://badg.vercel.app/gitee/last-commit-tag/smallweigit/avue/v2.4.1)|![last commit (tag ref)](https://badg.vercel.app/gitee/last-commit-tag/smallweigit/avue/v2.4.1 'last commit (tag ref)')|
-  |branches|[/gitee/branches/wtto00/dt-read](https://badg.vercel.app/gitee/branches/wtto00/dt-read)|![branches](https://badg.vercel.app/gitee/branches/wtto00/dt-read 'branches')|
-  |releases|[/gitee/releases/wtto00/dt-read](https://badg.vercel.app/gitee/releases/wtto00/dt-read)|![releases](https://badg.vercel.app/gitee/releases/wtto00/dt-read 'releases')|
-  |tags|[/gitee/tags/wtto00/dt-read](https://badg.vercel.app/gitee/tags/wtto00/dt-read)|![tags](https://badg.vercel.app/gitee/tags/wtto00/dt-read 'tags')|
-  |license|[/gitee/license/wtto00/dt-read](https://badg.vercel.app/gitee/license/wtto00/dt-read)|![license](https://badg.vercel.app/gitee/license/wtto00/dt-read 'license')|
-  |contributors|[/gitee/contributors/smallweigit/avue](https://badg.vercel.app/gitee/contributors/smallweigit/avue)|![contributors](https://badg.vercel.app/gitee/contributors/smallweigit/avue 'contributors')|
+  |milestone percentage|[/gitee/milestones/wtto00/badge-test/163329](https://badg.vercel.app/gitee/milestones/wtto00/badge-test/163329)|![milestone percentage](https://badg.vercel.app/gitee/milestones/wtto00/badge-test/163329 'milestone percentage')|
+  |commits count|[/gitee/commits/wtto00/badge-test](https://badg.vercel.app/gitee/commits/wtto00/badge-test)|![commits count](https://badg.vercel.app/gitee/commits/wtto00/badge-test 'commits count')|
+  |commits count (branch ref)|[/gitee/commits/wtto00/badge-test/dev](https://badg.vercel.app/gitee/commits/wtto00/badge-test/dev)|![commits count (branch ref)](https://badg.vercel.app/gitee/commits/wtto00/badge-test/dev 'commits count (branch ref)')|
+  |commits count (tag ref)|[/gitee/commits/wtto00/badge-test/v2.4.1](https://badg.vercel.app/gitee/commits/wtto00/badge-test/v2.4.1)|![commits count (tag ref)](https://badg.vercel.app/gitee/commits/wtto00/badge-test/v2.4.1 'commits count (tag ref)')|
+  |last commit|[/gitee/last-commit/wtto00/badge-test](https://badg.vercel.app/gitee/last-commit/wtto00/badge-test)|![last commit](https://badg.vercel.app/gitee/last-commit/wtto00/badge-test 'last commit')|
+  |last commit (branch ref)|[/gitee/last-commit-branch/wtto00/badge-test/dev](https://badg.vercel.app/gitee/last-commit-branch/wtto00/badge-test/dev)|![last commit (branch ref)](https://badg.vercel.app/gitee/last-commit-branch/wtto00/badge-test/dev 'last commit (branch ref)')|
+  |last commit (tag ref)|[/gitee/last-commit-tag/wtto00/badge-test/v2.4.1](https://badg.vercel.app/gitee/last-commit-tag/wtto00/badge-test/v2.4.1)|![last commit (tag ref)](https://badg.vercel.app/gitee/last-commit-tag/wtto00/badge-test/v2.4.1 'last commit (tag ref)')|
+  |branches|[/gitee/branches/wtto00/badge-test](https://badg.vercel.app/gitee/branches/wtto00/badge-test)|![branches](https://badg.vercel.app/gitee/branches/wtto00/badge-test 'branches')|
+  |releases|[/gitee/releases/wtto00/badge-test](https://badg.vercel.app/gitee/releases/wtto00/badge-test)|![releases](https://badg.vercel.app/gitee/releases/wtto00/badge-test 'releases')|
+  |tags|[/gitee/tags/wtto00/badge-test](https://badg.vercel.app/gitee/tags/wtto00/badge-test)|![tags](https://badg.vercel.app/gitee/tags/wtto00/badge-test 'tags')|
+  |license|[/gitee/license/wtto00/badge-test](https://badg.vercel.app/gitee/license/wtto00/badge-test)|![license](https://badg.vercel.app/gitee/license/wtto00/badge-test 'license')|
+  |contributors|[/gitee/contributors/wtto00/badge-test](https://badg.vercel.app/gitee/contributors/wtto00/badge-test)|![contributors](https://badg.vercel.app/gitee/contributors/wtto00/badge-test 'contributors')|
 
 # 问题
 

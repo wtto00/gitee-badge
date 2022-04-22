@@ -12,6 +12,7 @@ specifiers:
   eslint-config-airbnb: ^19.0.4
   eslint-config-airbnb-typescript: ^17.0.0
   eslint-config-next: ^12.1.5
+  friendly-numbers: ^1.0.1
   husky: ^7.0.4
   lint-staged: ^12.3.7
   marked: ^4.0.12
@@ -25,6 +26,7 @@ specifiers:
 
 dependencies:
   cheerio: 1.0.0-rc.10
+  friendly-numbers: 1.0.1
   marked: 4.0.12
   next: 12.0.7_770cdee6eac9f5b17619eec686780a53
   raw-loader: 4.0.2
@@ -1840,6 +1842,10 @@ packages:
 
   /foreach/2.0.5:
     resolution: {integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=}
+    dev: false
+
+  /friendly-numbers/1.0.1:
+    resolution: {integrity: sha512-rH/caoqc3Cp4AdLiPjDiXkOSuk6K12tuOgbvj9P8fN40egGAHVM9eFV+a0vzgBG8e4EAj9mxtCX2ZqlBJygMiQ==}
     dev: false
 
   /fs.realpath/1.0.0:

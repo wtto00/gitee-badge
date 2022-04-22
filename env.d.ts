@@ -1,12 +1,18 @@
 declare module 'README.md' {
   export default string;
 }
+declare module 'friendly-numbers' {
+  export const format: (
+    num:number,
+    config?:{ decimals:number=2;formattedDecimals:number=0;smallMinimumMeaningfulDigits:number=0 }
+  ) => string;
+}
 
 type NextQuery = NextApiRequest['query'];
 
-type Colors = 'blue' | 'cyan' | 'green' | 'yellow' | 'orange' | 'red' | 'pink' | 'purple' | 'grey' | 'black';
+type ColorsType = 'blue' | 'cyan' | 'green' | 'yellow' | 'orange' | 'red' | 'pink' | 'purple' | 'grey' | 'black' | string;
 
-type Icons =
+type IconsType =
   | 'airbnb'
   | 'alipay'
   | 'aliwangwang'
@@ -21,9 +27,10 @@ type Icons =
   | 'badg'
   | 'behance'
   | 'bitcoin'
+  | 'bitcoin-lightning'
   | 'chrome'
   | 'circleci'
-  | 'code'
+  | 'code-sandbox'
   | 'codebeat'
   | 'codeclimate'
   | 'codecov'
@@ -48,6 +55,7 @@ type Icons =
   | 'gitlab'
   | 'gitter'
   | 'google'
+  | 'google-plus'
   | 'googleplay'
   | 'graphql'
   | 'haskell'
@@ -87,10 +95,10 @@ type Icons =
   | 'zhihu';
 
 interface BaseRequestQuery {
-  color?: Colors;
+  color?: ColorsType;
   icon?: Icons;
   list?: string;
   label?: string;
-  labelColor?: Colors;
+  labelColor?: ColorsType;
   scale?: string;
 }

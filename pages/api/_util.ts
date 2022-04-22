@@ -1,5 +1,9 @@
 import { crawl, CrawlRules } from './_crawl';
 
+export function sumStr(sum:number, item:string):number {
+  return sum + (Number(item) || 0);
+}
+
 interface SVGDataType extends BaseRequestQuery {
   subject: string;
   status: string | number;
@@ -17,7 +21,7 @@ interface ApiConfigType {
   subject?: string;
   type: 'api';
   uri: (params: NextQuery) => string;
-  handleResult: (res: { [key: string]: unknown }) => { status: unknown, color?:Colors };
+  handleResult: (res: { [key: string]: unknown }) => { status: unknown, color?:ColorsType };
 }
 interface HtmlConfigType {
   subject?: string;
