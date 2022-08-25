@@ -2,10 +2,10 @@
 module.exports = {
   swcMinify: true,
   reactStrictMode: true,
-  webpack: (config, options) => {
+  webpack: (config, _options) => {
     config.module.rules.push({
       test: /(\.svg|\.md)$/,
-      use: ["raw-loader"],
+      use: ['raw-loader'],
     });
 
     return config;

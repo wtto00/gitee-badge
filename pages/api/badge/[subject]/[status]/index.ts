@@ -1,14 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import SVG from 'pages/api/_SVG';
+import { getSvgData } from 'pages/api/_svg';
+import { getQueryParams } from 'pages/api/_util';
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const svg = new SVG(req.query);
-  const svgCode = await svg.generate();
+  const params = getQueryParams(req);
+
+  const svgData = await getSvgData(params);
 
   res.statusCode = 200;
   res.setHeader('Content-Type', 'image/svg+xml');
-  res.send(svgCode);
+  res.send(svgData);
 }
