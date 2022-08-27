@@ -32,10 +32,7 @@ export function getQueryParams(req: NextApiRequest): Record<string, string> {
  * @param keys 字符串变量
  * @returns
  */
-export function template(
-  strings: TemplateStringsArray,
-  ...keys: (string | number)[]
-) {
+export function template(strings: TemplateStringsArray, ...keys: (string | number)[]) {
   return function (...values: string[]) {
     const dict = values[values.length - 1] || {};
     const result = [strings[0]];

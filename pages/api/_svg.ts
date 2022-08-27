@@ -25,9 +25,7 @@ function getTextLength(text: string) {
  * @param icon 图标
  * @returns
  */
-async function getIcon(
-  icon?: string
-): Promise<{ svg: string | null; iconWidth: number }> {
+async function getIcon(icon?: string): Promise<{ svg: string | null; iconWidth: number }> {
   if (!icon) return { svg: null, iconWidth: 0 };
 
   try {
@@ -83,27 +81,17 @@ export async function getSvgData(params: Record<string, string>) {
   subjectLength + statusLength + 140 + textPosition
 }" height="200" rx="30" fill="#FFF"/></mask>
 <g mask="url(#mask)">
-  <rect width="${
-  subjectLength + 40 + textPosition
-}" height="200" fill="${subjectColor}"/>
-  <rect width="${statusLength + 100}" height="200" fill="${statusColor}" x="${
-  subjectLength + 40 + textPosition
-}"/>
-  <rect width="${
-  subjectLength + statusLength + 140 + textPosition
-}" height="200" fill="url(#badge)"/>
+  <rect width="${subjectLength + 40 + textPosition}" height="200" fill="${subjectColor}"/>
+  <rect width="${statusLength + 100}" height="200" fill="${statusColor}" x="${subjectLength + 40 + textPosition}"/>
+  <rect width="${subjectLength + statusLength + 140 + textPosition}" height="200" fill="url(#badge)"/>
 </g>
 <g fill="#fff" text-anchor="start" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
   <text x="${textPosition}" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${subject}</text>
-  <text x="${
-  textPosition - 10
-}" y="138" textLength="${subjectLength}">${subject}</text>
+  <text x="${textPosition - 10}" y="138" textLength="${subjectLength}">${subject}</text>
   <text x="${
   subjectLength + 95 + textPosition
 }" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${status}</text>
-  <text x="${
-  subjectLength + 85 + textPosition
-}" y="138" textLength="${statusLength}">${status}</text>
+  <text x="${subjectLength + 85 + textPosition}" y="138" textLength="${statusLength}">${status}</text>
 </g>
 ${svg}
 </svg>`;

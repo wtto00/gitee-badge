@@ -6,8 +6,9 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\"",
-    "format": "prettier --write .",
-    "lint": "next lint"
+    "format": "prettier --write --ignore-unknown .",
+    "lint": "next lint",
+    "eslint": "eslint --color --fix ."
   },
   "dependencies": {
     "@wtto00/spider-crawler": "0.0.1-beta.5",
@@ -23,11 +24,11 @@
     "@types/node": "18.7.13",
     "@types/qs": "^6.9.7",
     "@types/react": "18.0.17",
-    "@typescript-eslint/eslint-plugin": "^5.34.0",
-    "@typescript-eslint/parser": "^5.34.0",
-    "eslint": "8.22.0",
+    "@typescript-eslint/eslint-plugin": "^5.35.1",
+    "@typescript-eslint/parser": "^5.35.1",
+    "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react": "^7.31.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
@@ -35,14 +36,11 @@
     "typescript": "4.7.4"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --write",
-      "eslint --color --fix",
-      "git add"
+    "*": [
+      "prettier --write --ignore-unknown"
     ],
-    "*.{css,scss}": [
-      "prettier --write",
-      "git add"
+    "*.{ts,tsx}": [
+      "eslint --color --fix"
     ]
   }
 }

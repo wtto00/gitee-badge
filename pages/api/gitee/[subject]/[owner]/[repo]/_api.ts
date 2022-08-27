@@ -35,13 +35,10 @@ interface ApiParams {
   owner: string;
   repo: string;
 }
-export async function getApiData(
-  params: ApiParams
-): Promise<{ subject: string; status: string; color?: Colors }> {
+export async function getApiData(params: ApiParams): Promise<{ subject: string; status: string; color?: Colors }> {
   const { subject, owner, repo } = params;
 
-  if (!(subject in apis))
-    return { subject: 'badge', status: '404', color: 'orange' };
+  if (!(subject in apis)) return { subject: 'badge', status: '404', color: 'orange' };
 
   const apiRule = apis[subject];
   const options: CrawlerOptions = {
@@ -50,8 +47,7 @@ export async function getApiData(
   };
   const res = await crawl(options);
 
-  if (res.code !== ResultCodes.SUCCESS)
-    return { subject: 'gitee', status: '404', color: 'grey' };
+  if (res.code !== ResultCodes.SUCCESS) return { subject: 'gitee', status: '404', color: 'grey' };
 
   return { subject: apiRule.subject(), status: res.data['status'] };
 }

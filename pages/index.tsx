@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from 'styles/Home.module.scss';
 import { marked } from 'marked';
-import README from 'README.md';
 
 const renderer = new marked.Renderer();
 const linkRenderer = renderer.link;
@@ -13,10 +12,9 @@ renderer.link = function rendererLink(href, title, text) {
 };
 marked.use({ renderer });
 
-const mdText = process.env.NODE_ENV === 'development' ? README.replace(/https:\/\/badg\.vercel\.app/g, '/api') : README;
-const html = marked.parse(mdText);
+function Home({ content }: { content: string }) {
+  const html = marked.parse(content);
 
-function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -42,6 +40,21 @@ function Home() {
       </footer>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch('https://raw.githubusercontent.com/wtto00/badge/master/README.md');
+
+  let content = await res.text();
+  if (process.env.NODE_ENV === 'development') {
+    content = content.replace(/https:\/\/badg\.now\.sh/g, 'http://localhost:3000/api');
+  }
+
+  return {
+    props: {
+      content,
+    },
+  };
 }
 
 export default Home;
