@@ -8,7 +8,7 @@
     "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\"",
     "format": "prettier --write --ignore-unknown .",
     "lint": "next lint",
-    "eslint": "eslint --color --fix ."
+    "eslint": "eslint --color --fix ./**/*.{ts,tsx,js}"
   },
   "dependencies": {
     "@wtto00/spider-crawler": "0.0.1-beta.5",

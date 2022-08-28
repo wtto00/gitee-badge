@@ -43,11 +43,13 @@ function Home({ content }: { content: string }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('https://raw.githubusercontent.com/wtto00/badge/master/README.md');
-
-  let content = await res.text();
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  let { default: content } = await import('../README.md');
   if (process.env.NODE_ENV === 'development') {
-    content = content.replace(/https:\/\/badg\.now\.sh/g, 'http://localhost:3000/api');
+    content = content.replace(/https:\/\/badg\.vercel\.app/g, '/api');
+  } else {
+    content = content.replace(/https:\/\/badg\.vercel\.app/g, '');
   }
 
   return {
