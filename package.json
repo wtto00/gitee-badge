@@ -11,7 +11,7 @@
     "eslint": "eslint --color --fix ./**/*.{ts,tsx,js}"
   },
   "dependencies": {
-    "@wtto00/spider-crawler": "0.0.1-beta.5",
+    "@wtto00/spider-crawler": "0.1.1-beta",
     "cheerio": "1.0.0-rc.12",
     "marked": "^4.0.19",
     "next": "12.2.5",

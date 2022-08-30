@@ -7,7 +7,7 @@ specifiers:
   '@types/react': 18.0.17
   '@typescript-eslint/eslint-plugin': ^5.35.1
   '@typescript-eslint/parser': ^5.35.1
-  '@wtto00/spider-crawler': 0.0.1-beta.5
+  '@wtto00/spider-crawler': 0.1.1-beta
   cheerio: 1.0.0-rc.12
   eslint: 8.23.0
   eslint-config-next: 12.2.5
@@ -24,7 +24,7 @@ specifiers:
   typescript: 4.7.4
 
 dependencies:
-  '@wtto00/spider-crawler': 0.0.1-beta.5
+  '@wtto00/spider-crawler': 0.1.1-beta
   cheerio: 1.0.0-rc.12
   marked: 4.0.19
   next: 12.2.5_drkpjgevzdykik2puzxtfkrafi
@@ -467,9 +467,9 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@wtto00/spider-crawler/0.0.1-beta.5:
+  /@wtto00/spider-crawler/0.1.1-beta:
     resolution:
-      { integrity: sha512-RA1xmdCr+809FUO8MjzkHtKE9XM1RQ0pHfIWjj4TAjqGuUCgHffSSL8cDipBgy7n1Qd+lnE0kPldxNyyolvuJw== }
+      { integrity: sha512-/SSg5pExbPh75i5WvaJuKMwbq9JDH1Z6mFtC9Qa7MdN9EXQ68+4fc6kyVkqCgJBAT+zWHHaQfkII0546Ghr4zA== }
     dependencies:
       cheerio: 1.0.0-rc.12
       node-fetch: 3.2.10
