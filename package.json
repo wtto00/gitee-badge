@@ -22,7 +22,6 @@
   "devDependencies": {
     "@types/marked": "^4.0.6",
     "@types/node": "18.7.13",
-    "@types/qs": "^6.9.7",
     "@types/react": "18.0.17",
     "@types/showdown": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.35.1",

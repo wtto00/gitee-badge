@@ -1,11 +1,11 @@
 import { NextApiRequest } from 'next';
-import { parse } from 'qs';
 
 /**
  * 转换对象的值为string类型
  * @param params 对象
  * @returns
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function transformString(params: Record<string, any>) {
   const res: Record<string, string> = {};
   for (const key in params) {
@@ -22,8 +22,13 @@ function transformString(params: Record<string, any>) {
  */
 export function getQueryParams(req: NextApiRequest): Record<string, string> {
   const params = req.query;
-  const query = parse(req.url?.split('?')[1] || '');
-  return { ...transformString(params), ...transformString(query) };
+
+  const search = new URLSearchParams(req.url?.split('?')[1] || '');
+  const query = {};
+  search.forEach((value, key) => {
+    if (value) query[key] = value;
+  });
+  return { ...transformString(params), ...query };
 }
 
 /**

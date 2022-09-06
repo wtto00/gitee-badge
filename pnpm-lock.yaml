@@ -3,7 +3,6 @@ lockfileVersion: 5.4
 specifiers:
   '@types/marked': ^4.0.6
   '@types/node': 18.7.13
-  '@types/qs': ^6.9.7
   '@types/react': 18.0.17
   '@types/showdown': ^2.0.0
   '@typescript-eslint/eslint-plugin': ^5.35.1
@@ -37,7 +36,6 @@ dependencies:
 devDependencies:
   '@types/marked': 4.0.6
   '@types/node': 18.7.13
-  '@types/qs': 6.9.7
   '@types/react': 18.0.17
   '@types/showdown': 2.0.0
   '@typescript-eslint/eslint-plugin': 5.35.1_t3qvqq7ugt4jqnoquow4ze3psy
@@ -316,11 +314,6 @@ packages:
   /@types/prop-types/15.7.5:
     resolution:
       { integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w== }
-    dev: true
-
-  /@types/qs/6.9.7:
-    resolution:
-      { integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw== }
     dev: true
 
   /@types/react/18.0.17:
