@@ -54,6 +54,26 @@ const apis: Record<string, ApiOptions> = {
       },
     },
   },
+  tag: {
+    url: template`/${0}/${1}/tags`,
+    subject: template`latest tag`,
+    rules: {
+      status: {
+        selector: '#taggeds-index .tag-list .tag-item .tag-name',
+        handlers: [{ method: 'eq', args: [0] }, { method: 'text' }, { method: 'trim' }],
+      },
+    },
+  },
+  watchers: {
+    url: template`/${0}/${1}/watchers`,
+    subject: template`watchers`,
+    rules: {
+      status: {
+        selector: '.git-project-header-actions .watch-container .action-social-count',
+        handlers: [{ method: 'text' }, { method: 'trim' }],
+      },
+    },
+  },
 };
 
 interface ApiParams {
