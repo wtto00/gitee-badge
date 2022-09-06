@@ -5,11 +5,11 @@ import { getApiData } from './_api';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const params = getQueryParams(req);
-  const { subject, owner, repo, param, _status, ...rest } = params;
+  const { subject, owner, repo, param, ...rest } = params;
 
   const svgQuery = await getApiData({ subject, owner, repo, param });
-  console.log(params, svgQuery, rest);
 
+  delete rest.status;
   const svgData = await getSvgData({ ...svgQuery, ...rest });
 
   res.statusCode = 200;

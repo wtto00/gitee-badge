@@ -1,6 +1,6 @@
 {
   "name": "badge-next",
-  "private": true,
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,19 +13,21 @@
   "dependencies": {
     "@wtto00/spider-crawler": "0.1.1-beta",
     "cheerio": "1.0.0-rc.12",
-    "marked": "^4.0.19",
     "next": "12.2.5",
     "raw-loader": "^4.0.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "showdown": "^2.1.0"
   },
   "devDependencies": {
     "@types/marked": "^4.0.6",
     "@types/node": "18.7.13",
     "@types/qs": "^6.9.7",
     "@types/react": "18.0.17",
+    "@types/showdown": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
+    "classnames": "^2.3.1",
     "eslint": "8.23.0",
     "eslint-config-next": "12.2.5",
     "eslint-plugin-react": "^7.31.1",

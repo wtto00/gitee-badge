@@ -77,7 +77,6 @@ export async function getApiData(params: ApiParams): Promise<{ subject: string; 
     dataType: 'dataType' in apiRule ? apiRule.dataType : 'html',
     rules: apiRule.rules,
   };
-  console.log(options);
 
   const res = await crawlFromUrl(options);
 

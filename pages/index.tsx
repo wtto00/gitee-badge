@@ -1,30 +1,28 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from 'styles/Home.module.scss';
-import { marked } from 'marked';
+import { Converter } from 'showdown';
+import classNames from 'classnames';
 
-const renderer = new marked.Renderer();
-const linkRenderer = renderer.link;
-
-renderer.link = function rendererLink(href, title, text) {
-  const html = linkRenderer.call(this, href, title, text);
-  return html.replace(/^<a /, '<a target="_blank" rel="nofollow" ');
-};
-marked.use({ renderer });
+const converter = new Converter({
+  openLinksInNewWindow: true,
+});
+converter.setFlavor('github');
 
 function Home({ content }: { content: string }) {
-  const html = marked.parse(content);
+  const html = converter.makeHtml(content);
 
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, 'markdown-body')}>
       <Head>
         <title>Badge</title>
         <meta name="description" content="徽章生成服务" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="https://wtto00.github.io/cdn/lib/github-markdown-css/github-markdown.min.css" />
       </Head>
 
       {/* eslint-disable-next-line react/no-danger */}
-      <main className={styles.markdown} dangerouslySetInnerHTML={{ __html: html }} />
+      <main className={styles.content} dangerouslySetInnerHTML={{ __html: html }} />
 
       <footer className={styles.footer}>
         <a
