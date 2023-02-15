@@ -5,7 +5,8 @@ import { NextApiRequest } from 'next';
  * @param params 对象
  * @returns
  */
-function transformString(params: Record<string, unknown>) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function transformString(params: Record<string, any>) {
   const res: Record<string, string> = {};
   for (const key in params) {
     res[key] = (params[key] || '').toString();
