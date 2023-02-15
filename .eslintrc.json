@@ -21,9 +21,11 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "no-console": ["warn", { "allow": ["error"] }],
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
   }
 }

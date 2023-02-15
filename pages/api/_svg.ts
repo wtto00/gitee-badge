@@ -30,6 +30,7 @@ async function getIcon(icon?: string): Promise<{ svg: string | null; iconWidth: 
 
   try {
     const { default: iconRaw } = await import(`assets/icons/${icon}.svg`);
+
     const $ = load(iconRaw);
     const svg = $('svg');
     svg.attr('x', '40');
@@ -37,7 +38,7 @@ async function getIcon(icon?: string): Promise<{ svg: string | null; iconWidth: 
     const width = Number(svg.attr('width')) || 0;
     return { svg: svg.parent().html(), iconWidth: width + 30 };
   } catch (error) {
-    console.log('error:', error);
+    console.error(error);
     return { svg: null, iconWidth: 0 };
   }
 }
@@ -61,6 +62,7 @@ export async function getSvgData(params: Record<string, string>) {
 
   const subjectLength = getTextLength(subject);
   const statusLength = getTextLength(status);
+
   const { svg, iconWidth } = await getIcon(icon);
   const textPosition = subjectLength === 0 ? 12 + iconWidth : 60 + iconWidth;
   let width = (subjectLength + statusLength + 140 + textPosition) / 10;
