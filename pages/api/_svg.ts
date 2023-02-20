@@ -1,5 +1,6 @@
 import { load } from 'cheerio';
 import { chars, colors, icons } from './_const';
+import { CheckIsColor } from './_util';
 
 /**
  * 计算字符串的宽度
@@ -44,6 +45,18 @@ async function getIcon(icon?: string): Promise<{ svg: string | null; iconWidth: 
 }
 
 /**
+ * 获取渲染的颜色
+ * @param color 颜色字符串
+ * @returns
+ */
+function getColor(color: string) {
+  if (!color) return colors.blue;
+  if (color in colors) return colors[color];
+  if (CheckIsColor(color)) return color;
+  return colors.blue;
+}
+
+/**
  * 根据参数数据 生成svg
  * @param params 获取到的参数数据
  * @returns
@@ -56,7 +69,7 @@ export async function getSvgData(params: Record<string, string>) {
   if (label !== undefined) subject = label;
   if (list) status = status.replace(/,/g, ` ${list} `);
   if (icon && !(icon in icons)) icon = '';
-  const statusColor = color in colors ? colors[color] : colors.blue;
+  const statusColor = getColor(color);
   const subjectColor = labelColor in colors ? colors[labelColor] : '#555';
   const scaleNum = Number(scale) || 1;
 

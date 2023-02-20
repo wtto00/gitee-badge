@@ -2,34 +2,31 @@
  * 根据参数获取结果
  */
 import { template } from 'pages/api/_util';
-import {
-  crawlFromUrl,
-  CrawlerUrlOptions,
-  CrawlDataType,
-  CrawlerUrlNoDataTypeOptions,
-  CrawlerOptionsType,
-  ResultCodes,
-} from '@wtto00/spider-crawler';
+import { crawlFromUrl, CrawlerUrlOptions, ResultCodes } from '@wtto00/spider-crawler';
+import { fromNow } from 'pages/api/_dayjs';
 
 const baseUrl = 'https://gitee.com';
 
 type TemplateString = (...values: string[]) => string;
 
-type CrawlerOptionsTypeNew<T extends CrawlDataType> = Omit<CrawlerOptionsType<T>, 'url'>;
-type CrawlerUrlNoDataTypeOptionsNew = Omit<CrawlerUrlNoDataTypeOptions, 'url'>;
-type AllCrawlerOptionsType = {
-  [K in CrawlDataType | 'undefined']: K extends CrawlDataType
-    ? CrawlerOptionsTypeNew<K>
-    : CrawlerUrlNoDataTypeOptionsNew;
-};
-type ApiOptions = AllCrawlerOptionsType[CrawlDataType | 'undefined'] & {
+type CrawlerUrlNoDataTypeOptionsNew = Omit<CrawlerUrlOptions, 'url'>;
+type ApiOptions = CrawlerUrlNoDataTypeOptionsNew & {
   url: TemplateString;
   subject: TemplateString;
+  color?: string;
+  handleResult?: (result: ApiResult) => ApiResult;
 };
 
+/**
+ * gitee爬虫规则
+ * 参数：
+ * 0：owner,
+ * 1：repo
+ * 2：param
+ */
 const apis: Record<string, ApiOptions> = {
   release: {
-    url: template`/${0}/${1}/releases`,
+    url: (owner, repo, param) => `/${owner}/${repo}/releases${param === 'stable' ? '/latest' : ''}`,
     subject: template`release`,
     rules: {
       status: {
@@ -40,17 +37,6 @@ const apis: Record<string, ApiOptions> = {
           { method: 'text' },
           { method: 'trim' },
         ],
-      },
-    },
-  },
-  release_stable: {
-    url: template`/${0}/${1}/releases/latest`,
-    subject: template`release`,
-    dataType: 'json',
-    rules: {
-      status: {
-        selector: 'release.release.title',
-        handlers: [{ method: 'trim' }],
       },
     },
   },
@@ -74,6 +60,273 @@ const apis: Record<string, ApiOptions> = {
       },
     },
   },
+  stars: {
+    url: template`/${0}/${1}/stargazers`,
+    subject: template`stars`,
+    rules: {
+      status: {
+        selector: '.git-project-header-actions .star-container .action-social-count',
+        handlers: [{ method: 'text' }, { method: 'trim' }],
+      },
+    },
+  },
+  forks: {
+    url: template`/${0}/${1}/members`,
+    subject: template`forks`,
+    rules: {
+      status: {
+        selector: '.git-project-header-actions .fork-container .action-social-count',
+        handlers: [{ method: 'text' }, { method: 'trim' }],
+      },
+    },
+  },
+  issues: {
+    url: template`/${0}/${1}/issues`,
+    subject: template`issues`,
+    rules: {
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'each', args: [[{ method: 'text' }, { method: 'number' }]] }, { method: 'sum' }],
+      },
+    },
+  },
+  'open-issues': {
+    url: template`/${0}/${1}/issues`,
+    subject: template`open issues`,
+    color: '#8c92a4',
+    rules: {
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'eq', args: [0] }, { method: 'text' }],
+      },
+    },
+  },
+  'progressing-issues': {
+    url: template`/${0}/${1}/issues`,
+    subject: template`progressing issues`,
+    color: '#529DF8',
+    rules: {
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'eq', args: [1] }, { method: 'text' }],
+      },
+    },
+  },
+  'closed-issues': {
+    url: template`/${0}/${1}/issues`,
+    subject: template`closed issues`,
+    color: '#4baf50',
+    rules: {
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'eq', args: [2] }, { method: 'text' }],
+      },
+    },
+  },
+  'rejected-issues': {
+    url: template`/${0}/${1}/issues`,
+    subject: template`rejected issues`,
+    color: '#E64A19',
+    rules: {
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'eq', args: [3] }, { method: 'text' }],
+      },
+    },
+  },
+  'label-issues': {
+    url: template`/${0}/${1}/issues?label_ids=${2}&state=all`,
+    subject: template`label-issues`,
+    rules: {
+      subject: {
+        selector: '#git-issues-filters>.label-dropdown>.filter-text',
+        handlers: [{ method: 'text' }],
+      },
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'each', args: [[{ method: 'text' }, { method: 'number' }]] }, { method: 'sum' }],
+      },
+    },
+  },
+  'open-label-issues': {
+    url: template`/${0}/${1}/issues?label_ids=${2}&state=all`,
+    subject: template`label-issues`,
+    color: '#8c92a4',
+    rules: {
+      subject: {
+        selector: '#git-issues-filters>.label-dropdown>.filter-text',
+        handlers: [{ method: 'text' }],
+      },
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'eq', args: [0] }, { method: 'text' }],
+      },
+    },
+  },
+  'progressing-label-issues': {
+    url: template`/${0}/${1}/issues?label_ids=${2}&state=all`,
+    subject: template`label-issues`,
+    color: '#529DF8',
+    rules: {
+      subject: {
+        selector: '#git-issues-filters>.label-dropdown>.filter-text',
+        handlers: [{ method: 'text' }],
+      },
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'eq', args: [1] }, { method: 'text' }],
+      },
+    },
+  },
+  'closed-label-issues': {
+    url: template`/${0}/${1}/issues?label_ids=${2}&state=all`,
+    subject: template`label-issues`,
+    color: '#4baf50',
+    rules: {
+      subject: {
+        selector: '#git-issues-filters>.label-dropdown>.filter-text',
+        handlers: [{ method: 'text' }],
+      },
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'eq', args: [2] }, { method: 'text' }],
+      },
+    },
+  },
+  'rejected-label-issues': {
+    url: template`/${0}/${1}/issues?label_ids=${2}&state=all`,
+    subject: template`label-issues`,
+    color: '#E64A19',
+    rules: {
+      subject: {
+        selector: '#git-issues-filters>.label-dropdown>.filter-text',
+        handlers: [{ method: 'text' }],
+      },
+      status: {
+        selector: '#git-issues-filters a.item .label',
+        handlers: [{ method: 'eq', args: [3] }, { method: 'text' }],
+      },
+    },
+  },
+  prs: {
+    url: template`/${0}/${1}/pulls`,
+    subject: template`PRs`,
+    rules: {
+      status: {
+        selector: '#git-pull-requests-filters a.item .label',
+        handlers: [{ method: 'each', args: [[{ method: 'text' }]] }, { method: 'sum' }],
+      },
+    },
+  },
+  'open-prs': {
+    url: template`/${0}/${1}/pulls`,
+    subject: template`open PRs`,
+    color: '#8c92a4',
+    rules: {
+      status: {
+        selector: '#git-pull-requests-filters a.item .label',
+        handlers: [{ method: 'eq', args: [0] }, { method: 'text' }],
+      },
+    },
+  },
+  'merged-prs': {
+    url: template`/${0}/${1}/pulls`,
+    subject: template`merged PRs`,
+    color: '#4baf50',
+    rules: {
+      status: {
+        selector: '#git-pull-requests-filters a.item .label',
+        handlers: [{ method: 'eq', args: [1] }, { method: 'text' }],
+      },
+    },
+  },
+  'closed-prs': {
+    url: template`/${0}/${1}/pulls`,
+    subject: template`closed PRs`,
+    color: '#d92b2f',
+    rules: {
+      status: {
+        selector: '#git-pull-requests-filters a.item .label',
+        handlers: [{ method: 'eq', args: [2] }, { method: 'text' }],
+      },
+    },
+  },
+  commits: {
+    url: (owner, repo, param) => `/${owner}/${repo}${param ? `/tree/${param}/` : ''}`,
+    subject: template`commits`,
+    rules: {
+      status: {
+        selector: '#git-project-info .all-commits>a',
+        handlers: [{ method: 'text' }, { method: 'replace', args: ['\\D', ''] }],
+      },
+    },
+  },
+  'last-commit': {
+    url: (owner, repo, param) => `/${owner}/${repo}${param ? `/tree/${param}/` : ''}`,
+    subject: template`last commit`,
+    rules: {
+      status: {
+        selector: '#git-project-info>.recent-commit>.timeago',
+        handlers: [{ method: 'attr', args: ['title'] }],
+      },
+    },
+    handleResult: (apiData) => {
+      const result = { ...apiData };
+      if (!apiData.status) result.status = 'null';
+      result.status = fromNow(apiData.status);
+      return result;
+    },
+  },
+  branches: {
+    url: (owner, repo) => `/${owner}/${repo}/branches`,
+    subject: template`branches`,
+    dataType: 'json',
+    rules: {
+      status: {
+        selector: 'count',
+      },
+    },
+  },
+  releases: {
+    url: (owner, repo) => `/${owner}/${repo}`,
+    subject: template`releases`,
+    rules: {
+      status: {
+        selector: '#project-wrapper .project__right-side .release .header .text-muted',
+        handlers: [{ method: 'text' }, { method: 'replace', args: ['\\D', ''] }],
+      },
+    },
+  },
+  tags: {
+    url: (owner, repo) => `/${owner}/${repo}`,
+    subject: template`tags`,
+    rules: {
+      status: {
+        selector: '#git-project-bread .branches-tags .item:nth-child(2) .button',
+        handlers: [{ method: 'text' }, { method: 'replace', args: ['\\D', ''] }],
+      },
+    },
+  },
+  license: {
+    url: (owner, repo) => `/${owner}/${repo}`,
+    subject: template`license`,
+    rules: {
+      status: {
+        selector: '#project-wrapper .project__right-side .intro .content .intro-list #license-popup',
+        handlers: [{ method: 'text' }],
+      },
+    },
+  },
+  contributors: {
+    url: (owner, repo) => `/${owner}/${repo}/contributors_count`,
+    subject: template`contributors`,
+    dataType: 'json',
+    rules: {
+      status: {
+        selector: 'contributors_count',
+      },
+    },
+  },
 };
 
 interface ApiParams {
@@ -82,19 +335,26 @@ interface ApiParams {
   repo: string;
   param: string;
 }
-export async function getApiData(params: ApiParams): Promise<{ subject: string; status: string; color?: Colors }> {
+
+interface ApiResult {
+  subject: string;
+  status: string;
+  color?: string;
+}
+/**
+ * 根据预定的爬虫规则 爬取结果
+ * @param params 请求参数
+ * @returns
+ */
+export async function getApiData(params: ApiParams): Promise<ApiResult> {
   const { subject, owner, repo, param } = params;
 
-  const apiKey = subject + (param ? `_${param}` : '');
+  if (!(subject in apis)) return { subject: 'badge', status: '404', color: 'orange' };
 
-  if (!(apiKey in apis)) return { subject: 'badge', status: '404', color: 'orange' };
-
-  const apiRule = apis[apiKey];
+  const apiRule = apis[subject];
   const options: CrawlerUrlOptions = {
     url: baseUrl + apiRule.url(owner, repo, param),
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    dataType: 'dataType' in apiRule ? apiRule.dataType : 'html',
+    dataType: apiRule.dataType || 'html',
     rules: apiRule.rules,
   };
 
@@ -102,5 +362,15 @@ export async function getApiData(params: ApiParams): Promise<{ subject: string; 
 
   if (res.code !== ResultCodes.SUCCESS) return { subject: 'gitee', status: '404', color: 'grey' };
 
-  return { subject: apiRule.subject(), status: res.data['status'] };
+  const apiData: ApiResult = { subject: apiRule.subject(), status: res.data['status'] };
+  if (res.data['subject']) {
+    apiData.subject = res.data['subject'];
+  }
+  if (apiRule.color) {
+    apiData.color = apiRule.color;
+  }
+  if (apiRule.handleResult) {
+    return apiRule.handleResult(apiData);
+  }
+  return apiData;
 }
