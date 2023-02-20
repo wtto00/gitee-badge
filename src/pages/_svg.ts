@@ -1,6 +1,6 @@
-import { load } from 'cheerio';
-import { chars, colors, icons } from './_const';
-import { CheckIsColor } from './_util';
+import { load } from "cheerio";
+import { chars, colors, icons } from "./_const";
+import { CheckIsColor } from "./_util";
 
 /**
  * 计算字符串的宽度
@@ -10,9 +10,9 @@ import { CheckIsColor } from './_util';
 function getTextLength(text: string) {
   let width = 0;
   for (const t of `${text}`) {
-    if (t >= '0' && t <= '9') {
+    if (t >= "0" && t <= "9") {
       width += 70;
-    } else if (t >= ' ' && t <= '~') {
+    } else if (t >= " " && t <= "~") {
       width += chars[t] || 0;
     } else {
       width += 110;
@@ -26,17 +26,19 @@ function getTextLength(text: string) {
  * @param icon 图标
  * @returns
  */
-async function getIcon(icon?: string): Promise<{ svg: string | null; iconWidth: number }> {
+async function getIcon(
+  icon?: string
+): Promise<{ svg: string | null; iconWidth: number }> {
   if (!icon) return { svg: null, iconWidth: 0 };
 
   try {
-    const { default: iconRaw } = await import(`assets/icons/${icon}.svg`);
+    const { default: iconRaw } = await import(`@/assets/icons/${icon}.svg`);
 
     const $ = load(iconRaw);
-    const svg = $('svg');
-    svg.attr('x', '40');
-    svg.attr('y', '35');
-    const width = Number(svg.attr('width')) || 0;
+    const svg = $("svg");
+    svg.attr("x", "40");
+    svg.attr("y", "35");
+    const width = Number(svg.attr("width")) || 0;
     return { svg: svg.parent().html(), iconWidth: width + 30 };
   } catch (error) {
     console.error(error);
@@ -68,9 +70,9 @@ export async function getSvgData(params: Record<string, string>) {
   // 根据参数处理要输出的数据
   if (label !== undefined) subject = label;
   if (list) status = status.replace(/,/g, ` ${list} `);
-  if (icon && !(icon in icons)) icon = '';
+  if (icon && !(icon in icons)) icon = "";
   const statusColor = getColor(color);
-  const subjectColor = labelColor in colors ? colors[labelColor] : '#555';
+  const subjectColor = labelColor in colors ? colors[labelColor] : "#555";
   const scaleNum = Number(scale) || 1;
 
   const subjectLength = getTextLength(subject);
@@ -93,20 +95,30 @@ export async function getSvgData(params: Record<string, string>) {
   <stop offset="1" stop-opacity=".1"/>
 </linearGradient>
 <mask id="mask"><rect width="${
-  subjectLength + statusLength + 140 + textPosition
-}" height="200" rx="30" fill="#FFF"/></mask>
+    subjectLength + statusLength + 140 + textPosition
+  }" height="200" rx="30" fill="#FFF"/></mask>
 <g mask="url(#mask)">
-  <rect width="${subjectLength + 40 + textPosition}" height="200" fill="${subjectColor}"/>
-  <rect width="${statusLength + 100}" height="200" fill="${statusColor}" x="${subjectLength + 40 + textPosition}"/>
-  <rect width="${subjectLength + statusLength + 140 + textPosition}" height="200" fill="url(#badge)"/>
+  <rect width="${
+    subjectLength + 40 + textPosition
+  }" height="200" fill="${subjectColor}"/>
+  <rect width="${statusLength + 100}" height="200" fill="${statusColor}" x="${
+    subjectLength + 40 + textPosition
+  }"/>
+  <rect width="${
+    subjectLength + statusLength + 140 + textPosition
+  }" height="200" fill="url(#badge)"/>
 </g>
 <g fill="#fff" text-anchor="start" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110">
   <text x="${textPosition}" y="148" textLength="${subjectLength}" fill="#000" opacity="0.25">${subject}</text>
-  <text x="${textPosition - 10}" y="138" textLength="${subjectLength}">${subject}</text>
   <text x="${
-  subjectLength + 95 + textPosition
-}" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${status}</text>
-  <text x="${subjectLength + 85 + textPosition}" y="138" textLength="${statusLength}">${status}</text>
+    textPosition - 10
+  }" y="138" textLength="${subjectLength}">${subject}</text>
+  <text x="${
+    subjectLength + 95 + textPosition
+  }" y="148" textLength="${statusLength}" fill="#000" opacity="0.25">${status}</text>
+  <text x="${
+    subjectLength + 85 + textPosition
+  }" y="138" textLength="${statusLength}">${status}</text>
 </g>
 ${svg}
 </svg>`;

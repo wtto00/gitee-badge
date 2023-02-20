@@ -1,48 +1,47 @@
 {
   "name": "badge",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
     "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\"",
     "format": "prettier --write --ignore-unknown .",
-    "lint": "next lint",
     "eslint": "eslint --color --fix ./**/*.{ts,tsx,js}"
   },
   "dependencies": {
+    "@next/font": "13.1.6",
+    "@types/node": "18.14.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
     "@wtto00/spider-crawler": "0.2.3-beta",
     "cheerio": "1.0.0-rc.12",
+    "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.1.6",
     "next": "13.1.6",
     "raw-loader": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "showdown": "^2.1.0"
+    "showdown": "^2.1.0",
+    "typescript": "4.9.5"
   },
   "devDependencies": {
-    "@types/marked": "^4.0.8",
-    "@types/node": "18.13.0",
-    "@types/react": "18.0.28",
     "@types/showdown": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.52.0",
-    "@typescript-eslint/parser": "^5.52.0",
-    "classnames": "^2.3.2",
-    "eslint": "8.34.0",
-    "eslint-config-next": "13.1.6",
-    "eslint-plugin-react": "^7.32.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
-    "sass": "^1.58.1",
-    "typescript": "4.9.5"
+    "sass": "^1.58.3"
   },
   "lint-staged": {
     "*": [
       "prettier --write --ignore-unknown"
     ],
     "*.{ts,tsx}": [
-      "eslint --color --fix"
+      "eslint --fix"
     ]
   }
 }
