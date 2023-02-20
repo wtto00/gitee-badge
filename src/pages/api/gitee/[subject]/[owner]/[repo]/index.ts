@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSvgData } from "@/pages/_svg";
-import { getQueryParams } from "@/pages/_util";
+import { getSvgData } from "@/utils/_svg";
+import { getQueryParams } from "@/utils/_util";
 import { getApiData } from "./_api";
 
 export default async function handler(

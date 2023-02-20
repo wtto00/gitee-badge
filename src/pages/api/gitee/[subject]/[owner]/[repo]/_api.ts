@@ -1,13 +1,13 @@
 /**
  * 根据参数获取结果
  */
-import { template } from "@/pages/_util";
+import { template } from "@/utils/_util";
 import {
   crawlFromUrl,
   CrawlerUrlOptions,
   ResultCodes,
 } from "@wtto00/spider-crawler";
-import { fromNow } from "@/pages/_dayjs";
+import { fromNow } from "@/utils/_dayjs";
 
 const baseUrl = "https://gitee.com";
 
