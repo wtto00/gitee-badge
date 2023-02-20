@@ -6,6 +6,7 @@ specifiers:
   "@types/react": 18.0.28
   "@types/react-dom": 18.0.11
   "@types/showdown": ^2.0.0
+  "@vercel/analytics": ^0.1.10
   "@wtto00/spider-crawler": 0.2.3-beta
   cheerio: 1.0.0-rc.12
   classnames: ^2.3.2
@@ -28,6 +29,7 @@ dependencies:
   "@types/node": 18.14.0
   "@types/react": 18.0.28
   "@types/react-dom": 18.0.11
+  "@vercel/analytics": 0.1.10_react@18.2.0
   "@wtto00/spider-crawler": 0.2.3-beta
   cheerio: 1.0.0-rc.12
   classnames: 2.3.2
@@ -485,6 +487,17 @@ packages:
     dependencies:
       "@typescript-eslint/types": 5.52.0
       eslint-visitor-keys: 3.3.0
+    dev: false
+
+  /@vercel/analytics/0.1.10_react@18.2.0:
+    resolution:
+      {
+        integrity: sha512-jjJ8GzcPnQp0cMxpfYoUycMRBtDiaIeyVjZPiEPe99Dj1PdjMzAFYEASiV/hpNsXHkpcNYCveDFh6jnmh0YSDQ==,
+      }
+    peerDependencies:
+      react: ^16.8||^17||^18
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@wtto00/spider-crawler/0.2.3-beta:
