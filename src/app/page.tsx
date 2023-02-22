@@ -41,7 +41,7 @@ async function getMarkdownContent() {
   if (process.env.NODE_ENV === "development") {
     content = content.replace(/https:\/\/badg\.vercel\.app/g, "/api");
   } else {
-    content = content.replace(/https:\/\/badg\.vercel\.app/g, "");
+    content = content.replace(/\(https:\/\/badg\.vercel\.app/g, "(");
   }
 
   return content;

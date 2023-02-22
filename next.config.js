@@ -11,6 +11,20 @@ const nextConfig = {
 
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: "/badge/:path*",
+        destination: "/api/badge/:path*",
+        permanent: true,
+      },
+      {
+        source: "/gitee/:path*",
+        destination: "/api/gitee/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
