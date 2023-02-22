@@ -16,6 +16,8 @@
 生成徽章服务。  
 使用 [Next.js](https://nextjs.org/) 框架开发，[vercel](https://vercel.com/) 自动化云部署.
 
+> 灵感来自[shields.io](https://shields.io/) 和 [badgen.net](https://badgen.net/)
+
 # 自定义徽章
 
 ```
