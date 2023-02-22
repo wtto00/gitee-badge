@@ -18,6 +18,11 @@ const nextConfig = {
         destination: "/badge/:path*",
         permanent: true,
       },
+      {
+        source: "/api/gitee/:path*",
+        destination: "/gitee/:path*",
+        permanent: true,
+      },
     ];
   },
 };
