@@ -40,8 +40,6 @@ async function getMarkdownContent() {
   let { default: content } = await import("../../README.md");
   if (process.env.NODE_ENV === "development") {
     content = content.replace(/https:\/\/badg\.vercel\.app/g, "/api");
-  } else {
-    content = content.replace(/https:\/\/badg\.vercel\.app/g, "");
   }
 
   return content;
