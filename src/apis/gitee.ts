@@ -1,25 +1,8 @@
-/**
- * 根据参数获取结果
- */
-import { template } from "@/utils/_util";
-import {
-  crawlFromUrl,
-  CrawlerUrlOptions,
-  ResultCodes,
-} from "@wtto00/spider-crawler";
-import { fromNow } from "@/utils/_dayjs";
+import { template } from "@/utils/util";
+import { fromNow } from "@/utils/dayjs";
+import { ApiOptions } from "./type";
 
-const baseUrl = "https://gitee.com";
-
-type TemplateString = (...values: string[]) => string;
-
-type CrawlerUrlNoDataTypeOptionsNew = Omit<CrawlerUrlOptions, "url">;
-type ApiOptions = CrawlerUrlNoDataTypeOptionsNew & {
-  url: TemplateString;
-  subject: TemplateString;
-  color?: string;
-  handleResult?: (result: ApiResult) => ApiResult;
-};
+export const baseUrl = "https://gitee.com";
 
 /**
  * gitee爬虫规则
@@ -28,7 +11,7 @@ type ApiOptions = CrawlerUrlNoDataTypeOptionsNew & {
  * 1：repo
  * 2：param
  */
-const apis: Record<string, ApiOptions> = {
+export const apis: Record<string, ApiOptions> = {
   release: {
     url: (owner, repo, param) =>
       `/${owner}/${repo}/releases${param === "stable" ? "/latest" : ""}`,
@@ -369,54 +352,3 @@ const apis: Record<string, ApiOptions> = {
     },
   },
 };
-
-interface ApiParams {
-  subject: string;
-  owner: string;
-  repo: string;
-  param: string;
-}
-
-interface ApiResult {
-  subject: string;
-  status: string;
-  color?: string;
-}
-/**
- * 根据预定的爬虫规则 爬取结果
- * @param params 请求参数
- * @returns
- */
-export async function getApiData(params: ApiParams): Promise<ApiResult> {
-  const { subject, owner, repo, param } = params;
-
-  if (!(subject in apis))
-    return { subject: "badge", status: "404", color: "orange" };
-
-  const apiRule = apis[subject];
-  const options: CrawlerUrlOptions = {
-    url: baseUrl + apiRule.url(owner, repo, param),
-    dataType: apiRule.dataType || "html",
-    rules: apiRule.rules,
-  };
-
-  const res = await crawlFromUrl(options);
-
-  if (res.code !== ResultCodes.SUCCESS)
-    return { subject: "gitee", status: "404", color: "grey" };
-
-  const apiData: ApiResult = {
-    subject: apiRule.subject(),
-    status: res.data["status"],
-  };
-  if (res.data["subject"]) {
-    apiData.subject = res.data["subject"];
-  }
-  if (apiRule.color) {
-    apiData.color = apiRule.color;
-  }
-  if (apiRule.handleResult) {
-    return apiRule.handleResult(apiData);
-  }
-  return apiData;
-}

@@ -1,6 +1,6 @@
 import { load } from "cheerio";
-import { chars, colors, icons } from "./_const";
-import { CheckIsColor } from "./_util";
+import { chars, colors, icons } from "./const";
+import { CheckIsColor } from "./util";
 
 /**
  * 计算字符串的宽度
