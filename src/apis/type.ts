@@ -20,5 +20,12 @@ export type ApiOptions = CrawlerUrlNoDataTypeOptionsNew & {
   url: TemplateString;
   subject: TemplateString;
   color?: string;
-  handleResult?: (result: ApiResult) => ApiResult;
+  handleResult?: (result: ApiResult, params?: ApiParams) => ApiResult;
 };
+
+export interface ApiGraphQLOptions {
+  query: TemplateString;
+  subject?: TemplateString;
+  color?: string;
+  handleResult?: (result: ApiResult, params?: ApiParams) => ApiResult;
+}

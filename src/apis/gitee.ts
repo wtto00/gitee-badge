@@ -13,15 +13,14 @@ export const baseUrl = "https://gitee.com";
  */
 export const apis: Record<string, ApiOptions> = {
   release: {
-    url: (owner, repo, param) =>
-      `/${owner}/${repo}/releases${param === "stable" ? "/latest" : ""}`,
+    url: (owner, repo) => `/${owner}/${repo}/releases`,
     subject: template`release`,
     rules: {
       status: {
         selector: "#releases-index .release-tag-item",
         handlers: [
           { method: "eq", args: [0] },
-          { method: "find", args: [".release-header"] },
+          { method: "find", args: [".tag-name"] },
           { method: "text" },
           { method: "trim" },
         ],
