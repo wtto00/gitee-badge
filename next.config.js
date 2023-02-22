@@ -14,13 +14,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/api/badge/:path*",
-        destination: "/badge/:path*",
+        source: "/badge/:path*",
+        destination: "/api/badge/:path*",
         permanent: true,
       },
       {
-        source: "/api/gitee/:path*",
-        destination: "/gitee/:path*",
+        source: "/gitee/:path*",
+        destination: "/api/gitee/:path*",
         permanent: true,
       },
     ];
