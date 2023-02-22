@@ -20,13 +20,13 @@
 
 ```
 https://badg.vercel.app/badge/:subject/:status[/:color]?icon=github
-                          ------|--------|-------|-------|-----------
-                            |       |        |       |        |
-                            |       |        |       |       选项(icon,color,label,list,labelColor,scale)
-                            |       |        |      颜色
-                            |       |       状态
-                            |      主题
-                        自定义Badge
+                       ------|--------|-------|-------|-----------
+                         |       |        |       |        |
+                         |       |        |       |       选项(icon,color,label,list,labelColor,scale)
+                         |       |        |      颜色
+                         |       |       状态
+                         |      主题
+                     自定义Badge
 ```
 
 - **可选颜色**  
@@ -67,13 +67,13 @@ https://badg.vercel.app/badge/:subject/:status[/:color]?icon=github
 
 ```text
 https://badg.vercel.app/gitee/:subject/:owner/:repo?icon&color
-                          ------|--------|------|-----|-----------
-                             |       |       |     |        |
-                             |       |       |     |     选项(icon,color,label,list,labelColor,scale)
-                             |       |       |  仓库名称
-                             |       |   仓库所有者
-                             |      主题
-                         Gitee Api
+                       ------|--------|------|-----|-----------
+                          |       |       |     |        |
+                          |       |       |     |     选项(icon,color,label,list,labelColor,scale)
+                          |       |       |  仓库名称
+                          |       |   仓库所有者
+                          |      主题
+                      Gitee Api
 ```
 
 - **选项**
@@ -119,13 +119,13 @@ https://badg.vercel.app/gitee/:subject/:owner/:repo?icon&color
 
 ```text
 https://badg.vercel.app/github/:subject/:owner/:repo?icon&color
-                          ------|--------|------|-----|-----------
-                             |       |       |     |        |
-                             |       |       |     |     选项(icon,color,label,list,labelColor,scale)
-                             |       |       |  仓库名称
-                             |       |   仓库所有者
-                             |      主题
-                         GitHub Api
+                        ------|--------|------|-----|-----------
+                           |       |       |     |        |
+                           |       |       |     |     选项(icon,color,label,list,labelColor,scale)
+                           |       |       |  仓库名称
+                           |       |   仓库所有者
+                           |      主题
+                       GitHub Api
 ```
 
 - **选项**
