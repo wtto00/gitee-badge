@@ -1,5 +1,5 @@
 {
-  "name": "badge",
+  "name": "gitee-badge",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -8,24 +8,22 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\"",
-    "format": "prettier --write --ignore-unknown .",
+    "format": "prettier --write --ignore-unknown ./src",
     "eslint": "eslint --color --fix ./**/*.{ts,tsx,js}"
   },
   "dependencies": {
     "@next/font": "13.1.6",
-    "@octokit/graphql": "^5.0.5",
-    "@types/node": "18.14.0",
+    "@types/node": "18.14.1",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@vercel/analytics": "^0.1.10",
     "@wtto00/spider-crawler": "0.2.3-beta",
-    "cheerio": "1.0.0-rc.12",
+    "badgen": "^3.2.2",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
-    "raw-loader": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "showdown": "^2.1.0",
@@ -36,6 +34,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
     "prettier": "^2.8.4",
+    "raw-loader": "^4.0.2",
     "sass": "^1.58.3"
   },
   "lint-staged": {

@@ -1,23 +1,24 @@
-import Image from "next/image";
-import { Converter } from "showdown";
-import styles from "./page.module.scss";
-import classNames from "classnames";
+import Image from 'next/image';
+import { Converter } from 'showdown';
+import styles from './page.module.scss';
+import classNames from 'classnames';
+import dynamic from 'next/dynamic';
+import { Loading } from './components/content';
+
+const Content = dynamic(() => import('./components/content'), { ssr: false, loading: Loading });
 
 const converter = new Converter({
   openLinksInNewWindow: true,
 });
-converter.setFlavor("github");
+converter.setFlavor('github');
 
 export default async function Home() {
-  const content = await getMarkdownContent();
+  let content = await getMarkdownContent();
   const html = converter.makeHtml(content);
 
   return (
-    <main className={classNames(styles.container, "markdown-body")}>
-      <div
-        className={styles.content}
-        dangerouslySetInnerHTML={{ __html: html }}
-      ></div>
+    <main className={classNames(styles.container, 'markdown-body')}>
+      <Content className={styles.content} html={html} />
 
       <footer className={styles.footer}>
         <a
@@ -25,7 +26,7 @@ export default async function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
+          Powered by{' '}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
@@ -37,12 +38,9 @@ export default async function Home() {
 
 async function getMarkdownContent() {
   // @ts-ignore
-  let { default: content } = await import("../../README.md");
-  if (process.env.NODE_ENV === "development") {
-    content = content.replace(/https:\/\/badg\.vercel\.app/g, "/api");
-  } else {
-    content = content.replace(/\(https:\/\/badg\.vercel\.app/g, "(");
-  }
+  let { default: content } = await import('../../README.md');
+
+  content = content.replace(/\(https:\/\/gitee-badge\.vercel\.app/g, '(');
 
   return content;
 }
