@@ -6,22 +6,20 @@ const nextConfig = {
   webpack: (config, _options) => {
     config.module.rules.push({
       test: /(\.svg|\.md)$/,
-      use: ["raw-loader"],
+      use: ['raw-loader'],
     });
 
     return config;
   },
-  async redirects() {
+  async rewrites() {
     return [
       {
-        source: "/badge/:path*",
-        destination: "/api/badge/:path*",
-        permanent: true,
+        source: '/json/:path*',
+        destination: '/api/json/:path*',
       },
       {
-        source: "/gitee/:path*",
-        destination: "/api/gitee/:path*",
-        permanent: true,
+        source: '/svg/:path*',
+        destination: '/api/svg/:path*',
       },
     ];
   },
