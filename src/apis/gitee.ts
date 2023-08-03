@@ -277,12 +277,12 @@ export const apis: Record<string, ApiOptions> = {
     },
   },
   branches: {
-    url: (owner, repo) => `/${owner}/${repo}/branches`,
+    url: (owner, repo) => `/${owner}/${repo}`,
     subject: template`branches`,
-    dataType: 'json',
     rules: {
       status: {
-        selector: 'count',
+        selector: '#git-project-bread .branches-tags .item .button',
+        handlers: [{ method: 'eq', args: [0] }, { method: 'text' }, { method: 'replace', args: ['\\D', ''] }],
       },
     },
   },
