@@ -21,7 +21,7 @@
     "badgen": "^3.2.2",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.7",
-    "eslint": "8.34.0",
+    "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
     "next": "14.1.1",
     "react": "18.2.0",
