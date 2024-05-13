@@ -32,7 +32,7 @@
   "devDependencies": {
     "@types/showdown": "^2.0.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.1.2",
+    "lint-staged": "^15.2.2",
     "prettier": "^2.8.4",
     "raw-loader": "^4.0.2",
     "sass": "^1.58.3"
