@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\"",
+    "prepare": "husky && echo npx lint-staged > .husky/pre-commit",
     "format": "prettier --write --ignore-unknown ./src",
     "eslint": "eslint --color --fix ./**/*.{ts,tsx,js}"
   },
@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/showdown": "^2.0.0",
-    "husky": "^8.0.3",
+    "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^2.8.4",
     "raw-loader": "^4.0.2",
