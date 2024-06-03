@@ -35,7 +35,7 @@
     "lint-staged": "^15.2.5",
     "prettier": "^3.2.5",
     "raw-loader": "^4.0.2",
-    "sass": "^1.58.3"
+    "sass": "^1.77.4"
   },
   "lint-staged": {
     "*": [
