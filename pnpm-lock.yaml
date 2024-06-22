@@ -40,7 +40,7 @@ dependencies:
     version: 14.2.3(eslint@8.57.0)(typescript@5.4.5)
   next:
     specifier: 14.2.4
-    version: 14.2.4(react-dom@18.3.1)(react@18.3.1)(sass@1.77.4)
+    version: 14.2.4(react-dom@18.3.1)(react@18.3.1)(sass@1.77.6)
   react:
     specifier: 18.3.1
     version: 18.3.1
@@ -71,8 +71,8 @@ devDependencies:
     specifier: ^4.0.2
     version: 4.0.2(webpack@5.91.0)
   sass:
-    specifier: ^1.77.4
-    version: 1.77.4
+    specifier: ^1.77.6
+    version: 1.77.6
 
 packages:
 
@@ -204,7 +204,7 @@ packages:
     peerDependencies:
       next: '*'
     dependencies:
-      next: 14.2.4(react-dom@18.3.1)(react@18.3.1)(sass@1.77.4)
+      next: 14.2.4(react-dom@18.3.1)(react@18.3.1)(sass@1.77.6)
     dev: false
 
   /@next/swc-darwin-arm64@14.2.4:
@@ -462,7 +462,7 @@ packages:
       react:
         optional: true
     dependencies:
-      next: 14.2.4(react-dom@18.3.1)(react@18.3.1)(sass@1.77.4)
+      next: 14.2.4(react-dom@18.3.1)(react@18.3.1)(sass@1.77.6)
       react: 18.3.1
       server-only: 0.0.1
     dev: false
@@ -2440,7 +2440,7 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
-  /next@14.2.4(react-dom@18.3.1)(react@18.3.1)(sass@1.77.4):
+  /next@14.2.4(react-dom@18.3.1)(react@18.3.1)(sass@1.77.6):
     resolution: {integrity: sha512-R8/V7vugY+822rsQGQCjoLhMuC9oFj9SOi4Cl4b2wjDrseD0LRZ10W7R6Czo4w9ZznVSshKjuIomsRjvm9EKJQ==}
     engines: {node: '>=18.17.0'}
     hasBin: true
@@ -2466,7 +2466,7 @@ packages:
       postcss: 8.4.31
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      sass: 1.77.4
+      sass: 1.77.6
       styled-jsx: 5.1.1(react@18.3.1)
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.2.4
@@ -2895,8 +2895,8 @@ packages:
       is-regex: 1.1.4
     dev: false
 
-  /sass@1.77.4:
-    resolution: {integrity: sha512-vcF3Ckow6g939GMA4PeU7b2K/9FALXk2KF9J87txdHzXbUF9XRQRwSxcAs/fGaTnJeBFd7UoV22j3lzMLdM0Pw==}
+  /sass@1.77.6:
+    resolution: {integrity: sha512-ByXE1oLD79GVq9Ht1PeHWCPMPB8XHpBuz1r85oByKHjZY6qV6rWnQovQzXJXuQ/XyE1Oj3iPk3lo28uzaRA2/Q==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
