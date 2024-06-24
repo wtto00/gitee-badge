@@ -27,7 +27,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "showdown": "^2.1.0",
-    "typescript": "5.4.5"
+    "typescript": "5.5.2"
   },
   "devDependencies": {
     "@types/showdown": "^2.0.0",
