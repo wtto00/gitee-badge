@@ -12,8 +12,8 @@ importers:
         specifier: 14.2.5
         version: 14.2.5(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))
       '@types/node':
-        specifier: 22.1.0
-        version: 22.1.0
+        specifier: 22.2.0
+        version: 22.2.0
       '@types/react':
         specifier: 18.3.3
         version: 18.3.3
@@ -245,6 +245,9 @@ packages:
 
   '@types/node@22.1.0':
     resolution: {integrity: sha512-AOmuRF0R2/5j1knA3c6G3HOk523Ga+l+ZXltX8SF1+5oqcXijjfTd8fY3XRZqSihEu9XhtQnKYLmkFaoxgsJHw==}
+
+  '@types/node@22.2.0':
+    resolution: {integrity: sha512-bm6EG6/pCpkxDf/0gDNDdtDILMOHgaQBVOJGdwsqClnxA3xL6jtMv76rLBc006RVMWbmaf0xbmom4Z/5o2nRkQ==}
 
   '@types/prop-types@15.7.12':
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
@@ -2065,6 +2068,10 @@ snapshots:
   '@types/json5@0.0.29': {}
 
   '@types/node@22.1.0':
+    dependencies:
+      undici-types: 6.13.0
+
+  '@types/node@22.2.0':
     dependencies:
       undici-types: 6.13.0
 
