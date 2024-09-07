@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@next/font':
-        specifier: 14.2.6
-        version: 14.2.6(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))
+        specifier: 14.2.8
+        version: 14.2.8(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))
       '@types/node':
         specifier: 22.5.3
         version: 22.5.3
@@ -144,8 +144,8 @@ packages:
   '@next/eslint-plugin-next@14.2.7':
     resolution: {integrity: sha512-+7xh142AdhZGjY9/L0iFo7mqRBMJHe+q+uOL+hto1Lfo9DeWCGcR6no4StlFbVSVcA6fQLKEX6y6qhMsSKbgNQ==}
 
-  '@next/font@14.2.6':
-    resolution: {integrity: sha512-v0maCHn9a7UiMgzLBGUd/LzhhajEtJva8+Psi48IGrQ8PQfHb9MayO6BxhK/aP3/pE8Kd3JwibA06c0XPoms5A==}
+  '@next/font@14.2.8':
+    resolution: {integrity: sha512-yQbLs/Sc9PXXsJv3gj5w/2Ubesge+m1VJNH5io8KcxYJfjbJnAywtMvZRUbWX2hyeB/o7Xu1PJKAqbjaBrzDTQ==}
     peerDependencies:
       next: '*'
 
@@ -242,9 +242,6 @@ packages:
 
   '@types/json5@0.0.29':
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
-
-  '@types/node@22.4.1':
-    resolution: {integrity: sha512-1tbpb9325+gPnKK0dMm+/LMriX0vKxf6RnB0SZUqfyVkQ4fMgUSySqhxE/y8Jvs4NyF1yHzTfG9KlnkIODxPKg==}
 
   '@types/node@22.5.3':
     resolution: {integrity: sha512-njripolh85IA9SQGTAqbmnNZTdxv7X/4OYGPz8tgy5JDr8MP+uDBa921GpYEoDDnwm0Hmn5ZPeJgiiSTPoOzkQ==}
@@ -1996,7 +1993,7 @@ snapshots:
     dependencies:
       glob: 10.3.10
 
-  '@next/font@14.2.6(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))':
+  '@next/font@14.2.8(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))':
     dependencies:
       next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8)
 
@@ -2066,10 +2063,6 @@ snapshots:
   '@types/json-schema@7.0.15': {}
 
   '@types/json5@0.0.29': {}
-
-  '@types/node@22.4.1':
-    dependencies:
-      undici-types: 6.19.6
 
   '@types/node@22.5.3':
     dependencies:
@@ -3237,7 +3230,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.4.1
+      '@types/node': 22.5.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
