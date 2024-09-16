@@ -12,7 +12,7 @@
     "eslint": "eslint --color --fix ./**/*.{ts,tsx,js}"
   },
   "dependencies": {
-    "@next/font": "14.2.8",
+    "@next/font": "14.2.11",
     "@types/node": "22.5.3",
     "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0",

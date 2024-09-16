@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@next/font':
-        specifier: 14.2.8
-        version: 14.2.8(next@14.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.78.0))
+        specifier: 14.2.11
+        version: 14.2.11(next@14.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.78.0))
       '@types/node':
         specifier: 22.5.3
         version: 22.5.3
@@ -144,8 +144,8 @@ packages:
   '@next/eslint-plugin-next@14.2.7':
     resolution: {integrity: sha512-+7xh142AdhZGjY9/L0iFo7mqRBMJHe+q+uOL+hto1Lfo9DeWCGcR6no4StlFbVSVcA6fQLKEX6y6qhMsSKbgNQ==}
 
-  '@next/font@14.2.8':
-    resolution: {integrity: sha512-yQbLs/Sc9PXXsJv3gj5w/2Ubesge+m1VJNH5io8KcxYJfjbJnAywtMvZRUbWX2hyeB/o7Xu1PJKAqbjaBrzDTQ==}
+  '@next/font@14.2.11':
+    resolution: {integrity: sha512-ektZosXenaRWvc3ZoM7NibTJSN5gQJyCCNG6HYNFTZcxDMgmFALY/6XPsHiCmZZtwL9L9U3HY/96u9x/+KpjUw==}
     peerDependencies:
       next: '*'
 
@@ -1997,7 +1997,7 @@ snapshots:
     dependencies:
       glob: 10.3.10
 
-  '@next/font@14.2.8(next@14.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.78.0))':
+  '@next/font@14.2.11(next@14.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.78.0))':
     dependencies:
       next: 14.2.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.78.0)
 
